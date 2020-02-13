@@ -2,10 +2,12 @@ security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
     providers:
         in_memory: { memory: null }
         fos_userbundle:
             id: fos_user.user_provider.username
+            
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -27,9 +29,7 @@ security:
                 path:           /admin/logout
                 target:         /admin/login
             anonymous:          true
-
-        # -> end custom configuration
-
+            
         # default login area for standard users
 
         # This firewall is used to handle the public login area

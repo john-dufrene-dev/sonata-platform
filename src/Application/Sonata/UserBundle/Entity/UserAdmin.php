@@ -12,7 +12,7 @@ use Sonata\UserBundle\Entity\BaseUser as BaseUser;
  * References:
  * @link http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
  */
-class User extends BaseUser
+class UserAdmin extends BaseUser
 {
     /**
      * @var int $id
