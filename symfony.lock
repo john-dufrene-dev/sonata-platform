@@ -203,6 +203,9 @@
     "sonata-project/exporter": {
         "version": "2.1.0"
     },
+    "sonata-project/google-authenticator": {
+        "version": "3.x-dev"
+    },
     "sonata-project/user-bundle": {
         "version": "4.5.2"
     },
