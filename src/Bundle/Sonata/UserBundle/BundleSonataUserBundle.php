@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Sonata\UserBundle;
+namespace App\Bundle\Sonata\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * References:
  * @link http://symfony.com/doc/current/book/bundles.html
  */
-class ApplicationSonataUserBundle extends Bundle
+class BundleSonataUserBundle extends Bundle
 {
     /**
      * {@inheritdoc}

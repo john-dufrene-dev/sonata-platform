@@ -1,0 +1,30 @@
+sonata_user:
+    security_acl: false
+    manager_type: orm      # can be orm or mongodb
+
+    table:
+        user_group: "user_admin_user_group"
+
+    impersonating:
+        route:                page_slug
+        parameters:           { path: / }
+
+    class:                  # Entity Classes
+        user:               App\Bundle\Sonata\UserBundle\Entity\UserAdmin
+        group:              App\Bundle\Sonata\UserBundle\Entity\GroupAdmin
+
+    # admin:                  # Admin Classes
+    #     user:
+    #         class:          App\Bundle\Sonata\UserBundle\Admin\Entity\UserAdmin
+    #         controller:     Sonata\AdminBundle\Controller\CRUDController
+    #         translation:    SonataUserBundle
+
+    #     group:
+    #         class:          App\Bundle\Sonata\UserBundle\Admin\Entity\GroupAdmin
+    #         controller:     Sonata\AdminBundle\Controller\CRUDController
+    #         translation:    SonataUserBundle
+
+    profile:
+        default_avatar: 'bundles/sonatauser/default_avatar.png' # Default avatar displayed if the user doesn't have one
+
+    mailer: sonata.user.mailer.default # Service used to send emails

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace App\Application\Sonata\UserBundle\Admin\Entity;
+namespace App\Bundle\Sonata\UserBundle\Admin\Entity;
 
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;

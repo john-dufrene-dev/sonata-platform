@@ -1,47 +1,17 @@
 fos_user: 
     db_driver:        orm # can be orm or mongodb (support is also available within FOSUser for couchdb, propel but none is given for SonataUserBundle)
     firewall_name:    main
-    user_class:       App\Application\Sonata\UserBundle\Entity\UserAdmin
+    user_class:       App\Bundle\Sonata\UserBundle\Entity\UserAdmin
 
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
 
     group:
-        group_class:  App\Application\Sonata\UserBundle\Entity\GroupAdmin
+        group_class:  App\Bundle\Sonata\UserBundle\Entity\GroupAdmin
         group_manager: sonata.user.orm.group_manager # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
     service:
         user_manager: sonata.user.orm.user_manager
-
-sonata_user:
-    security_acl: false
-    manager_type: orm      # can be orm or mongodb
-
-    table:
-        user_group: "user_admin_user_group"
-
-    impersonating:
-        route:                page_slug
-        parameters:           { path: / }
-
-    class:                  # Entity Classes
-        user:               App\Application\Sonata\UserBundle\Entity\UserAdmin
-        group:              App\Application\Sonata\UserBundle\Entity\GroupAdmin
-
-    # admin:                  # Admin Classes
-    #     user:
-    #         class:          App\Application\Sonata\UserBundle\Admin\Entity\UserAdmin
-    #         controller:     Sonata\AdminBundle\Controller\CRUDController
-    #         translation:    SonataUserBundle
-
-    #     group:
-    #         class:          App\Application\Sonata\UserBundle\Admin\Entity\GroupAdmin
-    #         controller:     Sonata\AdminBundle\Controller\CRUDController
-    #         translation:    SonataUserBundle
-
-    profile:
-        default_avatar: 'bundles/sonatauser/default_avatar.png' # Default avatar displayed if the user doesn't have one
-
-    mailer: sonata.user.mailer.default # Service used to send emails
+        
 
