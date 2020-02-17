@@ -10,17 +10,17 @@ sonata_user:
         # parameters:           { path: / }
 
     class:                  # Entity Classes
-        user:               App\Bundle\Sonata\UserBundle\Entity\UserAdmin
-        group:              App\Bundle\Sonata\UserBundle\Entity\GroupAdmin
+        user:               App\Entity\UserAdmin\UserAdmin
+        group:              App\Entity\UserAdmin\GroupAdmin
 
     admin:                  # Admin Classes
         user:
-            class:          App\Bundle\Sonata\UserBundle\Admin\Model\UserAdmin
+            class:          App\Admin\UserAdmin\UserAdmin
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
         group:
-            class:          App\Bundle\Sonata\UserBundle\Admin\Model\GroupAdmin
+            class:          App\Admin\UserAdmin\GroupAdmin
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
