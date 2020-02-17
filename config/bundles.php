@@ -24,4 +24,8 @@ return [
     Sonata\UserBundle\SonataUserBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     App\Bundle\Sonata\UserBundle\BundleSonataUserBundle::class => ['all' => true],
+    App\Bundle\Sonata\MediaBundle\BundleSonataMediaBundle::class => ['all' => true],
+    JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
+    Sonata\MediaBundle\SonataMediaBundle::class => ['all' => true],
+    Sonata\SeoBundle\SonataSeoBundle::class => ['all' => true],
 ];
