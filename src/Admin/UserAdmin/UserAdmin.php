@@ -29,7 +29,7 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
-class UserAdmin extends BaseUserAdmin
+final class UserAdmin extends BaseUserAdmin
 {
     //
 }

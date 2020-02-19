@@ -28,3 +28,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    
+    # service for KnpMenuBundle compatibility with symfony 4
+    app.service.menu_builder:
+        class: App\Service\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+        tags:
+            - { name: knp_menu.menu_builder, method: header, alias: header }
+            - { name: knp_menu.menu_builder, method: footer, alias: footer }
+

@@ -6,7 +6,7 @@ use Sonata\MediaBundle\Entity\BaseGallery as BaseGallery;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MediaAdmin\GalleryRepository")
  * @ORM\Table(name="media__gallery")
  */
 class Gallery extends BaseGallery

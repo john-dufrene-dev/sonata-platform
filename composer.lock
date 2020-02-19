@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "489c683c65cfaad4e69bb52a6d1e0565",
+    "content-hash": "e92b41d3df1a0fbab454768f59a58f7b",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3727,16 +3727,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.59.0",
+            "version": "3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "ad355443f99af87ae68115d095a9112a73fedcfe"
+                "reference": "01160c3c790c7fa52f921bd092d5026c6f677aa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/ad355443f99af87ae68115d095a9112a73fedcfe",
-                "reference": "ad355443f99af87ae68115d095a9112a73fedcfe",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/01160c3c790c7fa52f921bd092d5026c6f677aa2",
+                "reference": "01160c3c790c7fa52f921bd092d5026c6f677aa2",
                 "shasum": ""
             },
             "require": {
@@ -3766,7 +3766,6 @@
                 "symfony/security-bundle": "^4.3",
                 "symfony/security-core": "^4.3",
                 "symfony/security-csrf": "^4.3",
-                "symfony/templating": "^4.3",
                 "symfony/translation": "^4.3",
                 "symfony/twig-bridge": "^4.3",
                 "symfony/twig-bundle": "^4.3",
@@ -3832,7 +3831,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2020-02-10T06:52:16+00:00"
+            "time": "2020-02-18T21:58:34+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -9723,7 +9722,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "sonata-project/admin-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

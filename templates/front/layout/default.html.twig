@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.getLocale() }}" {{ sonata_seo_html_attributes() }}>
+    <head {{ sonata_seo_head_attributes() }}>
+
+        {{ sonata_seo_title() }}
+        {{ sonata_seo_metadatas() }}
+        {{ sonata_seo_link_canonical() }}
+        {{ sonata_seo_lang_alternates() }}
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" type="image/png" />
+
+        {% block stylesheets %}
+
+            {{ encore_entry_link_tags('app') }}
+
+        {% endblock %}
+
+        {# {% block stylesheets %}
+
+            {{ parent() }}
+            {{ encore_entry_link_tags('page1') }}
+            {{ encore_entry_link_tags('page2') }}
+
+        {% endblock %} #}
+
+    </head>
+    <body class="body">
+        <div id="app">
+
+            <!-- ... -->
+            {% block body %}{% endblock %}
+
+            {% block javascripts %}
+
+                {{ encore_entry_script_tags('app') }}
+
+            {% endblock %}
+
+            {# {% block javascripts %}
+
+                {{ parent() }}
+                {{ encore_entry_script_tags('page1') }}
+                {{ encore_entry_script_tags('page2') }}
+
+            {% endblock %} #}
+        
+        </div>
+    </body>
+</html>
