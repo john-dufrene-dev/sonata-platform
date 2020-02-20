@@ -1,0 +1,145 @@
+title_user_registration: Inscription
+title_user_account: 'Profil utilisateur'
+title_user_edit_profile: Éditer
+title_user_authentication: Identification
+sonata_user_submit: Envoyer
+breadcrumb.link_user_list: Utilisateurs
+breadcrumb.link_user_create: Ajouter
+breadcrumb.link_user_edit: Éditer
+breadcrumb.link_user_delete: Supprimer
+breadcrumb.link_group_list: Groupes
+breadcrumb.link_group_create: Ajouter
+breadcrumb.link_group_edit: Éditer
+breadcrumb.link_user_admin_list: 'Liste des utilisateurs'
+breadcrumb.link_group_admin_list: 'Liste des groupes d''utilisateurs'
+users: Utilisateurs
+groups: Groupes
+switch_user_exit: 'Quitter l''identité'
+switch_user: 'Changer d''identité'
+user_block_logout: Déconnexion
+user_block_profile: Profil
+form.label_username: 'Nom d''utilisateur'
+form.label_email: Email
+form.label_plain_password: 'Mot de passe'
+form.label_groups: Groupes
+form.label_roles: Rôles
+form.label_locked: Verrouillé
+form.label_expired: Expiré
+form.label_enabled: Activé
+form.label_credentials_expired: 'Droits expirés'
+form.label_created_at: 'Créé le'
+form.label_last_login: 'Dernière connexion'
+form.label_name: Nom
+filter.label_username: 'Nom d''utilisateur'
+filter.label_name: Nom
+filter.label_email: Email
+filter.label_locked: Verrouillé
+filter.label_id: ID
+filter.label_groups: Groupes
+filter.label_created_at: 'Créé le'
+filter.label_last_login: 'Dernière connexion'
+filter.label_firstname: Prénom
+filter.label_lastname: Nom
+list.label_username: 'Nom d''utilisateur'
+list.label_name: Nom
+list.label_email: 'Adresse email'
+list.label_groups: Groupes
+list.label_locked: Verrouillé
+list.label_enabled: Activé
+list.label_created_at: 'Créé le'
+list.label_last_login: 'Dernière connexion'
+list.label_impersonating: 'Changer d''identité'
+list.label_roles: Rôles
+list.label_firstname: Prénom
+list.label_lastname: Nom
+label_two_step_code: 'Validation en deux étapes'
+message_two_step_code_help: 'Rentrer votre code de validation provenant de votre téléphone'
+label_two_step_code_error: 'Le code de validation est invalide'
+sonata_user: Utilisateurs
+General: Général
+Groups: Groupes
+Management: Gestion
+Profile: Profil
+Social: Social
+Security: Sécurité
+Status: Statut
+field.label_roles_editable: Rôles
+form.label_date_of_birth: 'Date de naissance'
+form.label_firstname: Prénom
+form.label_lastname: Nom
+form.label_website: 'Site web'
+form.label_biography: Biographie
+form.label_gender: Civilité
+form.label_locale: Langue
+form.label_timezone: 'Fuseau horaire'
+form.label_phone: Téléphone
+form.label_facebook_uid: 'Uid Facebook'
+form.label_facebook_name: 'Nom Facebook'
+form.label_twitter_uid: 'Uid Twitter'
+form.label_twitter_name: 'Nom Twitter'
+form.label_gplus_uid: 'Uid Google+'
+form.label_gplus_name: 'Nom Google+'
+form.label_token: Jeton
+form.label_two_step_verification_code: 'Code de validation en deux étapes'
+show.label_username: 'Nom d''utilisateur'
+show.label_email: Email
+show.label_groups: Groupes
+show.label_date_of_birth: 'Date de naissance'
+show.label_firstname: Prénom
+show.label_lastname: Nom
+show.label_website: 'Site web'
+show.label_biography: Biographie
+show.label_gender: Civilité
+show.label_locale: Langue
+show.label_timezone: 'Fuseau horaire'
+show.label_phone: Téléphone
+show.label_facebook_uid: 'Uid Facebook'
+show.label_facebook_name: 'Nom Facebook'
+show.label_twitter_uid: 'Uid Twitter'
+show.label_twitter_name: 'Nom Twitter'
+show.label_gplus_uid: 'Uid Google+'
+show.label_gplus_name: 'Nom Google+'
+show.label_token: Jeton
+show.label_two_step_verification_code: 'Code de validation en deux étapes'
+show.label_created_at: 'Créé le'
+show.label_last_login: 'Dernière connexion'
+breadcrumb.link_user_show: Voir
+gender_unknown: 'non défini'
+gender_female: femme
+gender_male: homme
+sonata_profile_title: 'Mon tableau de bord'
+link_show_profile: 'Mon tableau de bord'
+link_edit_profile: 'Mon profil'
+title_user_edit_authentication: 'Informations de connexion'
+link_edit_authentication: 'Informations de connexion'
+label_profile_gender: Civilité
+label_profile_firstname: Prénom
+label_profile_lastname: Nom
+label_profile_website: 'Site web'
+label_profile_dob: 'Date de naissance'
+label_profile_biography: Biographie
+label_profile_locale: Langue
+label_profile_timezone: 'Fuseau horaire'
+label_profile_phone: Téléphone
+profile.flash.updated: 'Votre profil a été mis à jour.'
+sonata_change_password_link: 'Changer votre mot de passe'
+link_register: 'S''inscrire'
+link_login: 'S''identifier'
+link_logout: 'Se déconnecter'
+registration.flash.user_created: 'Votre compte est créé avec succès !'
+forgotten_password: 'Mot de passe oublié ?'
+sonata_user_profile_breadcrumb_index: 'Tableau de bord'
+sonata_user_profile_breadcrumb_edit: 'Éditer votre profil'
+sonata_user_already_authenticated: 'Vous êtes déjà identifié'
+security.login.username: 'Nom d''utilisateur'
+security.login.password: 'Mot de passe'
+form.username: 'Nom d''utilisateur'
+form.email: 'Adresse e-mail'
+form.password: 'Mot de passe'
+form.password_confirmation: Vérification
+title_user_edit_password: title_user_edit_password
+title_user_resetting: title_user_resetting
+title_user_resetting_reset: title_user_resetting_reset
+qr_go_next: 'Je l''ai scanné. Continuer.'
+qr_code_secret: __qr_code_secret
+field.label_roles_readonly: __field.label_roles_readonly

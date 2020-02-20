@@ -30,7 +30,7 @@ class MenuBuilder
         ]);
 
         $menu->addChild('Home', [
-            'route' => 'front.pages.home.index'
+            'route' => 'front_pages_home_index'
             
         ])->setAttribute('class', 'header_menu_children');
 
@@ -51,7 +51,7 @@ class MenuBuilder
 
         if (isset($options['include_homepage']) && $options['include_homepage']) {
             $menu->addChild('Home', [
-                'route' => 'front.pages.home.index'
+                'route' => 'front_pages_home_index'
                 
             ])->setAttribute('class', 'footer_menu_children');
         }
