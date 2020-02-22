@@ -37,9 +37,15 @@ final class GroupAdmin extends BaseGroupAdmin
             ])
             ->add('_action', null, [
                 'actions' => [
-                    'show' => [],
-                    'edit' => [],
-                    'delete' => [],
+                    'show' => [
+                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_show.html.twig',
+                    ],
+                    'edit' => [
+                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_edit.html.twig',
+                    ],
+                    'delete' => [
+                        // 'template' => 'admin/SonataAdminBundle/CRUD/list__action_delete.html.twig',
+                    ],
                 ]
             ])
         ;
