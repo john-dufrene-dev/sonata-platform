@@ -7,6 +7,9 @@ parameters:
 
     locale: 'fr'
     mailer_user: 'root@root.fr'
+    
+    sonata.media.admin.media.class: App\Admin\MediaAdmin\MediaAdmin
+    sonata.media.admin.gallery.class: App\Admin\MediaAdmin\GalleryAdmin
 
 services:
     # default configuration for services in *this* file
@@ -37,3 +40,5 @@ services:
             - { name: knp_menu.menu_builder, method: header, alias: header }
             - { name: knp_menu.menu_builder, method: footer, alias: footer }
 
+# imports:
+#     - { resource: '%kernel.project_dir%/file.yaml' }

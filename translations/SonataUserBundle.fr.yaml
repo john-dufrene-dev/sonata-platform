@@ -143,3 +143,4 @@ title_user_resetting_reset: title_user_resetting_reset
 qr_go_next: 'Je l''ai scanné. Continuer.'
 qr_code_secret: __qr_code_secret
 field.label_roles_readonly: __field.label_roles_readonly
+list.label__action: Actions

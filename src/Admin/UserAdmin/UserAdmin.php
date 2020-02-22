@@ -31,5 +31,5 @@ use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
 final class UserAdmin extends BaseUserAdmin
 {
-    //
+    public $supportsPreviewMode = true;
 }

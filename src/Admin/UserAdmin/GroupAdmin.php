@@ -23,5 +23,25 @@ use Sonata\UserBundle\Admin\Model\GroupAdmin as BaseGroupAdmin;
 
 final class GroupAdmin extends BaseGroupAdmin
 {
-    //
+    public $supportsPreviewMode = true;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $listMapper): void
+    {
+        $listMapper
+            ->addIdentifier('name')
+            ->add('roles', null, [
+                'header_style' => 'width: 50%',
+            ])
+            ->add('_action', null, [
+                'actions' => [
+                    'show' => [],
+                    'edit' => [],
+                    'delete' => [],
+                ]
+            ])
+        ;
+    }
 }
