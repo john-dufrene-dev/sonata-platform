@@ -16,35 +16,18 @@
 
         {% endblock %}
 
-        {# {% block stylesheets %}
-
-            {{ parent() }}
-            {{ encore_entry_link_tags('page1') }}
-            {{ encore_entry_link_tags('page2') }}
-
-        {% endblock %} #}
-
     </head>
     <body class="body">
-        <div id="app">
 
-            <!-- ... -->
-            {% block body %}{% endblock %}
+        {# {{ knp_menu_render('header') }} #}
 
-            {% block javascripts %}
+        {% block body %}{% endblock %}
 
-                {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}
 
-            {% endblock %}
+            {{ encore_entry_script_tags('app') }}
 
-            {# {% block javascripts %}
-
-                {{ parent() }}
-                {{ encore_entry_script_tags('page1') }}
-                {{ encore_entry_script_tags('page2') }}
-
-            {% endblock %} #}
+        {% endblock %}
         
-        </div>
     </body>
 </html>

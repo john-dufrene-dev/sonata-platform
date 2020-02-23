@@ -1,21 +1,25 @@
 {% extends "front/layout/default.html.twig" %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+    {{ encore_entry_link_tags('home/app') }}
+
+{% endblock %}
+
 {% block body %}
 
-    {# {{ knp_menu_render('header') }} #}
-
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
-    <div class="example-wrapper">
-        <h1>Hello {{ page_name }}! ✅</h1>
-
-        Message de test :
-        <ul>
-            <li>Page d'accueil <code>test</code></li>
-        </ul>
+    <div id="home">
+        {# global component in app.js #}
+        {# <default></default>  #}
+        <home></home>
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    {{ encore_entry_script_tags('home/app') }}
 
 {% endblock %}

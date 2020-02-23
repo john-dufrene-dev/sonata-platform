@@ -25,7 +25,8 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
 
-    //.addEntry('page1', './assets/js/single/page1.js')
+    // You can directly include css in js file
+    .addEntry('home/app', './assets/js/pages/home.js')
     //.addEntry('page2', './assets/js/single/page2.js')
 
     // .addStyleEntry('page1', './assets/css/single/page1.scss')
@@ -60,6 +61,9 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
+    // enables Vuejs support
+    .enableVueLoader()
+
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
@@ -68,7 +72,7 @@ Encore
     .enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    .autoProvidejQuery()
+    // .autoProvidejQuery()
 
     // .configureUrlLoader({
     //     fonts: { limit: 4096 },
