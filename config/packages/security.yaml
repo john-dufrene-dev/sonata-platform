@@ -1,19 +1,26 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+        App\Entity\User:
+            algorithm: auto
 
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        # in_memory: { memory: null }
+
+        in_memory: { memory: null }
+
         fos_userbundle:
             id: fos_user.user_provider.username
+            
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
             
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        # main:
-        #     anonymous: lazy
 
         # -> custom firewall for the admin area of the URL
         admin:
@@ -30,44 +37,48 @@ security:
                 path:           /admin/logout
                 target:         /admin/login
             anonymous:          true
-            switch_user: true
+            switch_user:
+                provider: fos_userbundle
+                role: ROLE_ALLOWED_TO_SWITCH
+                # parameter: _switch_user
             
-        # default login area for standard users
-
-        # This firewall is used to handle the public login area
-        # This part is handled by the FOS User Bundle
-        main:
-            pattern:             .*
-            context:             user
+        main_user:
+            anonymous: lazy
+            provider:  app_user_provider
+            guard:
+                authenticators:
+                    - App\Security\User\LoginFormAuthenticator
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
             form_login:
-                provider:       fos_userbundle
-                login_path:     /login
-                use_forward:    false
-                check_path:     /login_check
-                failure_path:   null
-            logout:             true
-            anonymous:          true
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+                use_referer: true
+            logout:
+                path: app_logout
+                target: front_pages_home_index
+            # if you want, disable storing the user in the session
+            # stateless: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # Admin login page needs to be accessed without credential
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
+        - { path: '/api', roles: [ROLE__USER] }
+
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.
         # Change these rules to adapt them to your needs
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        
 
     # Sonata "special" roles (ROLE_SONATA_ADMIN and ROLE_SUPER_ADMIN) are configurable
     role_hierarchy:

@@ -9,10 +9,17 @@
 
 {% block body %}
 
-    <div id="home">
+    <div id="home" class="container">
+
+        {% if app.user %}
+            <h1 class="h3 mb-3 font-weight-normal">You are logged in as {{ app.user.username }}, 
+            <a href="{{ path('app_logout') }}">Logout</a></h1>
+        {% endif %}
+
         {# global component in app.js #}
         {# <default></default>  #}
         <home></home>
+
     </div>
 
 {% endblock %}

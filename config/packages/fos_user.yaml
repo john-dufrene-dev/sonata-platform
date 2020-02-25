@@ -1,6 +1,6 @@
 fos_user: 
     db_driver:        orm # can be orm or mongodb (support is also available within FOSUser for couchdb, propel but none is given for SonataUserBundle)
-    firewall_name:    main
+    firewall_name:    admin
     user_class:       App\Entity\UserAdmin\UserAdmin
 
     from_email:

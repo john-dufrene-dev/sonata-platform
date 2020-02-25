@@ -4,6 +4,7 @@ namespace App\Controller\Front\Pages;
 
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
@@ -16,7 +17,9 @@ class HomeController extends AbstractController
     }
     
     /**
-     * @Route("/home", name="front_pages_home_index")
+     * @Route("/", name="front_pages_home_index")
+     * Require ROLE__USER for only this controller method.
+     * @IsGranted("ROLE__USER")
      */
     public function index()
     {

@@ -1,0 +1,25 @@
+{% extends "front/layout/default.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <form method="post">
+
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword) }}
+                
+                <div class="form-group form-check">
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+                </div>
+
+                <button class="btn btn-lg btn-primary" type="submit">Register</button>
+            {{ form_end(registrationForm) }}
+
+        </form>
+    </div>
+
+{% endblock %}
