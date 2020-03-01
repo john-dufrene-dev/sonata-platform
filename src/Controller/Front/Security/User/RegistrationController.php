@@ -2,7 +2,8 @@
 
 namespace App\Controller\Front\Security\User;
 
-use App\Entity\User;
+use App\Entity\User\User;
+use App\Entity\User\UserInfo;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use App\Security\User\LoginFormAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('front_pages_home_index');
+            return $this->redirectToRoute('front_pages_account_index');
         }
 
         $this->seo
@@ -49,6 +50,9 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $infos = new UserInfo();
+            $user->setInfos($infos);
+
             $user->setRoles(['ROLE__USER']);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -58,7 +62,7 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
             if($guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main_user')) {
-                return $this->redirectToRoute('front_pages_home_index');
+                return $this->redirectToRoute('front_pages_account_index');
             }
 
         }

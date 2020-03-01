@@ -29,8 +29,8 @@ class MenuBuilder
             ],
         ]);
 
-        $menu->addChild('Home', [
-            'route' => 'front_pages_home_index'
+        $menu->addChild('Account', [
+            'route' => 'front_pages_account_index'
             
         ])->setAttribute('class', 'header_menu_children');
 
@@ -39,7 +39,7 @@ class MenuBuilder
 
     public function footer(array $options)
     {
-        // {% set menu = knp_menu_get('footer', [], {include_homepage: true}) %}
+        // {% set menu = knp_menu_get('footer', [], {include_accountpage: true}) %}
         // {{ knp_menu_render(menu) }}
 
         $menu = $this->factory->createItem('footer', [
@@ -49,9 +49,9 @@ class MenuBuilder
             ],
         ]);
 
-        if (isset($options['include_homepage']) && $options['include_homepage']) {
-            $menu->addChild('Home', [
-                'route' => 'front_pages_home_index'
+        if (isset($options['include_accountpage']) && $options['include_accountpage']) {
+            $menu->addChild('Account', [
+                'route' => 'front_pages_account_index'
                 
             ])->setAttribute('class', 'footer_menu_children');
         }

@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController extends AbstractController
+class AccountController extends AbstractController
 {
     protected $seo;
 
@@ -17,19 +17,19 @@ class HomeController extends AbstractController
     }
     
     /**
-     * @Route("/", name="front_pages_home_index")
+     * @Route("/account", name="front_pages_account_index")
      * Require ROLE__USER for only this controller method.
      * @IsGranted("ROLE__USER")
      */
     public function index()
     {
         $this->seo
-            ->addTitle('Page d\'accueil') // you can use setTitle($title)
+            ->addTitle('Page mon compte') // you can use setTitle($title)
             ->addMeta('name', 'robots', 'index, follow')
-            ->addMeta('name', 'description', 'Description page d\'accueil');
+            ->addMeta('name', 'description', 'Description mon compte');
 
-        return $this->render('front/pages/home/index.html.twig', [
-            'page_name' => 'Page d\'accueil',
+        return $this->render('front/pages/account/index.html.twig', [
+            'page_name' => 'Mon compte',
         ]);
     }
 }

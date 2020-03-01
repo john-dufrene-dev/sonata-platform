@@ -2,22 +2,22 @@
 
     <div class="example-wrapper">
         <h1>Hello ! </h1>
-        <p>Message page home : </p>
-        <ul><li>Page d'accueil <code>{{ page }}</code></li></ul>     
+        <p>Message page account : </p>
+        <ul><li>Page mon compte <code>{{ page }}</code></li></ul>     
     </div> 
 
 </template>
 
 <script>
     export default {
-        name: "Home",
+        name: "Account",
         data () {
             return {
-                page: 'home',
+                page: 'Account',
             }
         },
         mounted() {
-            console.log('Mounted Home')
+            console.log('Mounted Account')
         }
     }
 </script>

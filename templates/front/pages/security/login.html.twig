@@ -17,10 +17,9 @@
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
-                </label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="_remember_me">
+                <label class="custom-control-label" for="_remember_me" name="_remember_me">Remember me</label>
             </div>
         
             <button class="btn btn-lg btn-primary" type="submit">Sign in</button>

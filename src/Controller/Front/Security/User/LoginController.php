@@ -23,7 +23,7 @@ class LoginController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('front_pages_home_index');
+            return $this->redirectToRoute('front_pages_account_index');
         }
 
         $this->seo

@@ -1,24 +1,23 @@
 title_user_registration: Inscription
-title_user_account: 'Profil utilisateur'
+title_user_account: 'Profil administrateur'
 title_user_edit_profile: Éditer
 title_user_authentication: Identification
 sonata_user_submit: Envoyer
-breadcrumb.link_user_list: Utilisateurs
-breadcrumb.link_user_create: Ajouter
-breadcrumb.link_user_edit: Éditer
-breadcrumb.link_user_delete: Supprimer
-breadcrumb.link_group_list: Groupes
-breadcrumb.link_group_create: Ajouter
-breadcrumb.link_group_edit: Éditer
-breadcrumb.link_user_admin_list: 'Liste des utilisateurs'
-breadcrumb.link_group_admin_list: 'Liste des groupes d''utilisateurs'
-users: Utilisateurs
+breadcrumb.link_user_admin_create: Ajouter
+breadcrumb.link_user_admin_edit: Éditer
+breadcrumb.link_user_admin_list: 'Liste des administrateurs'
+breadcrumb.link_user_admin_delete: Supprimer
+breadcrumb.link_group_admin_create: Ajouter
+breadcrumb.link_group_admin_edit: Éditer
+breadcrumb.link_group_admin_list: 'Liste des groupes d''administrateurs'
+breadcrumb.link_group_admin_delete: Supprimer
+users: Administrateurs
 groups: Groupes
 switch_user_exit: 'Quitter l''identité'
 switch_user: 'Changer d''identité'
 user_block_logout: Déconnexion
 user_block_profile: Profil
-form.label_username: 'Nom d''utilisateur'
+form.label_username: 'Nom d''administrateur'
 form.label_email: Email
 form.label_plain_password: 'Mot de passe'
 form.label_groups: Groupes
@@ -30,7 +29,7 @@ form.label_credentials_expired: 'Droits expirés'
 form.label_created_at: 'Créé le'
 form.label_last_login: 'Dernière connexion'
 form.label_name: Nom
-filter.label_username: 'Nom d''utilisateur'
+filter.label_username: 'Nom d''administrateur'
 filter.label_name: Nom
 filter.label_email: Email
 filter.label_locked: Verrouillé
@@ -40,7 +39,7 @@ filter.label_created_at: 'Créé le'
 filter.label_last_login: 'Dernière connexion'
 filter.label_firstname: Prénom
 filter.label_lastname: Nom
-list.label_username: 'Nom d''utilisateur'
+list.label_username: 'Nom d''administrateur'
 list.label_name: Nom
 list.label_email: 'Adresse email'
 list.label_groups: Groupes
@@ -55,7 +54,7 @@ list.label_lastname: Nom
 label_two_step_code: 'Validation en deux étapes'
 message_two_step_code_help: 'Rentrer votre code de validation provenant de votre téléphone'
 label_two_step_code_error: 'Le code de validation est invalide'
-sonata_user: Utilisateurs
+sonata_user: Administrateurs
 General: Général
 Groups: Groupes
 Management: Gestion
@@ -81,7 +80,7 @@ form.label_gplus_uid: 'Uid Google+'
 form.label_gplus_name: 'Nom Google+'
 form.label_token: Jeton
 form.label_two_step_verification_code: 'Code de validation en deux étapes'
-show.label_username: 'Nom d''utilisateur'
+show.label_username: 'Nom d''administrateur'
 show.label_email: Email
 show.label_groups: Groupes
 show.label_date_of_birth: 'Date de naissance'
@@ -131,9 +130,9 @@ forgotten_password: 'Mot de passe oublié ?'
 sonata_user_profile_breadcrumb_index: 'Tableau de bord'
 sonata_user_profile_breadcrumb_edit: 'Éditer votre profil'
 sonata_user_already_authenticated: 'Vous êtes déjà identifié'
-security.login.username: 'Nom d''utilisateur'
+security.login.username: 'Nom d''administrateur'
 security.login.password: 'Mot de passe'
-form.username: 'Nom d''utilisateur'
+form.username: 'Nom d''administrateur'
 form.email: 'Adresse e-mail'
 form.password: 'Mot de passe'
 form.password_confirmation: Vérification

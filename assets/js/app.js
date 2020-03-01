@@ -1,23 +1,42 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+// import axios
+// import axios from 'axios';
 
-// any CSS you import will output into a single css file (app.css in this case)
+// import app.css
 import '../css/app.scss';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
+// import jQuery
 import $ from 'jquery';
 
+// import boostrap
 require('bootstrap');
-// or you can include specific pieces
-// require('bootstrap/js/dist/tooltip');
-// require('bootstrap/js/dist/popover');
 
 // Generate global components Vuejs
 import Vue from 'vue';
 import Default from './components/Default';
 
 Vue.component('default', Default);
+
+// let token = '';                     // get token from response
+ 
+// // Axios
+// axios.interceptors.request.use(config => {
+//       config.headers.Authorization = `Bearer ${token}`
+//       return config;
+// });
+
+// axios.defaults.headers.common['Bearer'] = token;
+ 
+// // jQuery,
+// $.ajaxSetup({
+//     beforeSend: function(xhr) {
+//         xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+//     }
+// });
+ 
+// // Native javascript
+// XMLHttpRequest.prototype.realSend = XMLHttpRequest.prototype.send;
+// var newSend = function(vData) {
+//     this.setRequestHeader('Authorization', 'Bearer ' + token);
+//     this.realSend(vData);
+// };
+// XMLHttpRequest.prototype.send = newSend;

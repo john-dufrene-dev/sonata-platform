@@ -3,13 +3,13 @@
 {% block stylesheets %}
 
     {{ parent() }}
-    {{ encore_entry_link_tags('home/app') }}
+    {{ encore_entry_link_tags('account/app') }}
 
 {% endblock %}
 
 {% block body %}
 
-    <div id="home" class="container">
+    <div id="account" class="container">
 
         {% if app.user %}
             <h1 class="h3 mb-3 font-weight-normal">You are logged in as {{ app.user.username }}, 
@@ -18,7 +18,7 @@
 
         {# global component in app.js #}
         {# <default></default>  #}
-        <home></home>
+        <account></account>
 
     </div>
 
@@ -27,6 +27,6 @@
 {% block javascripts %}
 
     {{ parent() }}
-    {{ encore_entry_script_tags('home/app') }}
+    {{ encore_entry_script_tags('account/app') }}
 
 {% endblock %}

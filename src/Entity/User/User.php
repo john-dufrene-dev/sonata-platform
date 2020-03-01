@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\User;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\User\UserRepository")
  * @ApiResource
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
@@ -32,6 +34,11 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -42,6 +49,44 @@ class User implements UserInterface
      * @ORM\Column(type="string", unique=true, nullable=true)
      */
     private $apiToken;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default" : 1})
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User\UserInfo", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $infos;
+
+    public function __construct()
+    {
+        $this->enabled = 1;
+        $this->created_at = new \DateTime();
+        $this->updated_at = new \DateTime();
+    }
+
+    /**
+     * Returns a string representation.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getUsername() ?: '-';
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +134,16 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $password)
+    {
+        $this->plainPassword = $password;
+    }
+
     /**
      * @see UserInterface
      */
@@ -116,6 +171,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
@@ -131,5 +198,41 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getInfos(): ?UserInfo
+    {
+        return $this->infos;
+    }
+
+    public function setInfos(UserInfo $infos): self
+    {
+        $this->infos = $infos;
+
+        return $this;
     }
 }

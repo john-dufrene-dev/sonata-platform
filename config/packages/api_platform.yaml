@@ -1,23 +1,38 @@
 api_platform:
     # enable_fos_user: true
+    name_converter: 'Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter'
     mapping:
         paths: 
             - '%kernel.project_dir%/src/Entity'
             - '%kernel.project_dir%/config/api_platform' # yaml or xml directory configuration
+    title: API Sonata
+    version: 1.0.0
+    description: |
+        Description of the API
+    formats:
+        jsonld: ['application/ld+json']
+        json: ['application/json']
+        # jsonhal: ['application/hal+json']
+        # jsonapi: ['application/vnd.api+json']
+        # xml: ['application/xml', 'text/xml']
+        # yaml: ['application/x-yaml']
+        # csv: ['text/csv']
+        html: ['text/html']
     patch_formats:
         json: ['application/merge-patch+json']
+        jsonapi: ['application/vnd.api+json']
     swagger:
         versions: [3]
         api_keys:
             apiKey:
                 name: Authorization
                 type: header
-    
-    # The list of enabled formats. The first one will be the default.
-    formats:
-        # jsonld:
-        #     mime_types: ['application/ld+json']
-        json:
-            mime_types: ['application/json']
-        html:
-            mime_types: ['text/html']
+    http_cache:
+        max_age: 0
+        shared_max_age: 3600
+        vary: ['Content-Type', 'Authorization', 'Origin']
+        public: true
+    collection:
+        pagination:
+            items_per_page: 30
+            enabled: true

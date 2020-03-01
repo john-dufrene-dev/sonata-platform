@@ -8,6 +8,7 @@
         "api-platform/api-pack": "^1.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "laminas/laminas-code": "^3.4",
+        "lexik/jwt-authentication-bundle": "^2.6",
         "sensio/framework-extra-bundle": "^5.1",
         "simplethings/entity-audit-bundle": "^1.0",
         "sonata-project/admin-bundle": "3.x-dev",

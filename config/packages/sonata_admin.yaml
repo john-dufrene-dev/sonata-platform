@@ -50,7 +50,7 @@ sonata_admin:
                 settings:
                     code:  sonata.user.admin.user       # admin code - service id
                     icon:  fa-magic                     # font awesome icon
-                    text:  Utilisateurs                 # static text or translation message
+                    text:  Administrateurs              # static text or translation message
                     color: bg-aqua                      # colors: bg-green, bg-red and bg-aqua
             -
                 class:    col-lg-3 col-xs-6             # twitter bootstrap responsive code

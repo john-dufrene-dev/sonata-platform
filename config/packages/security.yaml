@@ -1,8 +1,7 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-        App\Entity\User:
-            algorithm: auto
+        App\Entity\User\User: bcrypt
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -14,7 +13,7 @@ security:
             
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\User\User
                 property: email
             
     firewalls:
@@ -22,6 +21,24 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        api_login:
+            pattern:  ^/authentication
+            stateless: true
+            anonymous: true
+            provider:  app_user_provider
+            json_login:
+                check_path: /authentication_token
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        
+        api:
+            pattern:   ^/api/             # protected path
+            stateless: true
+            provider:  app_user_provider
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        
         # -> custom firewall for the admin area of the URL
         admin:
             pattern:            /admin(.*)
@@ -41,7 +58,7 @@ security:
                 provider: fos_userbundle
                 role: ROLE_ALLOWED_TO_SWITCH
                 # parameter: _switch_user
-            
+
         main_user:
             anonymous: lazy
             provider:  app_user_provider
@@ -56,13 +73,14 @@ security:
                 use_referer: true
             logout:
                 path: app_logout
-                target: front_pages_home_index
+                target: /
             # if you want, disable storing the user in the session
             # stateless: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # Admin login page needs to be accessed without credential
@@ -71,7 +89,8 @@ security:
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-        - { path: '/api', roles: [ROLE__USER] }
+        - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,       roles: ROLE__USER }
 
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.

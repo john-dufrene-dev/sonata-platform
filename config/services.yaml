@@ -39,6 +39,28 @@ services:
         tags:
             - { name: knp_menu.menu_builder, method: header, alias: header }
             - { name: knp_menu.menu_builder, method: footer, alias: footer }
+    
+    #  service for override jwt token informations
+    app.event.authentication_success_response:
+        class: App\EventListener\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
 
 # imports:
 #     - { resource: '%kernel.project_dir%/file.yaml' }
+
+    admin.user:
+        class: App\Admin\User\UserAdmin
+        arguments: [~, App\Entity\User\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Utilisateurs }
+        public: true
+
+    # Api platform CamelCaseToSnakeCaseNameConverter
+    'Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter': ~
+
+    #  Add date request to Api "date" field
+    'App\Serializer\Api\AddDateNormalizer':
+        decorates: 'api_platform.jsonld.normalizer.item'
+        arguments: [ '@App\Serializer\Api\AddDateNormalizer.inner' ]
+        
