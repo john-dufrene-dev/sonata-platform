@@ -69,12 +69,28 @@ final class UserAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        $description = 'Attention, vous ne pouvez pas éditer le profil tant que l\'utilisateur n\'existe pas !';
+
+        // define group zoning
         $formMapper
-        ->tab('General')
-            ->with('General', [
+            ->tab('Informations générales de l\'utilisateur')
+                ->with('Informations générales de l\'utilisateur')->end()
+            ->end()
+            ->tab('Profil utilisateur')
+                ->with('Profil utilisateur', ['description' => $description])->end()
+            ->end()
+            ->tab('Sécurité utilisateur')
+                ->with('Activation / Désactivation de l\'utilisateur')->end()
+                ->with('Api token de l\'utilisateur')->end()
+            ->end()
+        ;
+
+        $formMapper
+        ->tab('Informations générales de l\'utilisateur')
+            ->with('Informations générales de l\'utilisateur', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
-                'description' => 'Lorem ipsum',
+                'description' => 'Mise à jour des informations générales',
             ])
                 ->add('email')
                 ->add('plainPassword', PasswordType::class, [
@@ -84,14 +100,14 @@ final class UserAdmin extends AbstractAdmin
         ->end()
         ;
         
-        if($this->getSubject() || null !== $this->getSubject()->getId()) {
+        if($this->getSubject() && null !== $this->getSubject()->getId()) {
             $formMapper
-            ->tab('Profile')
-                ->with('Profile', [
+            ->tab('Profil utilisateur')
+                ->with('Profil utilisateur', [
                     'class'       => 'col-md-12',
                     'box_class'   => 'box box-solid box-info',
-                    'description' => 'Lorem ipsum',
-                ])         
+                    'description' => 'Mise à jour du profil utilisateur',
+                ])     
                 ->add('infos.name')
                 ->end()
             ->end()
@@ -99,8 +115,20 @@ final class UserAdmin extends AbstractAdmin
         }
       
         $formMapper
-        ->tab('Security')
-            ->with('Security', [
+        ->tab('Sécurité utilisateur')
+            ->with('Activation / Désactivation de l\'utilisateur', [
+                'class'       => 'col-md-6',
+                'description' => 'Lorem ipsum',
+            ])
+                ->add('enabled', null, ['required' => false])
+            ->end()
+            ->with('Api token de l\'utilisateur', [
+                'class'       => 'col-md-6',
+                'description' => 'Lorem ipsum',
+            ])
+                ->add('apiToken', null, ['required' => false])
+            ->end()
+            ->with('Rôles attribués à l\'utilisateur', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Lorem ipsum',
@@ -116,8 +144,7 @@ final class UserAdmin extends AbstractAdmin
                     'expanded'  => true,
                     'multiple'  => true,
                 ])
-                ->add('apiToken')
-            
+            ->end()
         ->end()
         ;
     }
@@ -133,7 +160,6 @@ final class UserAdmin extends AbstractAdmin
             ])
                 ->add('id')
                 ->add('email')
-                ->add('enabled', null, ['editable' => true])
                 ->add('created_at')
                 ->add('updated_at')
             ->end()
@@ -155,6 +181,7 @@ final class UserAdmin extends AbstractAdmin
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Lorem ipsum',
             ])
+                ->add('enabled', null, ['editable' => true])
                 ->add('roles')
                 ->add('apiToken')       
             ->end()
