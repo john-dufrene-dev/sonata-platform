@@ -1,0 +1,19 @@
+parameters:
+
+    sonata.media.admin.media.class: App\Admin\MediaAdmin\MediaAdmin
+    sonata.media.admin.gallery.class: App\Admin\MediaAdmin\GalleryAdmin
+
+services:
+    #  service for override jwt token informations
+    app.event.authentication_success_response:
+        class: App\EventListener\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
+    admin.user:
+        class: App\Admin\User\UserAdmin
+        arguments: [~, App\Entity\User\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Utilisateurs }
+        public: true
+        
