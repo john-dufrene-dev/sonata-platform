@@ -4,10 +4,12 @@ import '../../css/pages/account.scss';
 import Vue from 'vue';
 import Account from '../components/pages/Account';
 
-const account = new Vue({
-    el: '#account',
-    components: {Account},
+Vue.component('account', Account);
+
+const app = new Vue({
+    el: '#app',
+    // components: {Account},
     //render: h => h(Account), // if you want to just rand the element imported
 });
   
-export default account
+export default app

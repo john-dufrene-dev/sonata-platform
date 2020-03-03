@@ -21,7 +21,13 @@
 
         {# {{ knp_menu_render('header') }} #}
 
-        {% block body %}{% endblock %}
+        {% block before_body %}{% endblock %}
+
+        <div id="app">
+            {% block body %}{% endblock %}
+        </div>
+
+        {% block after_body %}{% endblock %}
 
         {% block javascripts %}
 
