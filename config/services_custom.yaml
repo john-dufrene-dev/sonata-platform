@@ -1,0 +1,9 @@
+services:
+
+    # service for KnpMenuBundle compatibility with symfony 4
+    app.service.menu_builder:
+        class: App\Service\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+        tags:
+            - { name: knp_menu.menu_builder, method: header, alias: header }
+            - { name: knp_menu.menu_builder, method: footer, alias: footer }

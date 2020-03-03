@@ -8,9 +8,6 @@ parameters:
     locale: 'fr'
     mailer_user: 'root@root.fr'
     
-    sonata.media.admin.media.class: App\Admin\MediaAdmin\MediaAdmin
-    sonata.media.admin.gallery.class: App\Admin\MediaAdmin\GalleryAdmin
-
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -32,30 +29,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     
-    # service for KnpMenuBundle compatibility with symfony 4
-    app.service.menu_builder:
-        class: App\Service\Menu\MenuBuilder
-        arguments: ["@knp_menu.factory"]
-        tags:
-            - { name: knp_menu.menu_builder, method: header, alias: header }
-            - { name: knp_menu.menu_builder, method: footer, alias: footer }
-    
-    #  service for override jwt token informations
-    app.event.authentication_success_response:
-        class: App\EventListener\AuthenticationSuccessListener
-        tags:
-            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
-
-# imports:
-#     - { resource: '%kernel.project_dir%/file.yaml' }
-
-    admin.user:
-        class: App\Admin\User\UserAdmin
-        arguments: [~, App\Entity\User\User, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Utilisateurs }
-        public: true
-
     # Api platform CamelCaseToSnakeCaseNameConverter
     'Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter': ~
 
@@ -63,4 +36,8 @@ services:
     'App\Serializer\Api\AddDateNormalizer':
         decorates: 'api_platform.jsonld.normalizer.item'
         arguments: [ '@App\Serializer\Api\AddDateNormalizer.inner' ]
+    
+imports:
+    - { resource: 'services_custom.yaml' } # Custom services
+    - { resource: 'services_sonata.yaml' } # Services for sonata
         
