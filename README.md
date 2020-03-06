@@ -39,13 +39,12 @@ mkdir -p config/jwt # if not exist
 openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
-
 ## TODO LIST
 
-1. Create Media CRUD Controller Admin
-2. Change User CRUD Controller Admin
-3. Api platform tutorial
-4. Encrypt password for Api platform
-5. Upload Api platform
-6. Custom CRUDController in sonata admin for SEO
+- Create Media CRUD Controller Admin
+- Change User CRUD Controller Admin
+- Api platform tutorial
+- Encrypt password for Api platform
+- Upload Api platform
+- Custom CRUDController in sonata admin for SEO
 

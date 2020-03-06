@@ -5,8 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
-    locale: 'fr'
-    mailer_user: 'root@root.fr'
+    locale: '%env(resolve:APP_LOCALE)%'
+    mailer_user: '%env(resolve:MAILER_USER)%'
     
 services:
     # default configuration for services in *this* file

@@ -25,7 +25,7 @@ class RequestSubscriber implements EventSubscriberInterface
         if (
             !$event->isMasterRequest()
             || $request->isXmlHttpRequest()
-            || 'front_pages_security_login' === $request->attributes->get('_route')
+            || 'security_login' === $request->attributes->get('_route')
         ) {
             return;
         }

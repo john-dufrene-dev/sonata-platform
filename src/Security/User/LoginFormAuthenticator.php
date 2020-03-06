@@ -40,7 +40,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function supports(Request $request)
     {
-        return 'front_pages_security_login' === $request->attributes->get('_route')
+        return 'security_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -95,13 +95,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('front_pages_account_index'));
+        return new RedirectResponse($this->urlGenerator->generate('account_index'));
 
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('front_pages_security_login');
+        return $this->urlGenerator->generate('security_login');
     }
 }
