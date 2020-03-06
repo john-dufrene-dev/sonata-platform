@@ -17,7 +17,7 @@ class AccountController extends AbstractController
     }
     
     /**
-     * @Route("/account", name="front_pages_account_index")
+     * @Route("/account", name="account_index")
      * Require ROLE__USER for only this controller method.
      * @IsGranted("ROLE__USER")
      */

@@ -18,12 +18,12 @@ class LoginController extends AbstractController
     }
     
     /**
-     * @Route("/login", name="front_pages_security_login")
+     * @Route("/login", name="security_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('front_pages_account_index');
+            return $this->redirectToRoute('account_index');
         }
 
         $this->seo
