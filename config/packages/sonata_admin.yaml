@@ -26,6 +26,16 @@ sonata_admin:
                 class:    col-lg-3 col-xs-6             # twitter bootstrap responsive code
                 position: top                           # zone in the dashboard
                 type:     sonata.admin.block.stats      # block id
+                roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_USER_ALL]
+                settings:
+                    code:  sonata.user                  # admin code - service id
+                    icon:  fa-magic                     # font awesome icon
+                    text:  Utilisateurs                 # static text or translation message
+                    color: bg-aqua                      # colors: bg-green, bg-red and bg-aqua
+            -
+                class:    col-lg-3 col-xs-6             # twitter bootstrap responsive code
+                position: top                           # zone in the dashboard
+                type:     sonata.admin.block.stats      # block id
                 roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_MEDIA_ADMIN_MEDIA_ALL]
                 settings:
                     code:  sonata.media.admin.media     # admin code - service id
@@ -74,6 +84,11 @@ sonata_admin:
                     groups: [sonata_media]
             
         groups:
+            users:
+                label: Utilisateurs
+                label_catalogue: Users
+                items:
+                    - sonata.user
             sonata_media:
                 label: Bibliothèque
                 label_catalogue: SonataMediaBundle
