@@ -10,7 +10,7 @@ use ApiPlatform\Core\EventListener\EventPriorities;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class PasswordHashSubscriber implements EventSubscriberInterface
+class PasswordHashUserApiSubscriber implements EventSubscriberInterface
 {
 
     /**

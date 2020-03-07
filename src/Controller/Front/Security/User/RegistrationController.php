@@ -26,7 +26,7 @@ class RegistrationController extends AbstractController
      * @var mixed
      */
     protected $seo;
-    
+
     /**
      * params
      *
@@ -41,7 +41,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="security_register")
+     * @Route("/account/register", name="security_register")
      */
     public function register(
         Request $request,

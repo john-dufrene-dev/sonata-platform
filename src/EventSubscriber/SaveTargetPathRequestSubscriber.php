@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class RequestSubscriber implements EventSubscriberInterface
+class SaveTargetPathRequestSubscriber implements EventSubscriberInterface
 {
     use TargetPathTrait;
 
