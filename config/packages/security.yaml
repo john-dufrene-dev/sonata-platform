@@ -60,6 +60,7 @@ security:
                 # parameter: _switch_user
 
         main_user:
+            pattern:            /account(.*)
             anonymous: lazy
             provider:  app_user_provider
             guard:
@@ -70,10 +71,12 @@ security:
                 lifetime: 604800 # 1 week in seconds
                 path: /
             form_login:
+                login_path:     security_login
+                check_path:     /account/login_check
                 use_referer: true
             logout:
                 path: app_logout
-                target: /
+                target: /account/login
             # if you want, disable storing the user in the session
             # stateless: true
 
@@ -81,8 +84,11 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         
-        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
         # Admin login page needs to be accessed without credential
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
