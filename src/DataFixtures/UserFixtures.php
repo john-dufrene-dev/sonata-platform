@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User\User;
+use App\Entity\User\UserInfo;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;

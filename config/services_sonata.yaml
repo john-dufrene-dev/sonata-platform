@@ -10,10 +10,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
 
-    admin.user:
+    sonata.user:
         class: App\Admin\User\UserAdmin
         arguments: [~, App\Entity\User\User, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Utilisateurs }
+            - { name: sonata.admin, manager_type: orm, group: users, label: Utilisateurs }
         public: true
         

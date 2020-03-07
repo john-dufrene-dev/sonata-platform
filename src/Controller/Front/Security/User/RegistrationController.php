@@ -20,30 +20,42 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class RegistrationController extends AbstractController
 {
+    /**
+     * seo
+     *
+     * @var mixed
+     */
     protected $seo;
+    
+    /**
+     * params
+     *
+     * @var mixed
+     */
+    protected $params;
 
     public function __construct(SeoPageInterface $seo, ParameterBagInterface $params)
     {
         $this->seo = $seo;
         $this->params = $params;
     }
-    
+
     /**
      * @Route("/register", name="security_register")
      */
     public function register(
-        Request $request, 
-        UserPasswordEncoderInterface $passwordEncoder, 
-        GuardAuthenticatorHandler $guardHandler, 
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        GuardAuthenticatorHandler $guardHandler,
         LoginFormAuthenticator $authenticator,
-        MailerInterface $mailer): Response
-    {
+        MailerInterface $mailer
+    ): Response {
         if ($this->getUser()) {
             return $this->redirectToRoute('account_index');
         }
 
         $this->seo
-            ->addTitle( $title ?? $this->params->get('seo.pages.security_register.title')) // you can use setTitle($title)
+            ->addTitle($title ?? $this->params->get('seo.pages.security_register.title')) // you can use setTitle($title)
             ->addMeta('name', 'robots', $robots ?? $this->params->get('seo.pages.security_register.robots'))
             ->addMeta('name', 'description', $description ?? $this->params->get('seo.pages.security_register.description'));
 
@@ -71,16 +83,17 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            if($guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main_user')) {
+            if ($guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main_user')) {
 
-                if(true == $this->params->has('mailer_user') 
-                    && $this->params->get('mailer_user') != 'default@default.fr') {
+                if (
+                    true == $this->params->has('mailer_user')
+                    && $this->params->get('mailer_user') != 'default@default.fr'
+                ) {
                     $this->emailRegistration($mailer, $user);
                 }
 
                 return $this->redirectToRoute('account_index');
             }
-
         }
 
         return $this->render('front/pages/security/register.html.twig', [

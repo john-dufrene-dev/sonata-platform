@@ -45,10 +45,10 @@ final class AddDateNormalizer implements NormalizerInterface, DenormalizerInterf
     {
         return $this->decorated->denormalize($data, $class, $format, $context);
     }
-    
+
     public function setSerializer(SerializerInterface $serializer)
     {
-        if($this->decorated instanceof SerializerAwareInterface) {
+        if ($this->decorated instanceof SerializerAwareInterface) {
             $this->decorated->setSerializer($serializer);
         }
     }
