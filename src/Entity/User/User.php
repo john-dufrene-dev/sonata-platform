@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\User\UserRepository")
  * @ApiResource
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="register.email.unique")
  */
 class User implements UserInterface
 {
@@ -34,7 +34,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Assert\Length(max=4096)
+     * @Assert\Length(max=4096, maxMessage="register.max.password")
      */
     private $plainPassword;
 

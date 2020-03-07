@@ -22,22 +22,32 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
+                'label' => 'register.label.email',
+                'translation_domain' => 'validators',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'attr' => [
                     'class' => 'form-check-input',
                 ],
+                'label' => 'register.label.agrees.terms',
+                'translation_domain' => 'validators',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'register.agree.terms',
                     ]),
                 ],
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
+                'first_options'  => [
+                        'label' => 'register.label.password',
+                        'translation_domain' => 'validators',
+                ],
+                'second_options' => [
+                    'label' => 'register.label.repeatpassword',
+                    'translation_domain' => 'validators',
+                ],
                 'options' => ['attr' => [
                     'class' => 'form-control',
                     'autocomplete' => 'Password',
@@ -45,13 +55,14 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'register.registery.password',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'register.min.password',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
+                        'maxMessage' => 'register.max.password',
                     ]),
                 ],
             ]);

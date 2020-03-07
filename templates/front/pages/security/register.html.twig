@@ -5,7 +5,7 @@
     <div class="container">
         <form method="post">
 
-            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+            <h1 class="h3 mb-3 font-weight-normal">{% trans from 'security' %}register.new.account{% endtrans %}</h1>
 
             {{ form_start(registrationForm) }}
                 {{ form_row(registrationForm.email) }}
@@ -17,7 +17,7 @@
                 {{ form_label(registrationForm.agreeTerms) }}
                 </div>
 
-                <button class="btn btn-lg btn-primary" type="submit">Register</button>
+                <button class="btn btn-lg btn-primary" type="submit">{% trans from 'security' %}register.submit{% endtrans %}</button>
             {{ form_end(registrationForm) }}
 
         </form>

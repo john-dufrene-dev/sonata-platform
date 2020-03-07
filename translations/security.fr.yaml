@@ -14,3 +14,5 @@
 'Account is disabled.': 'Le compte est désactivé.'
 'Account is locked.': 'Le compte est bloqué.'
 'Email could not be found.': 'Erreur, l''adresse email n''existe pas.'
+register.submit: 'S''enregistrer'
+register.new.account: 'Créer un nouveau compte'

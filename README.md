@@ -43,8 +43,12 @@ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
 - Create Media CRUD Controller Admin
 - Change User CRUD Controller Admin
-- Api platform tutorial
-- Encrypt password for Api platform
 - Upload Api platform
 - Custom CRUDController in sonata admin for SEO
+- All missing translations
+- Custom Media and User CSS
+
+## FINISH TODO LIST
+
+- ~~Encrypt password for Api platform~~
 
