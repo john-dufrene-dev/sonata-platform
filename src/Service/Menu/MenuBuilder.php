@@ -31,7 +31,7 @@ class MenuBuilder
 
         $menu->addChild('Account', [
             'route' => 'account_index'
-            
+
         ])->setAttribute('class', 'header_menu_children');
 
         return $menu;
@@ -52,7 +52,7 @@ class MenuBuilder
         if (isset($options['include_accountpage']) && $options['include_accountpage']) {
             $menu->addChild('Account', [
                 'route' => 'account_index'
-                
+
             ])->setAttribute('class', 'footer_menu_children');
         }
 

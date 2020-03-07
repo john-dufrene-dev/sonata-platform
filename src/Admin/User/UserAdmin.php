@@ -40,8 +40,7 @@ final class UserAdmin extends AbstractAdmin
             ->add('roles')
             ->add('enabled')
             ->add('created_at')
-            ->add('updated_at')
-        ;
+            ->add('updated_at');
     }
 
     protected function configureListFields(ListMapper $listMapper): void
@@ -74,119 +73,114 @@ final class UserAdmin extends AbstractAdmin
         // define group zoning
         $formMapper
             ->tab('Informations générales de l\'utilisateur')
-                ->with('Informations générales de l\'utilisateur')->end()
+            ->with('Informations générales de l\'utilisateur')->end()
             ->end()
             ->tab('Profil utilisateur')
-                ->with('Profil utilisateur', ['description' => $description])->end()
+            ->with('Profil utilisateur', ['description' => $description])->end()
             ->end()
             ->tab('Sécurité utilisateur')
-                ->with('Activation / Désactivation de l\'utilisateur')->end()
-                ->with('Api token de l\'utilisateur')->end()
-            ->end()
-        ;
+            ->with('Activation / Désactivation de l\'utilisateur')->end()
+            ->with('Api token de l\'utilisateur')->end()
+            ->end();
 
         $formMapper
-        ->tab('Informations générales de l\'utilisateur')
+            ->tab('Informations générales de l\'utilisateur')
             ->with('Informations générales de l\'utilisateur', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Mise à jour des informations générales',
             ])
-                ->add('email')
-                ->add('plainPassword', PasswordType::class, [
-                    'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
-                ])
+            ->add('email')
+            ->add('plainPassword', PasswordType::class, [
+                'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
+            ])
             ->end()
-        ->end()
-        ;
-        
-        if($this->getSubject() && null !== $this->getSubject()->getId()) {
+            ->end();
+
+        if ($this->getSubject() && null !== $this->getSubject()->getId()) {
             $formMapper
-            ->tab('Profil utilisateur')
+                ->tab('Profil utilisateur')
                 ->with('Profil utilisateur', [
                     'class'       => 'col-md-12',
                     'box_class'   => 'box box-solid box-info',
                     'description' => 'Mise à jour du profil utilisateur',
-                ])     
+                ])
                 ->add('infos.name')
                 ->end()
-            ->end()
-            ;
+                ->end();
         }
-      
+
         $formMapper
-        ->tab('Sécurité utilisateur')
+            ->tab('Sécurité utilisateur')
             ->with('Activation / Désactivation de l\'utilisateur', [
                 'class'       => 'col-md-6',
                 'description' => 'Lorem ipsum',
             ])
-                ->add('enabled', null, ['required' => false])
+            ->add('enabled', null, ['required' => false])
             ->end()
             ->with('Api token de l\'utilisateur', [
                 'class'       => 'col-md-6',
                 'description' => 'Lorem ipsum',
             ])
-                ->add('apiToken', null, ['required' => false])
+            ->add('apiToken', null, ['required' => false])
             ->end()
             ->with('Rôles attribués à l\'utilisateur', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Lorem ipsum',
             ])
-                ->add('roles', ChoiceType::class, [
-                    'choices' => [
-                        'API_ALL' => self::API_ALL,
-                        'API_LIST' => self::API_LIST,
-                        'API_CREATE' => self::API_CREATE,
-                        'API_EDIT' => self::API_EDIT,
-                        'API_DELETE' => self::API_DELETE,
-                    ],
-                    'expanded'  => true,
-                    'multiple'  => true,
-                ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'API_ALL' => self::API_ALL,
+                    'API_LIST' => self::API_LIST,
+                    'API_CREATE' => self::API_CREATE,
+                    'API_EDIT' => self::API_EDIT,
+                    'API_DELETE' => self::API_DELETE,
+                ],
+                'expanded'  => true,
+                'multiple'  => true,
+            ])
             ->end()
-        ->end()
-        ;
+            ->end();
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
-    { 
+    {
         $showMapper
-        ->tab('General')
+            ->tab('General')
             ->with('General', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Lorem ipsum',
             ])
-                ->add('id')
-                ->add('email')
-                ->add('created_at')
-                ->add('updated_at')
+            ->add('id')
+            ->add('email')
+            ->add('created_at')
+            ->add('updated_at')
             ->end()
-        ->end()
+            ->end()
 
-        ->tab('Profile')
+            ->tab('Profile')
             ->with('Profile', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Lorem ipsum',
             ])
-                ->add('infos.name')          
+            ->add('infos.name')
             ->end()
-        ->end()
+            ->end()
 
-        ->tab('Security')
+            ->tab('Security')
             ->with('Security', [
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-info',
                 'description' => 'Lorem ipsum',
             ])
-                ->add('enabled', null, ['editable' => true])
-                ->add('roles')
-                ->add('apiToken')       
+            ->add('enabled', null, ['editable' => true])
+            ->add('roles')
+            ->add('apiToken')
             ->end()
-        ->end()    
-        ;
+            ->end();
     }
 
     public function prePersist($object)
@@ -207,8 +201,8 @@ final class UserAdmin extends AbstractAdmin
     }
 
     //update password
-    public function updateUser($object) 
-    {  
+    public function updateUser($object)
+    {
         if (null != $object->getPlainPassword()) {
 
             $container = $this->getConfigurationPool()->getContainer();
@@ -217,5 +211,5 @@ final class UserAdmin extends AbstractAdmin
 
             $object->setPassword($encoded);
         }
-    } 
+    }
 }

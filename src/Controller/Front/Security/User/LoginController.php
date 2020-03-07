@@ -16,7 +16,7 @@ class LoginController extends AbstractController
     {
         $this->seo = $seo;
     }
-    
+
     /**
      * @Route("/login", name="security_login")
      */
@@ -37,7 +37,7 @@ class LoginController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('front/pages/security/login.html.twig', [
-            'last_username' => $lastUsername, 
+            'last_username' => $lastUsername,
             'error' => $error
         ]);
     }

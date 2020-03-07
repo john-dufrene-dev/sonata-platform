@@ -15,7 +15,7 @@ class AccountController extends AbstractController
     {
         $this->seo = $seo;
     }
-    
+
     /**
      * @Route("/account", name="account_index")
      * Require ROLE__USER for only this controller method.

@@ -10,10 +10,10 @@ use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationFailureRespon
 class AuthenticationSuccessListener
 {
     /**
-    * @param AuthenticationSuccessEvent $event
-    */
-   public function onAuthenticationSuccessResponse(AuthenticationSuccessEvent $event)
-   {
+     * @param AuthenticationSuccessEvent $event
+     */
+    public function onAuthenticationSuccessResponse(AuthenticationSuccessEvent $event)
+    {
         // you can inject user infos in jwt token
         // $user = $event->getUser();
 
@@ -21,11 +21,10 @@ class AuthenticationSuccessListener
         //     return;
         // }
 
-        $event->setData([  
+        $event->setData([
             'token'         => $event->getData()['token'],
             'status'        => $event->getResponse()->getStatusCode(),
             'expire_in'     => 3600,
         ]);
-
-   }
+    }
 }
