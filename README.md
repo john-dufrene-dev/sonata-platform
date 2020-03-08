@@ -47,8 +47,19 @@ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 - Custom CRUDController in sonata admin for SEO
 - All missing translations
 - Custom Media and User CSS
+- Finish all api for user
 
 ## FINISH TODO LIST
 
 - ~~Encrypt password for Api platform~~
+- ~~Default send mails with gmail~~
+
+## USING DEV VERSION FOR
+
+- sonata-project/admin-bundle
+- sonata-project/google-authenticator
+- sonata-project/media-bundle
+- sonata-project/seo-bundle
+
+## KNOWING ISSUES
 

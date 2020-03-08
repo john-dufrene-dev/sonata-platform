@@ -33,7 +33,14 @@ class RegistrationController extends AbstractController
      * @var mixed
      */
     protected $params;
-
+    
+    /**
+     * __construct
+     *
+     * @param  mixed $seo
+     * @param  mixed $params
+     * @return void
+     */
     public function __construct(SeoPageInterface $seo, ParameterBagInterface $params)
     {
         $this->seo = $seo;
@@ -41,6 +48,13 @@ class RegistrationController extends AbstractController
     }
 
     /**
+     *
+     * @param  mixed $request
+     * @param  mixed $passwordEncoder
+     * @param  mixed $guardHandler
+     * @param  mixed $authenticator
+     * @param  mixed $mailer
+     * @return Response
      * @Route("/account/register", name="security_register")
      */
     public function register(
@@ -87,7 +101,7 @@ class RegistrationController extends AbstractController
 
                 if (
                     true == $this->params->has('mailer_user')
-                    && $this->params->get('mailer_user') != 'default@default.fr'
+                    && $this->params->get('mailer_user') != 'contact@domain.com'
                 ) {
                     $this->emailRegistration($mailer, $user);
                 }
@@ -100,7 +114,14 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
-
+    
+    /**
+     * EmailRegistration
+     *
+     * @param  mixed $mailer
+     * @param  mixed $user
+     * @return void
+     */
     public function EmailRegistration(MailerInterface $mailer, $user)
     {
         $email = (new TemplatedEmail())

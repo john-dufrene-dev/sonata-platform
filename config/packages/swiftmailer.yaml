@@ -1,0 +1,12 @@
+swiftmailer:
+    # url: '%env(MAILER_URL)%'
+    # spool: { type: 'memory' }
+
+    # This is default configuration with gmail
+    disable_delivery:  false # If you want to disable mail, put in to true
+    transport: "%env(MAILER_TRANSPORT)%"
+    username:  "%env(MAILER_USER)%"
+    password:  "%env(MAILER_PASSWORD)%"
+    encryption: "%env(MAILER_ENCRYPTION)%"
+    auth_mode: "%env(MAILER_AUTH_MODE)%"
+    

@@ -60,7 +60,6 @@ security:
                 # parameter: _switch_user
 
         main_user:
-            pattern:            /account(.*)
             anonymous: lazy
             provider:  app_user_provider
             guard:
