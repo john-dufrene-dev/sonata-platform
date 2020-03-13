@@ -48,6 +48,10 @@ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 - All missing translations
 - Custom Media and User CSS
 - Finish all api for user
+- Create Command to install project
+- Create Fixtures for user/useradmin
+- Create Maintenance system
+- Create table configuration/fixtures
 
 ## FINISH TODO LIST
 

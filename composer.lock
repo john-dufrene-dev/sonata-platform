@@ -4297,12 +4297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "64ecd658a98d50f7ee7953c377492d2fc48e7cbd"
+                "reference": "01079ea1c49f24f1052a46ce8ff8647cccc4e6f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/64ecd658a98d50f7ee7953c377492d2fc48e7cbd",
-                "reference": "64ecd658a98d50f7ee7953c377492d2fc48e7cbd",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/01079ea1c49f24f1052a46ce8ff8647cccc4e6f7",
+                "reference": "01079ea1c49f24f1052a46ce8ff8647cccc4e6f7",
                 "shasum": ""
             },
             "require": {
@@ -4396,7 +4396,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2020-03-06T20:52:00+00:00"
+            "time": "2020-03-12T17:48:28+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -4992,12 +4992,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/GoogleAuthenticator.git",
-                "reference": "287c1db084bab35d627781bbc46d7b34e22cc771"
+                "reference": "c61c97f4e1b1a79ede60c5844a11cbd8058460ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/GoogleAuthenticator/zipball/287c1db084bab35d627781bbc46d7b34e22cc771",
-                "reference": "287c1db084bab35d627781bbc46d7b34e22cc771",
+                "url": "https://api.github.com/repos/sonata-project/GoogleAuthenticator/zipball/c61c97f4e1b1a79ede60c5844a11cbd8058460ec",
+                "reference": "c61c97f4e1b1a79ede60c5844a11cbd8058460ec",
                 "shasum": ""
             },
             "require": {
@@ -5041,7 +5041,7 @@
             "keywords": [
                 "google authenticator"
             ],
-            "time": "2020-02-26T02:05:00+00:00"
+            "time": "2020-03-11T02:06:09+00:00"
         },
         {
             "name": "sonata-project/media-bundle",
@@ -5049,12 +5049,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "2a08d2111551107773cad9946cd8c2c9f2ae4912"
+                "reference": "b879e4a6c982ab9900458c1129dbb30e51cd481c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/2a08d2111551107773cad9946cd8c2c9f2ae4912",
-                "reference": "2a08d2111551107773cad9946cd8c2c9f2ae4912",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/b879e4a6c982ab9900458c1129dbb30e51cd481c",
+                "reference": "b879e4a6c982ab9900458c1129dbb30e51cd481c",
                 "shasum": ""
             },
             "require": {
@@ -5169,7 +5169,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2020-02-26T07:00:08+00:00"
+            "time": "2020-03-10T13:43:25+00:00"
         },
         {
             "name": "sonata-project/seo-bundle",
@@ -5177,12 +5177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "0982e0ac02fedad22859969842c633cbe90dbdf1"
+                "reference": "9502e2265212aa189f2941128f36809c50a1a13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/0982e0ac02fedad22859969842c633cbe90dbdf1",
-                "reference": "0982e0ac02fedad22859969842c633cbe90dbdf1",
+                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/9502e2265212aa189f2941128f36809c50a1a13b",
+                "reference": "9502e2265212aa189f2941128f36809c50a1a13b",
                 "shasum": ""
             },
             "require": {
@@ -5251,7 +5251,7 @@
                 "seo",
                 "sonata"
             ],
-            "time": "2020-02-25T20:58:12+00:00"
+            "time": "2020-03-10T13:53:21+00:00"
         },
         {
             "name": "sonata-project/user-bundle",

@@ -1,5 +1,11 @@
 services:
 
+    #  service for override jwt token informations
+    app.event.authentication_success_response:
+        class: App\EventListener\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
     # service for KnpMenuBundle compatibility with symfony 4
     app.service.menu_builder:
         class: App\Service\Menu\MenuBuilder
