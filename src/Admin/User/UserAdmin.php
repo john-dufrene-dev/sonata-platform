@@ -11,11 +11,8 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Form\Type\ModelListType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class UserAdmin extends AbstractAdmin
 {

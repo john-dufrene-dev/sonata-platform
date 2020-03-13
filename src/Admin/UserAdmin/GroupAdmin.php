@@ -13,12 +13,8 @@ declare(strict_types=1);
 
 namespace App\Admin\UserAdmin;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
+
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\UserBundle\Form\Type\SecurityRolesType;
 use Sonata\UserBundle\Admin\Model\GroupAdmin as BaseGroupAdmin;
 
 final class GroupAdmin extends BaseGroupAdmin

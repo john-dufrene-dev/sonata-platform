@@ -16,11 +16,13 @@ sonata_user:
     admin:                  # Admin Classes
         user:
             class:          App\Admin\UserAdmin\UserAdmin
+            controller:     App\Controller\Admin\UserAdmin\UserAdminController
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
         group:
             class:          App\Admin\UserAdmin\GroupAdmin
+            controller:     App\Controller\Admin\UserAdmin\GroupAdminController
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
