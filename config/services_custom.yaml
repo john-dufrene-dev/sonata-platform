@@ -7,3 +7,8 @@ services:
         tags:
             - { name: knp_menu.menu_builder, method: header, alias: header }
             - { name: knp_menu.menu_builder, method: footer, alias: footer }
+    
+    # Service email notifications
+    app.service.email_notifier:
+        class: App\Service\Email\Notifier
+        arguments: ['@mailer.mailer', '@parameter_bag', '@doctrine.orm.default_entity_manager']

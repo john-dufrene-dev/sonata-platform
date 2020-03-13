@@ -3,7 +3,6 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
         App\Entity\User\User: bcrypt
 
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
 
         in_memory: { memory: null }
@@ -39,7 +38,6 @@ security:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
         
-        # -> custom firewall for the admin area of the URL
         admin:
             pattern:            /admin(.*)
             context:            user
@@ -57,7 +55,6 @@ security:
             switch_user:
                 provider: fos_userbundle
                 role: ROLE_ALLOWED_TO_SWITCH
-                # parameter: _switch_user
 
         main_user:
             anonymous: lazy
@@ -69,18 +66,15 @@ security:
                 secret:   '%kernel.secret%'
                 lifetime: 604800 # 1 week in seconds
                 path: /
-            form_login:
-                login_path:     security_login
+            json_login:
+                username_path: email
+                password_path: password
                 check_path:     /account/login_check
-                use_referer: true
             logout:
                 path: app_logout
                 target: /account/login
-            # if you want, disable storing the user in the session
-            # stateless: true
+                delete_cookies: ['X-AUTH-TOKEN']
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
         
         - { path: ^/account/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -88,7 +82,6 @@ security:
         - { path: ^/account/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/account/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-        # Admin login page needs to be accessed without credential
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -97,14 +90,9 @@ security:
         - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: ROLE__USER }
 
-        # Secured part of the site
-        # This config requires being logged for the whole site and having the admin role for the admin part.
-        # Change these rules to adapt them to your needs
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        
 
-    # Sonata "special" roles (ROLE_SONATA_ADMIN and ROLE_SUPER_ADMIN) are configurable
     role_hierarchy:
 
         # ROLE_SONATA_USER_ADMIN_USER_HISTORY
@@ -112,6 +100,5 @@ security:
         ROLE_ADMIN:                     [ROLE_USER, ROLE_SONATA_ADMIN]
         ROLE_SUPER_ADMIN:               [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
-    # set access_strategy to unanimous, else you may have unexpected behaviors
     access_decision_manager:
         strategy: unanimous

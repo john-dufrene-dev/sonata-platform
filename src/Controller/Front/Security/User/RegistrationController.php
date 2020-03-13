@@ -4,12 +4,10 @@ namespace App\Controller\Front\Security\User;
 
 use App\Entity\User\User;
 use App\Entity\User\UserInfo;
-use Symfony\Component\Mime\Address;
+use App\Service\Email\Notifier;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Security\User\LoginFormAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\Front\Security\RegistrationFormType;
@@ -53,7 +51,7 @@ class RegistrationController extends AbstractController
      * @param  mixed $passwordEncoder
      * @param  mixed $guardHandler
      * @param  mixed $authenticator
-     * @param  mixed $mailer
+     * @param  mixed $notifier
      * @return Response
      * @Route("/account/register", name="security_register")
      */
@@ -62,7 +60,7 @@ class RegistrationController extends AbstractController
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
         LoginFormAuthenticator $authenticator,
-        MailerInterface $mailer
+        Notifier $notifier
     ): Response {
         if ($this->getUser()) {
             return $this->redirectToRoute('account_index');
@@ -78,6 +76,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -95,17 +94,15 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            if (
+                true == $this->params->has('mailer_user')
+                && $this->params->get('mailer_user') != 'contact@domain.com'
+            ) {
+                // Send email registration to user
+                $notifier->emailRegistration($user);
+            }
 
             if ($guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main_user')) {
-
-                if (
-                    true == $this->params->has('mailer_user')
-                    && $this->params->get('mailer_user') != 'contact@domain.com'
-                ) {
-                    $this->emailRegistration($mailer, $user);
-                }
-
                 return $this->redirectToRoute('account_index');
             }
         }
@@ -113,25 +110,5 @@ class RegistrationController extends AbstractController
         return $this->render('front/pages/security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-    }
-    
-    /**
-     * EmailRegistration
-     *
-     * @param  mixed $mailer
-     * @param  mixed $user
-     * @return void
-     */
-    public function EmailRegistration(MailerInterface $mailer, $user)
-    {
-        $email = (new TemplatedEmail())
-            ->from($this->params->get('mailer_user'))
-            ->to(new Address($user->getEmail()))
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->htmlTemplate('front/emails/users/registration.html.twig')
-            ->context(['user' => $user]);
-
-        $mailer->send($email);
     }
 }

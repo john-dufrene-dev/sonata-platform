@@ -20,17 +20,33 @@ class UserInfo
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
-
+    
+    /**
+     * getId
+     *
+     * @return int
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    
+    /**
+     * getName
+     *
+     * @return string
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
-
+    
+    /**
+     * setName
+     *
+     * @param  mixed $name
+     * @return self
+     */
     public function setName(?string $name): self
     {
         $this->name = $name;

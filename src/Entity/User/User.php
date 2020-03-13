@@ -86,10 +86,16 @@ class User implements UserInterface
      * @ORM\JoinColumn(nullable=false)
      */
     private $infos;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->enabled = 1;
+        $this->enabled = true;
+        $this->apiToken = bin2hex(random_bytes(60));
         $this->created_at = new \DateTime();
         $this->updated_at = new \DateTime();
     }
@@ -103,17 +109,33 @@ class User implements UserInterface
     {
         return $this->getUsername() ?: '-';
     }
-
+    
+    /**
+     * getId
+     *
+     * @return int
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * getEmail
+     *
+     * @return string
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * setEmail
+     *
+     * @param  mixed $email
+     * @return self
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -122,9 +144,9 @@ class User implements UserInterface
     }
 
     /**
-     * A visual identifier that represents this user.
+     * getUsername
      *
-     * @see UserInterface
+     * @return string
      */
     public function getUsername(): string
     {
@@ -132,7 +154,9 @@ class User implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * getRoles
+     *
+     * @return array
      */
     public function getRoles(): array
     {
@@ -143,6 +167,12 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * setRoles
+     *
+     * @param  mixed $roles
+     * @return self
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -150,48 +180,89 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * getPlainPassword
+     *
+     * @return string
+     */
     public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
 
+    /**
+     * setPlainPassword
+     *
+     * @param  mixed $password
+     * @return void
+     */
     public function setPlainPassword(?string $password)
     {
         $this->plainPassword = $password;
     }
 
     /**
-     * @see UserInterface
+     * getPassword
+     *
+     * @return string
      */
     public function getPassword(): string
     {
         return (string) $this->password;
     }
 
+    /**
+     * setPassword
+     *
+     * @param  mixed $password
+     * @return self
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
-
+    
+    /**
+     * getApiToken
+     *
+     * @return string
+     */
     public function getApiToken(): ?string
     {
         return $this->apiToken;
     }
-
+    
+    /**
+     * setApiToken
+     *
+     * @param  mixed $apiToken
+     * @return self
+     */
     public function setApiToken(?string $apiToken): self
     {
         $this->apiToken = $apiToken;
 
         return $this;
     }
-
+    
+    /**
+     * getEnabled
+     *
+     * @return bool
+     */
     public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
-
+    
+    /**
+     * setEnabled
+     *
+     * @param  mixed $enabled
+     * @return self
+     */
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
@@ -200,7 +271,9 @@ class User implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * getSalt
+     *
+     * @return void
      */
     public function getSalt()
     {
@@ -208,7 +281,9 @@ class User implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * eraseCredentials
+     *
+     * @return void
      */
     public function eraseCredentials()
     {
@@ -216,11 +291,22 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * getCreatedAt
+     *
+     * @return DateTimeInterface
+     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
     }
 
+    /**
+     * setCreatedAt
+     *
+     * @param  mixed $created_at
+     * @return self
+     */
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
@@ -228,11 +314,22 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * getUpdatedAt
+     *
+     * @return DateTimeInterface
+     */
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updated_at;
     }
 
+    /**
+     * setUpdatedAt
+     *
+     * @param  mixed $updated_at
+     * @return self
+     */
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
@@ -240,11 +337,22 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * getInfos
+     *
+     * @return UserInfo
+     */
     public function getInfos(): ?UserInfo
     {
         return $this->infos;
     }
 
+    /**
+     * setInfos
+     *
+     * @param  mixed $infos
+     * @return self
+     */
     public function setInfos(UserInfo $infos): self
     {
         $this->infos = $infos;

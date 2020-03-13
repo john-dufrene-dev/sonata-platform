@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EventSubscriber\User;
+namespace App\EventSubscriber\User\Api;
 
 use App\Entity\User\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PasswordHashUserApiSubscriber implements EventSubscriberInterface
 {
-
     /**
      * passwordEncoder
      *
@@ -31,7 +30,6 @@ class PasswordHashUserApiSubscriber implements EventSubscriberInterface
         $this->passwordEncoder = $passwordEncoder;
     }
 
-
     /**
      * getSubscribedEvents
      *
@@ -44,7 +42,6 @@ class PasswordHashUserApiSubscriber implements EventSubscriberInterface
         ];
     }
 
-
     /**
      * hashPassword
      *
@@ -56,7 +53,9 @@ class PasswordHashUserApiSubscriber implements EventSubscriberInterface
         $user = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
 
-        if (!$user instanceof User || Request::METHOD_POST !== $method) {
+        // Verify if it's an instance of the User and METHOD == PUT/PATCH/POST
+        if (!$user instanceof User || (Request::METHOD_POST !== $method
+            && Request::METHOD_PUT !== $method && Request::METHOD_PATCH !== $method)) {
             return;
         }
 
