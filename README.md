@@ -47,11 +47,11 @@ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 - Custom CRUDController in sonata admin for SEO
 - All missing translations
 - Custom Media and User CSS
-- Finish all api for user
+- Finish all api for user (IN PROGRESS)
 - Create Command to install project
-- Create Fixtures for user/useradmin
-- Create Maintenance system
-- Create table configuration/fixtures
+- Create Fixtures for user/useradmin (IN PROGRESS)
+- Create Maintenance system (IN PROGRESS)
+- Create table configuration/fixtures (IN PROGRESS)
 
 ## FINISH TODO LIST
 

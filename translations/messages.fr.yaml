@@ -1,0 +1,7 @@
+List: Liste
+Mode Maintenance: Mode Maintenance
+Utilisateurs: Utilisateurs
+admin.submit: 'Mettre à jour'
+admin.configurations.not.availables: 'Aucune configurations disponibles !'
+admin.default.label: 'Pas de titre défini'
+admin.maintenance.title: 'Configuration du mode maintenance'

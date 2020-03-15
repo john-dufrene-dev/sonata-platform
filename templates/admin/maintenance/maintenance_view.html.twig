@@ -1,0 +1,11 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+
+	{{ sonata_block_render({ 'type': 'sonata.block.service.custom.configuration' }, {
+		'title': ('admin.maintenance.title'|trans),
+		'configs': options
+	}) }}
+
+{% endblock %}
+

@@ -1,0 +1,162 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="nav-tabs-custom">
+            <div class="tab-content">
+
+                <div class="box-body  container-fluid">
+                    <div class="sonata-ba-collapsed-fields">
+
+                    {% if configs|length > 0 %}
+
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="box box-solid box-info">
+
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ settings.title }}
+                                            </h4>
+                                        </div>
+
+                                        <div class="box-body">
+                                            <div class="sonata-ba-collapsed-fields">
+
+                                                {% for config in configs %}
+                                                    
+                                                    {# If configuration is a text type #}
+                                                    {% if config.type == 'text' %}
+                                                    <div class="form-group" id="configuration_{{ config.name }}">
+                                                        <label class="control-label" 
+                                                            for="configuration_{{ config.name }}">
+                                                            {{ config.title ?? 'admin.default.label'|trans }}
+                                                        </label>
+                                                        <div class="sonata-ba-field sonata-ba-field-standard-natural">
+                                                            <input 
+                                                                type="text" 
+                                                                id="configuration_{{ config.name }}" 
+                                                                name="{{ config.name }}" 
+                                                                required="required" 
+                                                                maxlength="180" 
+                                                                class=" form-control" 
+                                                                value="{{ config.value }}">
+                                                        </div>
+                                                    </div>
+
+                                                    {# If configuration is a textarea type #}
+                                                    {% elseif config.type == 'textarea' %}
+                                                    <div class="form-group" id="configuration_{{ config.name }}">
+                                                        <label class="control-label" 
+                                                            for="configuration_{{ config.name }}">
+                                                            {{ config.title ?? 'admin.default.label'|trans }}
+                                                        </label>
+                                                        <div class="sonata-ba-field sonata-ba-field-standard-natural">
+                                                            <textarea type="textarea" 
+                                                                rows="4" 
+                                                                cols="50"
+                                                                id="configuration_{{ config.name }}" 
+                                                                name="{{ config.name }}" 
+                                                                required="required" 
+                                                                maxlength="180" 
+                                                                class=" form-control">{{ config.value }}
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    {# If configuration is a boolean type #}
+                                                    {% elseif config.type == 'boolean' %}
+                                                    {% set status = (config.value == 1 
+                                                        or config.value == 'on') ? 1 : 0 ?? 1 %}
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input
+                                                            id="configuration_check_{{ config.name }}"
+                                                            type='hidden' 
+                                                            value="{{ status }}" 
+                                                            name="{{ config.name }}">
+                                                        <input type="checkbox"
+                                                            class="custom-control-input" 
+                                                            id="checkbox_{{ config.name }}"
+                                                            {% if config.value == true %} checked {% endif %}>
+                                                        <label 
+                                                            class="custom-control-label" 
+                                                            for="checkbox_{{ config.name }}">
+                                                            {{ config.title }}
+                                                        </label>
+                                                    </div>
+                                                    <script>
+                                                        $(document).ready(function() {
+
+                                                            var value = $("#configuration_check_{{ config.name }}")
+                                                            var checkbox = $("#checkbox_{{ config.name }}")
+
+                                                            checkbox.change(function() {
+                                                                value.attr("name", '{{ config.name }}');
+                                                                if(this.checked) {
+                                                                    value.attr("value", 1)
+                                                                } else {
+                                                                    value.attr("value", 0)
+                                                                   
+                                                                }
+                                                                console.log(value.attr("value"));
+
+                                                            });
+                                                        });
+                                                    </script>
+  
+                                                    {# If configuration is null #}
+                                                    {% else %}
+                                                    <div class="form-group" id="configuration_{{ config.name }}">
+                                                        <label class="control-label" 
+                                                            for="configuration_{{ config.name }}">
+                                                            {{ config.title ?? 'admin.default.label'|trans }}
+                                                        </label>
+                                                        <div class="sonata-ba-field sonata-ba-field-standard-natural">
+                                                            <input 
+                                                                type="text" 
+                                                                id="configuration_{{ config.name }}" 
+                                                                name="{{ config.name }}" 
+                                                                required="required" 
+                                                                maxlength="180" 
+                                                                class=" form-control" 
+                                                                value="{{ config.value }}">
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa fa-save" aria-hidden="true"></i> {% trans %}admin.submit{% endtrans %}
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        {% else %}
+                            <div class="box-body">
+                                {% trans %}admin.configurations.not.availables{% endtrans %}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

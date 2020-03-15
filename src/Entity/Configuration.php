@@ -27,6 +27,21 @@ class Configuration
     private $value;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $enabled;
@@ -49,6 +64,7 @@ class Configuration
     public function __construct()
     {
         $this->enabled = true;
+        $this->type = 'text';
         $this->created_at = new \DateTime();
         $this->updated_at = new \DateTime();
     }
@@ -115,6 +131,75 @@ class Configuration
     public function setValue(?string $value): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+    
+    /**
+     * getTitle
+     *
+     * @return string
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+    
+    /**
+     * setTitle
+     *
+     * @param  mixed $title
+     * @return self
+     */
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+    
+    /**
+     * getDescription
+     *
+     * @return string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+    
+    /**
+     * setDescription
+     *
+     * @param  mixed $description
+     * @return self
+     */
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+    
+    /**
+     * getType
+     *
+     * @return string
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+    
+    /**
+     * setType
+     *
+     * @param  mixed $type
+     * @return self
+     */
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

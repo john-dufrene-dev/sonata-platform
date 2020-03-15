@@ -18,3 +18,9 @@ services:
     app.service.email_notifier:
         class: App\Service\Email\Notifier
         arguments: ['@mailer.mailer', '@parameter_bag', '@doctrine.orm.default_entity_manager']
+    
+    # Service for configuration value
+    app.service.configuration_builder:
+        class: App\Service\ConfigurationBuilder
+        public: true
+        
