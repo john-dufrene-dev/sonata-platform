@@ -18,6 +18,7 @@ class MaintenanceAdminController extends CRUDController
             'action' => 'Mode maintenance',
             'options' => $this->options,
             'csrf_token' => $this->getCsrfToken('sonata.batch'),
+            'currentIP' => $this->admin->getRequest()->getClientIp(),
         ], null);
     }
 }

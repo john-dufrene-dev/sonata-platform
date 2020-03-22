@@ -9,9 +9,11 @@ use Sonata\Form\Validator\ErrorElement;
 use Doctrine\ORM\EntityManagerInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\DelegatingEngine;
@@ -46,6 +48,13 @@ final class ConfigurationBlockService  extends AbstractBlockService
      * @var mixed
      */
     protected $request;
+    
+    /**
+     * router
+     *
+     * @var mixed
+     */
+    protected $router;
 
     /**
      * config
@@ -74,13 +83,15 @@ final class ConfigurationBlockService  extends AbstractBlockService
         ContainerBag $params,
         EntityManagerInterface $em,
         AdapterInterface $cache,
-        RequestStack $request
+        RequestStack $request,
+        RouterInterface $router
     ) {
         parent::__construct($service, $templating);
         $this->params = $params;
         $this->em = $em;
         $this->cache = $cache;
         $this->request = $request;
+        $this->router = $router;
     }
 
     protected $template = 'admin/block/configuration_template.html.twig';
@@ -90,6 +101,8 @@ final class ConfigurationBlockService  extends AbstractBlockService
         $resolver->setDefaults([
             'title' => 'You need to change this value',
             'configs' => [],
+            'btn_title_extra' => null, // Add extra button title
+            'btn_id_extra' => null, // Add extra button id
             'template' => $this->template,
         ]);
     }
@@ -147,7 +160,11 @@ final class ConfigurationBlockService  extends AbstractBlockService
         }
 
         if($this->request->getCurrentRequest()->isMethod('POST')) {
-            dd($this->request->getCurrentRequest()->request->all());
+            foreach($this->request->getCurrentRequest()->request->all() as $key => $value) {
+                $this->config->update($key, $value);
+            }
+
+            return new RedirectResponse($this->router->generate('app/maintenance_list'));
         }
 
         return $this->renderResponse($blockContext->getTemplate(), [

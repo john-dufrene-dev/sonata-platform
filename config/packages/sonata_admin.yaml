@@ -2,6 +2,10 @@ sonata_admin:
     title: 'Sonata Platform'
     title_logo: bundles/sonataadmin/logo_title.png
 
+    assets:
+        extra_javascripts: 
+            - 'assets/js/admin/admin.js'
+
     global_search:
         empty_boxes: fade
     

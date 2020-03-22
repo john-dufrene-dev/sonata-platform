@@ -30,6 +30,7 @@ services:
             - '@doctrine.orm.default_entity_manager'
             - '@cache.app'
             - '@request_stack'
+            - '@router.default'
         tags:
             - { name: sonata.block }
 

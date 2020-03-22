@@ -31,9 +31,9 @@
                                                     
                                                     {# If configuration is a text type #}
                                                     {% if config.type == 'text' %}
-                                                    <div class="form-group" id="configuration_{{ config.name }}">
+                                                    <div class="form-group" id="configuration_group_{{ config.name }}">
                                                         <label class="control-label" 
-                                                            for="configuration_{{ config.name }}">
+                                                            for="configuration_group_{{ config.name }}">
                                                             {{ config.title ?? 'admin.default.label'|trans }}
                                                         </label>
                                                         <div class="sonata-ba-field sonata-ba-field-standard-natural">
@@ -50,9 +50,9 @@
 
                                                     {# If configuration is a textarea type #}
                                                     {% elseif config.type == 'textarea' %}
-                                                    <div class="form-group" id="configuration_{{ config.name }}">
+                                                    <div class="form-group" id="configuration_group_{{ config.name }}">
                                                         <label class="control-label" 
-                                                            for="configuration_{{ config.name }}">
+                                                            for="configuration_group_{{ config.name }}">
                                                             {{ config.title ?? 'admin.default.label'|trans }}
                                                         </label>
                                                         <div class="sonata-ba-field sonata-ba-field-standard-natural">
@@ -110,9 +110,9 @@
   
                                                     {# If configuration is null #}
                                                     {% else %}
-                                                    <div class="form-group" id="configuration_{{ config.name }}">
+                                                    <div class="form-group" id="configuration_group_{{ config.name }}">
                                                         <label class="control-label" 
-                                                            for="configuration_{{ config.name }}">
+                                                            for="configuration_group_{{ config.name }}">
                                                             {{ config.title ?? 'admin.default.label'|trans }}
                                                         </label>
                                                         <div class="sonata-ba-field sonata-ba-field-standard-natural">
@@ -140,6 +140,11 @@
                                     <button type="submit" class="btn btn-success">
                                         <i class="fa fa-save" aria-hidden="true"></i> {% trans %}admin.submit{% endtrans %}
                                     </button>
+                                    {% if settings['btn_id_extra'] is not null and settings['btn_id_extra'] is not null %}
+                                    <button id="{{ settings['btn_id_extra'] }}" type="submit" class="btn btn-warning">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i> {{ settings['btn_title_extra'] }}
+                                    </button>
+                                    {% endif %}
                                 </div>
 
                             </form>

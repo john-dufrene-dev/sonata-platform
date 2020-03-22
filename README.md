@@ -42,21 +42,21 @@ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 ## TODO LIST
 
 - Create Media CRUD Controller Admin
-- Change User CRUD Controller Admin
 - Upload Api platform
 - Custom CRUDController in sonata admin for SEO
-- All missing translations
+- All missing translations (IN PROGRESS)
 - Custom Media and User CSS
 - Finish all api for user (IN PROGRESS)
 - Create Command to install project
 - Create Fixtures for user/useradmin (IN PROGRESS)
-- Create Maintenance system (IN PROGRESS)
-- Create table configuration/fixtures (IN PROGRESS)
 
 ## FINISH TODO LIST
 
 - ~~Encrypt password for Api platform~~
 - ~~Default send mails with gmail~~
+- ~~Change User CRUD Controller Admin~~
+- ~~Create table configuration/fixtures~~
+- ~~Create Maintenance system~~
 
 ## USING DEV VERSION FOR
 

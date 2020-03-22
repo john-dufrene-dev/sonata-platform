@@ -2,9 +2,13 @@
 
 {% block sonata_admin_content %}
 
+	<div id="myIP" data-my-ip="{{currentIP}}"></div>
+
 	{{ sonata_block_render({ 'type': 'sonata.block.service.custom.configuration' }, {
 		'title': ('admin.maintenance.title'|trans),
-		'configs': options
+		'configs': options,
+		'btn_title_extra': ('admin.maintenance.add.ip'|trans),
+		'btn_id_extra': 'add_ip_address'
 	}) }}
 
 {% endblock %}
