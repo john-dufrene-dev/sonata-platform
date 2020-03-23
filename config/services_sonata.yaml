@@ -25,7 +25,7 @@ services:
         class: App\Service\Admin\Block\ConfigurationBlockService
         arguments:
             - ~
-            - '@templating'
+            - '@templating.engine.delegating'
             - '@parameter_bag'
             - '@doctrine.orm.default_entity_manager'
             - '@cache.app'

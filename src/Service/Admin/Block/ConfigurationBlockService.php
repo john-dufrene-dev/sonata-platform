@@ -10,13 +10,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
-use Symfony\Bundle\FrameworkBundle\Templating\DelegatingEngine;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBag;
 
 final class ConfigurationBlockService  extends AbstractBlockService
@@ -79,7 +79,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
 
     public function __construct(
         string $service, 
-        DelegatingEngine $templating, // For the moment use this depreciated class, wait for next version with Twig\Environment
+        EngineInterface $templating,
         ContainerBag $params,
         EntityManagerInterface $em,
         AdapterInterface $cache,
@@ -164,7 +164,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
                 $this->config->update($key, $value);
             }
 
-            return new RedirectResponse($this->router->generate('app/maintenance_list'));
+            return new RedirectResponse('list');
         }
 
         return $this->renderResponse($blockContext->getTemplate(), [

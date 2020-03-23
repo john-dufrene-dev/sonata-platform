@@ -301,9 +301,6 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "simplethings/entity-audit-bundle": {
-        "version": "v1.0.9"
-    },
     "sonata-project/admin-bundle": {
         "version": "3.31",
         "recipe": {
@@ -756,15 +753,6 @@
             "./config/routes/dev/web_profiler.yaml"
         ]
     },
-    "symfony/web-server-bundle": {
-        "version": "3.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
-        }
-    },
     "symfony/webpack-encore-bundle": {
         "version": "1.6",
         "recipe": {
@@ -800,9 +788,6 @@
         ]
     },
     "twig/extra-bundle": {
-        "version": "v3.0.3"
-    },
-    "twig/intl-extra": {
         "version": "v3.0.3"
     },
     "twig/twig": {

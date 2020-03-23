@@ -39,6 +39,11 @@ mkdir -p config/jwt # if not exist
 openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
+## Use symfony serve
+
+If you are in local env, install symfony console commands and use php bin/console symfony serve
+https://symfony.com/doc/current/setup/symfony_server.html
+
 ## TODO LIST
 
 - Create Media CRUD Controller Admin
@@ -58,12 +63,19 @@ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 - ~~Create table configuration/fixtures~~
 - ~~Create Maintenance system~~
 
+## KNOWING ISSUES ERRORS
+
+- Error with "sonata-project/doctrine-extensions" when update to 1.6.0 : use version 1.5.1 (waiting for update)
+
 ## USING DEV VERSION FOR
 
 - sonata-project/admin-bundle
 - sonata-project/google-authenticator
 - sonata-project/media-bundle
 - sonata-project/seo-bundle
+- sonata-project/user-bundle
 
-## KNOWING ISSUES
+## SUGGEST PACKAGES
+
+- simplethings/entity-audit-bundle
 
