@@ -5,6 +5,7 @@ namespace App\Controller\Front\Security\User;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -19,6 +20,7 @@ class LoginController extends AbstractController
 
     /**
      * @Route("/account/login", name="security_login")
+     * @IsGranted("IS_AUTHENTICATED_ANONYMOUSLY")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {

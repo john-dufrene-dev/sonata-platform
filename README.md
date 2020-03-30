@@ -16,6 +16,7 @@
 __1. Install Symfony + Sonata platform__
 
 ```bash
+
 # 1.0 Install sonata platform
 git clone https://github.com/john-dufrene-dev/sonata-platform.git
 
@@ -39,12 +40,23 @@ mkdir -p config/jwt # if not exist
 openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
-## Use symfony serve
+```
+
+__2. Use symfony serve__
+
+```bash
 
 If you are in local env, install symfony console commands and use php bin/console symfony serve
 https://symfony.com/doc/current/setup/symfony_server.html
 
-## TODO LIST
+
+```
+
+## TODO
+
+__1. Todo list__
+
+```bash
 
 - Create Media CRUD Controller Admin
 - Upload Api platform
@@ -55,7 +67,11 @@ https://symfony.com/doc/current/setup/symfony_server.html
 - Create Command to install project
 - Create Fixtures for user/useradmin (IN PROGRESS)
 
-## FINISH TODO LIST
+```
+
+__2. Finish todo list__
+
+```bash
 
 - ~~Encrypt password for Api platform~~
 - ~~Default send mails with gmail~~
@@ -63,11 +79,20 @@ https://symfony.com/doc/current/setup/symfony_server.html
 - ~~Create table configuration/fixtures~~
 - ~~Create Maintenance system~~
 
-## KNOWING ISSUES ERRORS
+```
+## INFORMATIONZ
+
+__1. Troubleshooting__
+
+```bash
 
 - Error with "sonata-project/doctrine-extensions" when update to 1.6.0 : use version 1.5.1 (waiting for update) OR you can update "doctrine/annotations:1.9.x-dev" to use "sonata-project/doctrine-extensions:1.6.0"
 
-## USING DEV VERSION FOR
+```
+
+__2. Using dev version for__
+
+```bash
 
 - sonata-project/admin-bundle
 - sonata-project/google-authenticator
@@ -76,7 +101,11 @@ https://symfony.com/doc/current/setup/symfony_server.html
 - sonata-project/user-bundle
 - doctrine/annotations:1.9.x-dev
 
-## SUGGEST PACKAGES
+```
+
+__3. Suggested packages__
+
+```bash
 
 - simplethings/entity-audit-bundle
 

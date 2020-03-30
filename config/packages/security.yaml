@@ -76,9 +76,7 @@ security:
                 delete_cookies: ['X-AUTH-TOKEN']
 
     access_control:
-        
-        - { path: ^/account/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/account/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    
         - { path: ^/account/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/account/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 

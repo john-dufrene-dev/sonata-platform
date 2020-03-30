@@ -5,10 +5,18 @@ namespace App\DataFixtures;
 use App\Entity\Configuration;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ConfigurationFixtures extends Fixture
 {
     protected $start = 'CONF_';
+
+    protected $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function load(ObjectManager $manager)
     {
@@ -16,17 +24,14 @@ class ConfigurationFixtures extends Fixture
         $config = new Configuration;
         $config->setName($this->start.'MAINTENANCE_IP_VALID');
         $config->setValue('::1,127.0.0.1');
-        $config->setTitle('Filtrage des adresses IP');
+        $config->setTitle($this->translator->trans('configuration.filters.ip', [], 'fixtures'));
         $manager->persist($config);
-
-        $manager->flush();
 
         // Create configuration for status maintenance
         $config = new Configuration;
         $config->setName($this->start.'MAINTENANCE_STATUS');
         $config->setValue(1);
-
-        $config->setTitle('Activer / Désactiver le mode maintenance');
+        $config->setTitle($this->translator->trans('configuration.enable.disable.ip', [], 'fixtures'));
         $config->setType('boolean');
         $manager->persist($config);
 

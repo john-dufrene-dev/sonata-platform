@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\Front\Security\RegistrationFormType;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -54,6 +55,7 @@ class RegistrationController extends AbstractController
      * @param  mixed $notifier
      * @return Response
      * @Route("/account/register", name="security_register")
+     * @IsGranted("IS_AUTHENTICATED_ANONYMOUSLY")
      */
     public function register(
         Request $request,
