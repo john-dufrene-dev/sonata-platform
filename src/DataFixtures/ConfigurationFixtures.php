@@ -35,6 +35,34 @@ class ConfigurationFixtures extends Fixture
         $config->setType('boolean');
         $manager->persist($config);
 
+        // Create configuration for SEO home title
+        $config = new Configuration;
+        $config->setName($this->start.'SEO_HOME_TITLE');
+        $config->setValue($this->translator->trans('seo.home.value.title', [], 'fixtures'));
+        $config->setTitle($this->translator->trans('seo.home.title.title', [], 'fixtures'));
+        $manager->persist($config);
+
+        // Create configuration for SEO home description
+        $config = new Configuration;
+        $config->setName($this->start.'SEO_HOME_DESCRIPTION');
+        $config->setValue($this->translator->trans('seo.home.value.description', [], 'fixtures'));
+        $config->setTitle($this->translator->trans('seo.home.title.description', [], 'fixtures'));
+        $manager->persist($config);
+
+        // Create configuration for SEO home keywords
+        $config = new Configuration;
+        $config->setName($this->start.'SEO_HOME_KEYWORDS');
+        $config->setTitle($this->translator->trans('seo.home.title.keywords', [], 'fixtures'));
+        $manager->persist($config);
+
+        // Create configuration for SEO home indexation
+        $config = new Configuration;
+        $config->setName($this->start.'SEO_HOME_INDEXATION');
+        $config->setValue(1);
+        $config->setTitle($this->translator->trans('seo.home.title.indexation', [], 'fixtures'));
+        $config->setType('boolean');
+        $manager->persist($config);
+
         $manager->flush();
     }
 }

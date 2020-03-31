@@ -1,8 +1,13 @@
-List: Liste
-Mode Maintenance: Mode Maintenance
+# GENERAL
 Utilisateurs: Utilisateurs
 admin.submit: 'Mettre à jour'
 admin.configurations.not.availables: 'Aucune configurations disponibles !'
 admin.default.label: 'Pas de titre défini'
+
+# MAINTENANCE PAGE
+List: Liste
+Configuration List: Configuration
+Configuration Mode Maintenance: Mode maintenance
+Mode Maintenance: Mode Maintenance
 admin.maintenance.title: 'Configuration du mode maintenance'
 admin.maintenance.add.ip: 'Ajouter mon adresse IP'

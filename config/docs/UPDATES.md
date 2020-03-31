@@ -22,8 +22,8 @@ php bin/console doctrine:migrations:migrate --force
 # 1.5 Insert fixtures
 php bin/console doctrine:fixtures:load
 
-# 1.6 Create user admin
-php bin/console fos:user:create --super-admin
+# 1.6 Modify user admin
+Go to admin and modify default useradmin (login: admin / pass: admin)
 
 # 1.7 clear cache
 php bin/console cache:clear

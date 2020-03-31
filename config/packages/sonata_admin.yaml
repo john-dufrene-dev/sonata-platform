@@ -104,6 +104,11 @@ sonata_admin:
                 items:
                     - sonata.media.admin.media
                     - sonata.media.admin.gallery
+            customize:
+                label: Préférences
+                label_catalogue: Customize
+                items:
+                    - sonata.maintenance
             sonata_user:
                 label: Administration
                 label_catalogue: SonataUserBundle

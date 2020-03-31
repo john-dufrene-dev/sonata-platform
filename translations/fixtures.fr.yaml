@@ -1,2 +1,11 @@
+# MAINTENANCE FIXTURES
 configuration.filters.ip: Filtrage des adresses IP
 configuration.enable.disable.ip: Activer / Désactiver le mode maintenance
+
+#  SEO FIXTURES
+seo.home.value.title: 'Page d''accueil'
+seo.home.value.description: 'Description page d''accueil'
+seo.home.title.title: 'Meta title de la page d''accueil'
+seo.home.title.description: 'Meta description de la page d''accueil'
+seo.home.title.keywords: 'Meta keywords de la page d''accueil'
+seo.home.title.indexation: 'Indexer la page d''accueil'

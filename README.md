@@ -32,8 +32,8 @@ php bin/console doctrine:migrations:migrate --force
 # 1.4 Insert fixtures
 php bin/console doctrine:fixtures:load
 
-# 1.5 Create user admin
-php bin/console fos:user:create --super-admin
+# 1.5 Modify user admin
+Go to admin and modify default useradmin (login: admin / pass: admin)
 
 # 1.6 generate the SSH keys for api
 mkdir -p config/jwt # if not exist
@@ -66,6 +66,7 @@ __1. Todo list__
 - Finish all api for user (IN PROGRESS)
 - Create Command to install project
 - Create Fixtures for user/useradmin (IN PROGRESS)
+- SEO default pages (IN PROGRESS)
 
 ```
 
@@ -80,7 +81,7 @@ __2. Finish todo list__
 - ~~Create Maintenance system~~
 
 ```
-## INFORMATIONZ
+## INFORMATIONS
 
 __1. Troubleshooting__
 
