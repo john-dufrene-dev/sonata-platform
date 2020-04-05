@@ -1,4 +1,13 @@
 {
+    "name": "jddev/sonata-platform",
+    "description": "A prototype of Sonata Platform.",
+    "keywords": ["symfony", "sonata"],
+    "homepage": "https://github.com/john-dufrene-dev",
+    "authors": [
+        {
+            "name": "John Dufrene"
+        }
+    ],
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -6,12 +15,13 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
-        "doctrine/annotations": "1.9.x-dev",
+        "doctrine/annotations": "^1.9",
         "knplabs/knp-menu-bundle": "^2.0",
         "laminas/laminas-code": "^3.4",
         "lexik/jwt-authentication-bundle": "^2.6",
         "sensio/framework-extra-bundle": "^5.1",
         "sonata-project/admin-bundle": "3.x-dev",
+        "sonata-project/block-bundle": "3.x-dev",
         "sonata-project/doctrine-orm-admin-bundle": "^3.14",
         "sonata-project/google-authenticator": "3.x-dev",
         "sonata-project/media-bundle": "3.x-dev",
