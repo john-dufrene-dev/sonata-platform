@@ -1,0 +1,13 @@
+sonata_block:
+    default_contexts: [sonata_page_bundle]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+        sonata.block.service.custom.configuration: ~
+        
+        # Some block with different templates
+        #acme.demo.block.demo:
+        #    templates:
+        #       - { name: 'Simple', template: '@AcmeDemo/Block/demo_simple.html.twig' }
+        #       - { name: 'Big',    template: '@AcmeDemo/Block/demo_big.html.twig' }

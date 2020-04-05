@@ -5,20 +5,28 @@ namespace App\Controller\Front\Security\User;
 use App\Entity\User\User;
 use App\Entity\User\UserInfo;
 use App\Service\Email\Notifier;
+use App\Service\ConfigurationBuilder;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use App\Security\User\LoginFormAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\Front\Security\RegistrationFormType;
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class RegistrationController extends AbstractController
 {
+    /**
+     * config
+     *
+     * @var mixed
+     */
+    protected $config;
+
     /**
      * seo
      *
@@ -32,7 +40,7 @@ class RegistrationController extends AbstractController
      * @var mixed
      */
     protected $params;
-    
+
     /**
      * __construct
      *
@@ -40,8 +48,12 @@ class RegistrationController extends AbstractController
      * @param  mixed $params
      * @return void
      */
-    public function __construct(SeoPageInterface $seo, ParameterBagInterface $params)
-    {
+    public function __construct(
+        ConfigurationBuilder $config,
+        SeoPageInterface $seo,
+        ParameterBagInterface $params
+    ) {
+        $this->config = $config;
         $this->seo = $seo;
         $this->params = $params;
     }
@@ -68,10 +80,12 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('account_index');
         }
 
+        $valueSeo = $this->config->getSeoValue('REGISTER');
+
         $this->seo
-            ->addTitle($title ?? $this->params->get('seo.pages.security_register.title')) // you can use setTitle($title)
-            ->addMeta('name', 'robots', $robots ?? $this->params->get('seo.pages.security_register.robots'))
-            ->addMeta('name', 'description', $description ?? $this->params->get('seo.pages.security_register.description'));
+            ->addTitle($valueSeo['title'] ?? '') // you can use setTitle($title)
+            ->addMeta('name', 'robots', $valueSeo['index'] ?? '')
+            ->addMeta('name', 'description', $valueSeo['description'] ?? '');
 
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);

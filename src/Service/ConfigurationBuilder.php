@@ -12,19 +12,26 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
 class ConfigurationBuilder
 {
     /**
+     * startSeo
+     *
+     * @var string
+     */
+    protected $startSeo = 'CONF_SEO_';
+
+    /**
      * em
      *
      * @var mixed
      */
     protected $em;
-        
+
     /**
      * cache
      *
      * @var mixed
      */
     protected $cache;
-    
+
     /**
      * __construct
      *
@@ -37,7 +44,7 @@ class ConfigurationBuilder
         $this->cache = $cache;
         $this->em = $em;
     }
-    
+
     /**
      * get
      *
@@ -46,14 +53,14 @@ class ConfigurationBuilder
      */
     public function get($name): ?string
     {
-        $item = $this->cache->getItem('caching_value_'.md5($name));
+        $item = $this->cache->getItem('caching_value_' . md5($name));
 
         if (!$item->isHit()) {
 
-            if(!$config = $this->em->getRepository(Configuration::class)->findOneBy(['name' => $name, 'enabled' => 1])) {
+            if (!$config = $this->em->getRepository(Configuration::class)->findOneBy(['name' => $name, 'enabled' => 1])) {
                 return null;
             }
-            
+
             $item->set($config->getValue());
             $this->cache->save($item);
         }
@@ -62,7 +69,7 @@ class ConfigurationBuilder
 
         return $value;
     }
-        
+
     /**
      * update
      *
@@ -72,16 +79,16 @@ class ConfigurationBuilder
      */
     public function update($name, $value = null): ?bool
     {
-        if(!$config = $this->em->getRepository(Configuration::class)->findOneBy(['name' => $name])) {
+        if (!$config = $this->em->getRepository(Configuration::class)->findOneBy(['name' => $name])) {
             return false;
         }
 
         $config->setValue($value);
 
-        $item = $this->cache->getItem('caching_value_'.md5($name));
+        $item = $this->cache->getItem('caching_value_' . md5($name));
 
         if ($item->isHit()) {
-            $this->cache->deleteItem('caching_value_'.md5($name));
+            $this->cache->deleteItem('caching_value_' . md5($name));
         }
 
         $item->set($config->getValue());
@@ -92,7 +99,7 @@ class ConfigurationBuilder
 
         return true;
     }
-    
+
     /**
      * remove
      *
@@ -101,12 +108,29 @@ class ConfigurationBuilder
      */
     public function remove($name): ?bool
     {
-        if (!$this->cache->hasItem('caching_value_'.md5($name))) {
+        if (!$this->cache->hasItem('caching_value_' . md5($name))) {
             return false;
         }
 
-        $this->cache->deleteItem('caching_value_'.md5($name));
+        $this->cache->deleteItem('caching_value_' . md5($name));
 
         return true;
+    }
+
+    /**
+     * getSeoValue
+     *
+     * @param  mixed $value
+     * @return void
+     */
+    public function getSeoValue($value = '')
+    {
+        $robots = $this->get($this->startSeo . $value . '_INDEXATION') == 1 ? 'index,follow' : 'noindex,nofollow';
+
+        return [
+            'title' => $this->get($this->startSeo . $value . '_TITLE'),
+            'description' => $this->get($this->startSeo . $value . '_DESCRIPTION'),
+            'index' => $robots,
+        ];
     }
 }
