@@ -4,7 +4,7 @@ sonata_admin:
 
     assets:
         extra_javascripts: 
-            - 'assets/js/admin/admin.js'
+            - 'build/admin/admin.js'
 
     global_search:
         empty_boxes: fade
@@ -121,11 +121,6 @@ sonata_admin:
 
         role_admin: ROLE_ADMIN
         role_super_admin: ROLE_SUPER_ADMIN
-
-sonata_block:
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts: [admin]
 
 sonata_doctrine_orm_admin:
 

@@ -1,3 +1,5 @@
+// Extra js for admin sonata
+
 document.addEventListener("DOMContentLoaded", () => {
     addCurrentIp();
 });

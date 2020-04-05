@@ -33,6 +33,16 @@ Encore
     // .addStyleEntry('page1', './assets/css/single/page1.scss')
     // .addStyleEntry('page2', './assets/css/single/page2.scss')
 
+    .copyFiles({
+        from: './assets/js/admin',
+        to: 'admin/admin.js',
+    })
+
+    .copyFiles({
+        from: './assets/css/admin',
+        to: 'admin/admin.css',
+    })
+
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
@@ -83,7 +93,7 @@ Encore
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
-;
+    ;
 
 let config = Encore.getWebpackConfig();
 config.resolve.alias["@@js"] = path.resolve(__dirname, 'assets/js'); // To access assets/js => @@js

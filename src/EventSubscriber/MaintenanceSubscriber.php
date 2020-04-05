@@ -38,14 +38,14 @@ class MaintenanceSubscriber implements EventSubscriberInterface
      * @var string
      */
     protected $ipAuthorized = 'CONF_MAINTENANCE_IP_VALID';
-    
+
     /**
      * urlPattern
      *
      * @var string
      */
     protected $urlPattern = '/admin';
-    
+
     /**
      * templateError
      *
@@ -81,8 +81,8 @@ class MaintenanceSubscriber implements EventSubscriberInterface
         if ($maintenance && !in_array($currentIP, $ips)) {
 
             // Verify if pattern match "/admin"
-            if(!$this->startsWith($event->getRequest()->server->get('REQUEST_URI'), $this->urlPattern)) {
-                $engine = $this->container->get('templating');
+            if (!$this->startsWith($event->getRequest()->server->get('REQUEST_URI'), $this->urlPattern)) {
+                $engine = $this->container->get('twig');
                 $template = $engine->render($this->templateError);
 
                 // We send our response with a 503 response code (service unavailable)
@@ -103,7 +103,7 @@ class MaintenanceSubscriber implements EventSubscriberInterface
             KernelEvents::REQUEST => ['onKernelRequest', 512]
         ];
     }
-    
+
     /**
      * startsWith
      *
@@ -111,9 +111,9 @@ class MaintenanceSubscriber implements EventSubscriberInterface
      * @param  mixed $startString
      * @return void
      */
-    public function startsWith($string, $startString) 
-    { 
-        $len = strlen($startString); 
-        return (substr($string, 0, $len) === $startString); 
+    public function startsWith($string, $startString)
+    {
+        $len = strlen($startString);
+        return (substr($string, 0, $len) === $startString);
     }
 }

@@ -87,7 +87,7 @@ __1. Troubleshooting__
 
 ```bash
 
-- Error with "sonata-project/doctrine-extensions" when update to 1.6.0 : use version 1.5.1 (waiting for update) OR you can update "doctrine/annotations:1.9.x-dev" to use "sonata-project/doctrine-extensions:1.6.0"
+- To upload youtube video https is required (Google API)
 
 ```
 
@@ -100,7 +100,6 @@ __2. Using dev version for__
 - sonata-project/media-bundle
 - sonata-project/seo-bundle
 - sonata-project/user-bundle
-- doctrine/annotations:1.9.x-dev
 
 ```
 

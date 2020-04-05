@@ -1,11 +1,10 @@
 parameters:
 
-    sonata.media.admin.media.class: App\Admin\MediaAdmin\MediaAdmin
-    sonata.media.admin.gallery.class: App\Admin\MediaAdmin\GalleryAdmin
+    # your sonata parameters here
 
 services:
 
-    # User Admin
+# User Admin
     sonata.user:
         class: App\Admin\User\UserAdmin
         arguments: [~, App\Entity\User\User, App\Controller\Admin\User\UserAdminController]
@@ -13,7 +12,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: users, label: Utilisateurs }
         public: true
     
-    # Maintenance Admin
+# Maintenance Admin
     sonata.maintenance:
         class: App\Admin\MaintenanceAdmin
         arguments: [~, App\Entity\Configuration, App\Controller\Admin\MaintenanceAdminController]
@@ -24,8 +23,8 @@ services:
     sonata.block.service.custom.configuration:
         class: App\Service\Admin\Block\ConfigurationBlockService
         arguments:
+            - '@twig'
             - ~
-            - '@templating.engine.delegating'
             - '@parameter_bag'
             - '@doctrine.orm.default_entity_manager'
             - '@cache.app'
@@ -33,7 +32,4 @@ services:
             - '@router.default'
         tags:
             - { name: sonata.block }
-
-sonata_block:
-    blocks:
-        sonata.block.service.custom.configuration: ~
+            
