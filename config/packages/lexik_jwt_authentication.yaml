@@ -22,7 +22,7 @@ lexik_jwt_authentication:
         # check token in a cookie
         cookie:
             enabled: true
-            name:    X-AUTH-TOKEN
+            name:    X-JWT-TOKEN
             
         # check token in query string parameter
         query_parameter:
