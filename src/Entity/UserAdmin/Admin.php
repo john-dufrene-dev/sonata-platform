@@ -6,10 +6,10 @@ use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserAdmin\UserAdminRepository")
- * @ORM\Table(name="user_admin")
+ * @ORM\Entity(repositoryClass="App\Repository\UserAdmin\AdminRepository")
+ * @ORM\Table(name="admin")
  */
-class UserAdmin extends BaseUser
+class Admin extends BaseUser
 {
     /**
      * @ORM\Id

@@ -2,25 +2,25 @@
 
 namespace App\Repository\UserAdmin;
 
-use App\Entity\UserAdmin\UserAdmin;
+use App\Entity\UserAdmin\Admin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method UserAdmin|null find($id, $lockMode = null, $lockVersion = null)
- * @method UserAdmin|null findOneBy(array $criteria, array $orderBy = null)
- * @method UserAdmin[]    findAll()
- * @method UserAdmin[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Admin|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Admin|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Admin[]    findAll()
+ * @method Admin[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserAdminRepository extends ServiceEntityRepository
+class AdminRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, UserAdmin::class);
+        parent::__construct($registry, Admin::class);
     }
 
     // /**
-    //  * @return UserAdmin[] Returns an array of Test objects
+    //  * @return Admin[] Returns an array of Test objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class UserAdminRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?UserAdmin
+    public function findOneBySomeField($value): ?Admin
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

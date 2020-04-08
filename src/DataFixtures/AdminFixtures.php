@@ -2,15 +2,15 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\UserAdmin\UserAdmin;
+use App\Entity\UserAdmin\Admin;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class UserAdminFixtures extends Fixture
+class AdminFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $admin = new UserAdmin;
+        $admin = new Admin;
         $admin->setUsername('admin');
         $admin->setEmail('admin@admin.fr');
         $admin->setEnabled(true);

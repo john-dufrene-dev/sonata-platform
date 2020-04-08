@@ -25,7 +25,7 @@ use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
-final class UserAdmin extends BaseUserAdmin
+final class Admin extends BaseUserAdmin
 {
     public $supportsPreviewMode = true;
 

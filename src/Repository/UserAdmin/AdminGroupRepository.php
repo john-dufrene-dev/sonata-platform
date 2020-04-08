@@ -2,25 +2,25 @@
 
 namespace App\Repository\UserAdmin;
 
-use App\Entity\UserAdmin\GroupAdmin;
+use App\Entity\UserAdmin\AdminGroup;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method GroupAdmin|null find($id, $lockMode = null, $lockVersion = null)
- * @method GroupAdmin|null findOneBy(array $criteria, array $orderBy = null)
- * @method GroupAdmin[]    findAll()
- * @method GroupAdmin[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AdminGroup|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AdminGroup|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AdminGroup[]    findAll()
+ * @method AdminGroup[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GroupAdminRepository extends ServiceEntityRepository
+class AdminGroupRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, GroupAdmin::class);
+        parent::__construct($registry, AdminGroup::class);
     }
 
     // /**
-    //  * @return GroupAdmin[] Returns an array of Test objects
+    //  * @return AdminGroup[] Returns an array of Test objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class GroupAdminRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?GroupAdmin
+    public function findOneBySomeField($value): ?AdminGroup
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

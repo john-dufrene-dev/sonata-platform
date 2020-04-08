@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use App\Form\Admin\Type\CustomSecurityRolesType;
 use Sonata\UserBundle\Admin\Model\GroupAdmin as BaseGroupAdmin;
 
-final class GroupAdmin extends BaseGroupAdmin
+final class AdminGroup extends BaseGroupAdmin
 {
     public $supportsPreviewMode = true;
 

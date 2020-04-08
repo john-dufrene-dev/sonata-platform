@@ -6,10 +6,10 @@ use Sonata\UserBundle\Entity\BaseGroup as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserAdmin\GroupAdminRepository")
- * @ORM\Table(name="user_admin_group")
+ * @ORM\Entity(repositoryClass="App\Repository\UserAdmin\AdminGroupRepository")
+ * @ORM\Table(name="admin_group")
  */
-class GroupAdmin extends BaseGroup
+class AdminGroup extends BaseGroup
 {
     /**
      * @ORM\Id

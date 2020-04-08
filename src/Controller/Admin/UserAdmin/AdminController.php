@@ -7,7 +7,7 @@ namespace App\Controller\Admin\UserAdmin;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-final class UserAdminController extends CRUDController
+final class AdminController extends CRUDController
 {
     /**
      * setContainer

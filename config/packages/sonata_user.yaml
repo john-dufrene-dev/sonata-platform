@@ -3,26 +3,26 @@ sonata_user:
     manager_type: orm      # can be orm or mongodb
 
     table:
-        user_group: "user_admin_user_group"
+        user_group: "admin_admin_group"
 
     impersonating:
         route:                sonata_admin_dashboard
         # parameters:           { path: / }
 
     class:                  # Entity Classes
-        user:               App\Entity\UserAdmin\UserAdmin
-        group:              App\Entity\UserAdmin\GroupAdmin
+        user:               App\Entity\UserAdmin\Admin
+        group:              App\Entity\UserAdmin\AdminGroup
 
     admin:                  # Admin Classes
         user:
-            class:          App\Admin\UserAdmin\UserAdmin
-            controller:     App\Controller\Admin\UserAdmin\UserAdminController
+            class:          App\Admin\UserAdmin\Admin
+            controller:     App\Controller\Admin\UserAdmin\AdminController
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
         group:
-            class:          App\Admin\UserAdmin\GroupAdmin
-            controller:     App\Controller\Admin\UserAdmin\GroupAdminController
+            class:          App\Admin\UserAdmin\AdminGroup
+            controller:     App\Controller\Admin\UserAdmin\AdminGroupController
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
