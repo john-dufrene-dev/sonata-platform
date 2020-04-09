@@ -26,28 +26,28 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Sonata\UserBundle\Form\Transformer\RestoreRolesTransformer;
 
 class CustomSecurityRolesType extends AbstractType
-{    
+{
     /**
      * container
      *
      * @var mixed
      */
     protected $container;
-    
+
     /**
      * unset_roles - ALL ROLES YOU WANT TO UNSET
      *
      * @var array
      */
     protected $unset_roles = [
-        'ROLE_SONATA_MAINTENANCE_EDIT', 
+        'ROLE_SONATA_MAINTENANCE_EDIT',
         'ROLE_SONATA_MAINTENANCE_CREATE',
         'ROLE_SONATA_MAINTENANCE_EXPORT',
         'ROLE_SONATA_MAINTENANCE_ALL',
         'ROLE_SONATA_MAINTENANCE_DELETE',
         'ROLE_SONATA_MAINTENANCE_VIEW',
     ];
-    
+
     /**
      * __construct
      *
@@ -58,7 +58,7 @@ class CustomSecurityRolesType extends AbstractType
     {
         $this->container = $container;
     }
-    
+
     /**
      * buildForm
      *
@@ -82,7 +82,7 @@ class CustomSecurityRolesType extends AbstractType
 
         $formBuilder->addModelTransformer($transformer);
     }
-    
+
     /**
      * buildView
      *
@@ -96,7 +96,7 @@ class CustomSecurityRolesType extends AbstractType
         $attr = $view->vars['attr'];
 
         if (isset($attr['class']) && empty($attr['class'])) {
-            $attr['class'] = 'sonata-medium';
+            $attr['class'] = 'sonata-medium custom-security-roles-type';
         }
 
         $view->vars['choice_translation_domain'] = false; // RolesBuilder all ready does translate them
@@ -104,7 +104,7 @@ class CustomSecurityRolesType extends AbstractType
         $view->vars['attr'] = $attr;
         $view->vars['read_only_choices'] = $options['read_only_choices'];
     }
-    
+
     /**
      * configureOptions
      *
@@ -124,8 +124,7 @@ class CustomSecurityRolesType extends AbstractType
                 $roles = $this->container->get('custom.user.editable_role_builder')->getRoles($options['choice_translation_domain'], $options['expanded']);
 
                 foreach ($roles as $role) {
-
-                    if(in_array($role, $this->unset_roles)){
+                    if (\in_array($role, $this->unset_roles)) {
                         unset($roles[$role]);
                     }
                 }
@@ -156,7 +155,8 @@ class CustomSecurityRolesType extends AbstractType
                         $admin = $options['sonata_field_description']->getAdmin();
                     }
                     if (null !== $admin) {
-                        $value = $admin->getTranslationDomain();
+                        // $value = $admin->getTranslationDomain(); // change translation domain
+                        $value = 'roles';
                     }
                 }
 
@@ -166,7 +166,7 @@ class CustomSecurityRolesType extends AbstractType
             'data_class' => null,
         ]);
     }
-    
+
     /**
      * getParent
      *
@@ -176,7 +176,7 @@ class CustomSecurityRolesType extends AbstractType
     {
         return ChoiceType::class;
     }
-    
+
     /**
      * getBlockPrefix
      *

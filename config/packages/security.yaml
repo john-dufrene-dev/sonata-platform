@@ -95,7 +95,7 @@ security:
 
         # ROLE_SONATA_USER_ADMIN_USER_HISTORY
 
-        ROLE_ADMIN:                     [ROLE_USER, ROLE_SONATA_ADMIN]
+        ROLE_ADMIN:                     [ROLE_USER]
         ROLE_SUPER_ADMIN:               [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     access_decision_manager:

@@ -3,6 +3,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+    # cache: false # just for dev and testing
     form_themes:
         - 'bootstrap_4_layout.html.twig'
         - '@SonataCore/Form/datepicker.html.twig'

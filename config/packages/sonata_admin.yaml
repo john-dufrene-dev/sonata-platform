@@ -4,7 +4,9 @@ sonata_admin:
 
     assets:
         extra_javascripts: 
-            - 'build/admin/admin.js'
+            - build/admin/admin.js
+        extra_stylesheets:
+            - build/admin/admin.css
 
     global_search:
         empty_boxes: fade

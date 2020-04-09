@@ -3,14 +3,13 @@ title_user_account: 'Profil administrateur'
 title_user_edit_profile: Éditer
 title_user_authentication: Identification
 sonata_user_submit: Envoyer
-breadcrumb.link_admin_create: Ajouter
-breadcrumb.link_admin_edit: Éditer
-breadcrumb.link_admin_list: 'Liste des administrateurs'
-breadcrumb.link_admin_delete: Supprimer
-breadcrumb.link_admin_group_create: Ajouter
-breadcrumb.link_admin_group_edit: Éditer
-breadcrumb.link_admin_group_list: 'Liste des groupes d''administrateurs'
-breadcrumb.link_admin_group_delete: Supprimer
+breadcrumb.link_user_list: Utilisateurs
+breadcrumb.link_user_create: Ajouter
+breadcrumb.link_user_edit: Éditer
+breadcrumb.link_user_delete: Supprimer
+breadcrumb.link_group_list: Groupes
+breadcrumb.link_group_create: Ajouter
+breadcrumb.link_group_edit: Éditer
 users: Administrateurs
 groups: Groupes
 switch_user_exit: 'Quitter l''identité'
@@ -140,6 +139,14 @@ title_user_edit_password: title_user_edit_password
 title_user_resetting: title_user_resetting
 title_user_resetting_reset: title_user_resetting_reset
 qr_go_next: 'Je l''ai scanné. Continuer.'
+breadcrumb.link_admin_create: Ajouter
+breadcrumb.link_admin_edit: Éditer
+breadcrumb.link_admin_list: 'Liste des administrateurs'
+breadcrumb.link_admin_delete: Supprimer
+breadcrumb.link_admin_group_create: Ajouter
+breadcrumb.link_admin_group_edit: Éditer
+breadcrumb.link_admin_group_list: 'Liste des groupes d''administrateurs'
+breadcrumb.link_admin_group_delete: Supprimer
 qr_code_secret: __qr_code_secret
 field.label_roles_readonly: __field.label_roles_readonly
 list.label__action: Actions
