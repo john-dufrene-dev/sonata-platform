@@ -26,14 +26,14 @@ class Notifier
      * @var mixed
      */
     protected $params;
-    
+
     /**
      * em
      *
      * @var mixed
      */
     protected $em;
-    
+
     /**
      * __construct
      *
@@ -52,7 +52,6 @@ class Notifier
     /**
      * EmailRegistration
      *
-     * @param  mixed $user
      * @return void
      */
     public function EmailRegistration(
@@ -62,12 +61,38 @@ class Notifier
         $template = 'front/emails/users/registration.html.twig'
     ) {
         $email = (new TemplatedEmail())
-            ->from($this->params->get('mailer_user'))
-            ->to(new Address($user->getEmail()))
+            ->from(new Address($this->params->get('mailer_user'), $subject))
+            ->to($user->getEmail())
             ->subject($subject)
             ->text($text)
             ->htmlTemplate($template)
             ->context(['user' => $user]);
+
+        $this->mailer->send($email);
+    }
+
+
+    /**
+     * EmailResetPassword
+     *
+     * @return void
+     */
+    public function EmailResetPassword(
+        $user,
+        $token,
+        $lifetime,
+        $subject = 'Your password reset request',
+        $template = 'front/emails/users/reset.password.html.twig'
+    ) {
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->params->get('mailer_user'), $subject))
+            ->to($user->getEmail())
+            ->subject($subject)
+            ->htmlTemplate($template)
+            ->context([
+                'resetToken' => $token,
+                'tokenLifetime' => $lifetime,
+            ]);
 
         $this->mailer->send($email);
     }

@@ -1,0 +1,14 @@
+{% extends "front/layout/default.html.twig" %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Reset your password</h1>
+
+		{{ form_start(resetForm) }}
+		{{ form_row(resetForm.plainPassword) }}
+		<button class="btn btn-lg btn-primary" type="submit">Reset password</button>
+		{{ form_end(resetForm) }}
+
+	</div>
+{% endblock %}
