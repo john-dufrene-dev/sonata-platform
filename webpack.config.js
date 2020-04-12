@@ -27,21 +27,12 @@ Encore
     .addEntry('app', './assets/js/app.js')
 
     // You can directly include css in js file
-    .addEntry('account/app', './assets/js/pages/account.js')
+    .addEntry('account/admin', './assets/js/pages/account.js')
     //.addEntry('page2', './assets/js/single/page2.js')
 
-    // .addStyleEntry('page1', './assets/css/single/page1.scss')
-    // .addStyleEntry('page2', './assets/css/single/page2.scss')
-
-    .copyFiles({
-        from: './assets/js/admin',
-        to: 'admin/admin.js',
-    })
-
-    .copyFiles({
-        from: './assets/css/admin',
-        to: 'admin/admin.css',
-    })
+    // add entry for admin
+    .addEntry('admin/admin', './assets/js/admin/admin.js')
+    .addEntry('admin/pages/maintenance', './assets/js/admin/pages/maintenance.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

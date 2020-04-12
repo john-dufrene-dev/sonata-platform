@@ -1,5 +1,12 @@
 {% extends '@SonataAdmin/standard_layout.html.twig' %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+	{{ encore_entry_link_tags('admin/pages/maintenance') }}
+
+{% endblock %}
+
 {% block sonata_admin_content %}
 
 	<div id="myIP" data-my-ip="{{currentIP}}"></div>
@@ -10,6 +17,13 @@
 		'btn_title_extra': ('admin.maintenance.add.ip'|trans),
 		'btn_id_extra': 'add_ip_address'
 	}) }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+	{{ parent() }}
+	{{ encore_entry_script_tags('admin/pages/maintenance') }}
 
 {% endblock %}
 
