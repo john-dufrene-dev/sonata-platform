@@ -16,6 +16,7 @@
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
         "doctrine/annotations": "^1.9",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "laminas/laminas-code": "^3.4",
         "lexik/jwt-authentication-bundle": "^2.6",
@@ -54,6 +55,7 @@
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.4.*",
         "symfonycasts/reset-password-bundle": "^1.0",
+        "tilleuls/ckeditor-sonata-media-bundle": "^1.0",
         "twig/twig": "^2.0"
     },
     "require-dev": {

@@ -1,6 +1,7 @@
 parameters:
 
-    # your sonata parameters here
+    # Custom controller for CKEditor browser/upload images
+    sonata.media.admin.media.controller: App\Controller\Admin\MediaAdmin\CustomUploadCKEditorController
 
 services:
 
@@ -33,7 +34,7 @@ services:
         tags:
             - { name: sonata.block }
     
-    # Inject EdiatableRoleBuilder in Custom SecurityRolesType
+    # Inject EditableRoleBuilder in Custom SecurityRolesType
     custom.user.editable_role_builder:
         class: Sonata\UserBundle\Security\EditableRolesBuilder
         public: true

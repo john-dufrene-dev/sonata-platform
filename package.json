@@ -24,6 +24,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "axios": "^0.19.2"
+        "axios": "^0.19.2",
+        "ckeditor": "^4.12.1"
     }
 }

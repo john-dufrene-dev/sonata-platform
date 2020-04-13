@@ -88,6 +88,7 @@ __1. Troubleshooting__
 ```bash
 
 - To upload youtube video https is required (Google API)
+- Error return JSON response when upload media in CKEditorType ref: "#1" in 'App\Controller\Admin\MediaAdmin\CustomUploadCKEditorController'
 
 ```
 
