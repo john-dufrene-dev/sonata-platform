@@ -27,7 +27,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
 
     // You can directly include css in js file
-    .addEntry('account/admin', './assets/js/pages/account.js')
+    .addEntry('account/app', './assets/js/pages/account.js')
     //.addEntry('page2', './assets/js/single/page2.js')
 
     // add entry for admin
