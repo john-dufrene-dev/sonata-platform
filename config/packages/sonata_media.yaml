@@ -3,9 +3,9 @@ sonata_media:
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
     # if you don't use default namespace configuration
     class:
-        media: App\Entity\MediaAdmin\Media
-        gallery:  App\Entity\MediaAdmin\Gallery
-        gallery_has_media:  App\Entity\MediaAdmin\GalleryHasMedia
+        media: App\Entity\Media\Media
+        gallery:  App\Entity\Media\Gallery
+        gallery_has_media:  App\Entity\Media\GalleryHasMedia
         category: null # Application\Sonata\ClassificationBundle\Entity\Category
     # category_manager: sonata.media.manager.category.default
     # force_disable_category: true

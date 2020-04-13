@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\MediaAdmin;
+namespace App\Repository\Media;
 
-use App\Entity\MediaAdmin\Media;
+use App\Entity\Media\Media;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 

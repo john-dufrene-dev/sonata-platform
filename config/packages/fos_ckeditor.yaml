@@ -17,16 +17,16 @@ fos_ck_editor:
               NumberedList, BulletedList, -, Outdent, Indent, -,
               Blockquote, -, Image, Link, Unlink, Table]
             - [Format, Maximize, Preview, Source]
-            filebrowserBrowseRoute: admin_app_mediaadmin_media_browser
-            filebrowserImageBrowseRoute: admin_app_mediaadmin_media_browser
+            filebrowserBrowseRoute: admin_app_media_media_browser
+            filebrowserImageBrowseRoute: admin_app_media_media_browser
             # Display images by default when clicking the image dialog browse button
             filebrowserImageBrowseRouteParameters:
                 provider: sonata.media.provider.image
-            filebrowserUploadRoute: admin_app_mediaadmin_media_upload
+            filebrowserUploadRoute: admin_app_media_media_upload
             filebrowserUploadRouteParameters:
                 provider: sonata.media.provider.file
             # Upload file as image when sending a file from the image dialog
-            filebrowserImageUploadRoute: admin_app_mediaadmin_media_upload
+            filebrowserImageUploadRoute: admin_app_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
                 context: default # Optional, to upload in a custom context
