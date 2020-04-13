@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Repository\MediaAdmin;
+namespace App\Repository\Media;
 
-use App\Entity\MediaAdmin\Gallery;
+use App\Entity\Media\GalleryHasMedia;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Gallery|null find($id, $lockMode = null, $lockVersion = null)
- * @method Gallery|null findOneBy(array $criteria, array $orderBy = null)
- * @method Gallery[]    findAll()
- * @method Gallery[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method GalleryHasMedia|null find($id, $lockMode = null, $lockVersion = null)
+ * @method GalleryHasMedia|null findOneBy(array $criteria, array $orderBy = null)
+ * @method GalleryHasMedia[]    findAll()
+ * @method GalleryHasMedia[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GalleryRepository extends ServiceEntityRepository
+class GalleryHasMediaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Gallery::class);
+        parent::__construct($registry, GalleryHasMedia::class);
     }
 
     // /**
-    //  * @return Gallery[] Returns an array of Test objects
+    //  * @return GalleryHasMedia[] Returns an array of Test objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class GalleryRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Gallery
+    public function findOneBySomeField($value): ?GalleryHasMedia
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

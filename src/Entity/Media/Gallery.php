@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Entity\MediaAdmin;
+namespace App\Entity\Media;
 
-use Sonata\MediaBundle\Entity\BaseMedia as BaseMedia;
+use Sonata\MediaBundle\Entity\BaseGallery as BaseGallery;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MediaAdmin\MediaRepository")
- * @ORM\Table(name="media__media")
+ * @ORM\Entity(repositoryClass="App\Repository\Media\GalleryRepository")
+ * @ORM\Table(name="gallery")
  */
-class Media extends BaseMedia
+class Gallery extends BaseGallery
 {
     /**
      * @ORM\Id

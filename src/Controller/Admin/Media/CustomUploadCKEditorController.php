@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\MediaAdmin;
+namespace App\Controller\Admin\Media;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
