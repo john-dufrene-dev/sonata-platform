@@ -24,25 +24,26 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('front/app', './assets/js/front/app.js')
 
     // You can directly include css in js file
-    .addEntry('account/app', './assets/js/pages/account.js')
+    .addEntry('front/pages/account', './assets/js/front/pages/account.js')
     //.addEntry('page2', './assets/js/single/page2.js')
 
     // add entry for admin
-    .addEntry('admin/admin', './assets/js/admin/admin.js')
+    .addEntry('admin/app', './assets/js/admin/admin.js')
     .addEntry('admin/pages/maintenance', './assets/js/admin/pages/maintenance.js')
 
+    // add entry for helpers
+    .addEntry('helpers/toaster', './assets/js/helpers/toaster.js')
+
     .copyFiles([
-        {from: './node_modules/ckeditor/', to: 'ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},
-        {from: './node_modules/ckeditor/adapters', to: 'ckeditor/adapters/[path][name].[ext]'},
-        {from: './node_modules/ckeditor/lang', to: 'ckeditor/lang/[path][name].[ext]'},
-        {from: './node_modules/ckeditor/plugins', to: 'ckeditor/plugins/[path][name].[ext]'},
-        {from: './node_modules/ckeditor/skins', to: 'ckeditor/skins/[path][name].[ext]'}
+        {from: './node_modules/ckeditor/', to: 'helpers/ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},
+        {from: './node_modules/ckeditor/adapters', to: 'helpers/ckeditor/adapters/[path][name].[ext]'},
+        {from: './node_modules/ckeditor/lang', to: 'helpers/ckeditor/lang/[path][name].[ext]'},
+        {from: './node_modules/ckeditor/plugins', to: 'helpers/ckeditor/plugins/[path][name].[ext]'},
+        {from: './node_modules/ckeditor/skins', to: 'helpers/ckeditor/skins/[path][name].[ext]'}
     ])
-    // Uncomment the following line if you are using Webpack Encore <= 0.24
-    // .addLoader({test: /\.json$/i, include: [path.resolve(__dirname, 'node_modules/ckeditor')], loader: 'raw-loader', type: 'javascript/auto'})
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

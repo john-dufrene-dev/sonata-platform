@@ -1,8 +1,8 @@
 # Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
 
 fos_ck_editor:
-    base_path: "build/ckeditor"
-    js_path:   "build/ckeditor/ckeditor.js"
+    base_path: "build/helpers/ckeditor"
+    js_path:   "build/helpers/ckeditor/ckeditor.js"
     default_config: default
     configs:
         default:

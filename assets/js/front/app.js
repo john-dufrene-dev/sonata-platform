@@ -4,7 +4,7 @@ import Vue from 'vue';
 // import axios from 'axios';
 
 // import app.css
-import '@@css/app.scss';
+import '@@css/front/app.scss';
 
 // import jQuery
 import $ from 'jquery';
@@ -12,8 +12,8 @@ import $ from 'jquery';
 // import boostrap
 require('bootstrap');
 
-import '@@js/config/vue';
-import '@@js/config/security';
+import '@@js/front/config/vue';
+import '@@js/front/config/security';
 
 const app = new Vue({
     el: '#app',
