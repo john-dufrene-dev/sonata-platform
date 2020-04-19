@@ -2,6 +2,8 @@
 
 {% block block %}
 
+{% include '@SonataCore/FlashMessage/render.html.twig' %}
+
 <div class="row">
 
     <div class="col-md-12">
@@ -25,13 +27,15 @@
                                         </div>
 
                                         <div class="box-body">
-                                            <div class="sonata-ba-collapsed-fields">
+                                            <div class="sonata-ba-collapsed-fields row">
 
                                                 {% for config in configs %}
+
+                                                <div class="col-md-12">
                                                     
                                                     {# If configuration is a text type #}
                                                     {% if config.type == 'text' %}
-                                                    <div class="form-group" id="configuration_group_{{ config.name }}">
+                                                    <div class="form-group custom-block-service-form-label" id="configuration_group_{{ config.name }}">
                                                         <label class="control-label" 
                                                             for="configuration_group_{{ config.name }}">
                                                             {{ config.title ?? 'admin.default.label'|trans }}
@@ -50,7 +54,7 @@
 
                                                     {# If configuration is a textarea type #}
                                                     {% elseif config.type == 'textarea' %}
-                                                    <div class="form-group" id="configuration_group_{{ config.name }}">
+                                                    <div class="form-group custom-block-service-form-label" id="configuration_group_{{ config.name }}">
                                                         <label class="control-label" 
                                                             for="configuration_group_{{ config.name }}">
                                                             {{ config.title ?? 'admin.default.label'|trans }}
@@ -72,7 +76,7 @@
                                                     {% elseif config.type == 'boolean' %}
                                                     {% set status = (config.value == 1 
                                                         or config.value == 'on') ? 1 : 0 ?? 1 %}
-                                                    <div class="custom-control custom-checkbox">
+                                                    <div class="custom-control custom-checkbox custom-block-service-form-label">
                                                         <input
                                                             id="configuration_check_{{ config.name }}"
                                                             type='hidden' 
@@ -83,7 +87,7 @@
                                                             id="checkbox_{{ config.name }}"
                                                             {% if config.value == true %} checked {% endif %}>
                                                         <label 
-                                                            class="custom-control-label" 
+                                                            class="custom-control-label custom-block-service-checkbox-label" 
                                                             for="checkbox_{{ config.name }}">
                                                             {{ config.title }}
                                                         </label>
@@ -110,7 +114,7 @@
   
                                                     {# If configuration is null #}
                                                     {% else %}
-                                                    <div class="form-group" id="configuration_group_{{ config.name }}">
+                                                    <div class="form-group custom-block-service-form-label" id="configuration_group_{{ config.name }}">
                                                         <label class="control-label" 
                                                             for="configuration_group_{{ config.name }}">
                                                             {{ config.title ?? 'admin.default.label'|trans }}
@@ -127,6 +131,8 @@
                                                         </div>
                                                     </div>
                                                     {% endif %}
+
+                                                </div>
 
                                                 {% endfor %}
 

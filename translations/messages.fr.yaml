@@ -11,3 +11,6 @@ Configuration Mode Maintenance: Mode maintenance
 Mode Maintenance: Mode Maintenance
 admin.maintenance.title: 'Configuration du mode maintenance'
 admin.maintenance.add.ip: 'Ajouter mon adresse IP'
+
+# CUSTOM BLOCK SERVICE
+custom.block.service.flash.success: 'Mise à jour effectuée avec succès !'

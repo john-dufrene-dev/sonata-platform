@@ -15,8 +15,8 @@ services:
     
     # Maintenance Admin
     sonata.maintenance:
-        class: App\Admin\MaintenanceAdmin
-        arguments: [~, App\Entity\Configuration, App\Controller\Admin\MaintenanceAdminController]
+        class: App\Admin\Maintenance\MaintenanceAdmin
+        arguments: [~, App\Entity\Configuration, App\Controller\Admin\Maintenance\MaintenanceAdminController]
         tags:
             - { name: sonata.admin, manager_type: orm, group: customize, label: Maintenance }
 
@@ -31,6 +31,7 @@ services:
             - '@cache.app'
             - '@request_stack'
             - '@router.default'
+            - '@translator.data_collector'
         tags:
             - { name: sonata.block }
     

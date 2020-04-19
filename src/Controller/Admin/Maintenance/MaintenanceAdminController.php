@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Maintenance;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 
 class MaintenanceAdminController extends CRUDController
 {
-    protected $template = 'admin/maintenance/maintenance_view.html.twig';
+    protected $template = 'admin/pages/maintenance/maintenance_view.html.twig';
 
-    protected $options = ['CONF_MAINTENANCE_IP_VALID', 'CONF_MAINTENANCE_STATUS'];
+    protected $options = ['CONF_MAINTENANCE_STATUS', 'CONF_MAINTENANCE_IP_VALID'];
 
     public function listAction()
     {

@@ -1,17 +1,7 @@
 /* Extra css for admin sonata */
 
-/* CustomSecurityRolesType */
-.custom-security-roles-type li {
-    display: inline-block;
-    width: 25%;
-    padding: 8px;
-    box-sizing: border-box;
-}
+/* Blocks elements */
+@import "@@css/admin/elements/blocks/custom_block_service.scss";
 
-@media (max-width: 1200px) and (min-width: 501px) {
-    .custom-security-roles-type li { width: 50%; } /* Show 2 logos per row on medium devices (tablets, phones in landscape) */
-}
-
-@media (max-width: 500px) {
-    .custom-security-roles-type li { width: 100%; } /* On small screens, show one logo per row */
-}
+/* Types elements */
+@import "@@css/admin/elements/types/security_roles.scss";

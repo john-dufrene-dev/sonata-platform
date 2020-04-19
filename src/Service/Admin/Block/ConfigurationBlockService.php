@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBag;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class ConfigurationBlockService  extends AbstractBlockService
 {
@@ -57,6 +58,13 @@ final class ConfigurationBlockService  extends AbstractBlockService
     protected $router;
 
     /**
+     * translator
+     *
+     * @var mixed
+     */
+    protected $translator;
+
+    /**
      * config
      *
      * @var mixed
@@ -68,7 +76,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
      *
      * @var mixed
      */
-    protected $cache_configs = [];
+    protected $cache_configs;
 
     /**
      * configs
@@ -84,7 +92,8 @@ final class ConfigurationBlockService  extends AbstractBlockService
         EntityManagerInterface $em,
         AdapterInterface $cache,
         RequestStack $request,
-        RouterInterface $router
+        RouterInterface $router,
+        TranslatorInterface $translator
     ) {
         parent::__construct($twig, $templating);
         $this->params = $params;
@@ -92,6 +101,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
         $this->cache = $cache;
         $this->request = $request;
         $this->router = $router;
+        $this->translator = $translator;
     }
 
     protected $template = 'admin/block/configuration_template.html.twig';
@@ -131,6 +141,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
+        $this->cache_configs = [];
         $this->config = new ConfigurationBuilder($this->em, $this->cache);
         $settings = $blockContext->getSettings();
         $this->configs = false;
@@ -163,6 +174,9 @@ final class ConfigurationBlockService  extends AbstractBlockService
             foreach($this->request->getCurrentRequest()->request->all() as $key => $value) {
                 $this->config->update($key, $value);
             }
+
+            $this->request->getCurrentRequest()->getSession()
+                ->getFlashBag()->add('success', $this->translator->trans('custom.block.service.flash.success'));
 
             return new RedirectResponse('list');
         }
