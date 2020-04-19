@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "axios": "^0.19.2",
-        "ckeditor": "^4.12.1"
+        "ckeditor": "^4.12.1",
+        "toastr": "^2.1.4"
     }
 }

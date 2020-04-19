@@ -31,7 +31,7 @@ final class AdminGroup extends BaseGroupAdmin
         $listMapper
             ->addIdentifier('name')
             ->add('roles', null, [
-                'header_style' => 'width: 50%',
+                'header_class' => 'col-md-6',
             ])
             ->add('_action', null, [
                 'actions' => [

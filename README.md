@@ -101,6 +101,9 @@ __2. Using dev version for__
 - sonata-project/media-bundle
 - sonata-project/seo-bundle
 - sonata-project/user-bundle
+- sonata-project/doctrine-orm-admin-bundle
+- sonata-project/core-bundle
+- friendsofsymfony/user-bundle
 
 ```
 

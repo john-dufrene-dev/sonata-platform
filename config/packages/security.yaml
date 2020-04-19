@@ -47,7 +47,8 @@ security:
                 use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
-                success_handler: sonata.user.google.authenticator.success_handler
+                # Uncomment if you want to use Google Authenticator
+                # success_handler: sonata.user.google.authenticator.success_handler
             logout:
                 path:           /admin/logout
                 target:         /admin/login

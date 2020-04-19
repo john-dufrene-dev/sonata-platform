@@ -27,8 +27,9 @@ sonata_user:
             # translation:    SonataUserBundle
 
     google_authenticator:
-        enabled: true
-        server:  '%env(resolve:SERVER_URL)%'
+        enabled: false
+        # Uncomment if you want to use Google Authenticator
+        # server:  '%env(resolve:SERVER_URL)%'
         ip_white_list:
             - 127.0.0.1
             - ::1

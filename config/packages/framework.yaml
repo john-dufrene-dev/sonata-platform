@@ -18,5 +18,6 @@ framework:
     # translations
     translator: { fallbacks: ['%locale%'] }
 
-    templating:
-        engines: ['twig']
+    # Do not use templating, use Twig instead
+    # templating:
+    #     engines: ['twig']
