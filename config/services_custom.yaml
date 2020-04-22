@@ -21,6 +21,6 @@ services:
     
     # Service for configuration value
     app.service.configuration_builder:
-        class: App\Service\ConfigurationBuilder
+        class: App\Service\Configuration\ConfigurationBuilder
         public: true
         

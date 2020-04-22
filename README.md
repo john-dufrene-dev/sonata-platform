@@ -89,6 +89,7 @@ __1. Troubleshooting__
 
 - To upload youtube video https is required (Google API)
 - Error return JSON response when upload media in CKEditorType ref: "#1" in 'App\Controller\Admin\Media\CustomUploadCKEditorController'
+- Return just one toaster in template 'bundles\SonataCoreBundle\FlashMessage\render.html.twig' : @todo
 
 ```
 

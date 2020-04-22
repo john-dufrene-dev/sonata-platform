@@ -4,32 +4,15 @@
     {{ encore_entry_script_tags('helpers/toaster') }}
     {{ encore_entry_link_tags('helpers/toaster') }}
     {% if messages|length > 1 %}
-        <div class="alert alert-{{ type|sonata_status_class }} alert-dismissible collapsed-box">
-            <button
-                    type="button"
-                    class="close"
-                    data-dismiss="alert"
-                    aria-hidden="true"
-                    aria-label="{{ 'message_close'|trans({}, 'SonataCoreBundle') }}">
-                &times;
-            </button>
-            <input type="checkbox" class="read-more-state" id="toggle-more-{{ loop.index }}" />
-            <div class="read-more-wrap">
-                {% for message in messages %}
-                    {% if loop.index >= 2 %}
-                        <span class="read-more-target">{{ message|raw }}</span>
-                    {% else %}
-                        {{ message|raw }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <label for="toggle-more-{{ loop.index }}" class="read-more-trigger">
-                <span class="more">{{ 'more'|trans({}, 'SonataCoreBundle') }} &#9660;</span>
-                <span class="less hide">{{ 'less'|trans({}, 'SonataCoreBundle') }} &#9650;</span>
-                <span class="badge badge-default">{{ messages|length }}</span>
-            </label>
+    {# @Todo change toaster.js to display all toaster notifications #}
+        {% for message in messages %}
+        <div 
+            id="get_own_toaster" 
+            data-type-toastr="{{ type|sonata_status_class }}" 
+            data-messages-toastr="{{ message|json_encode() }}"
+            data-close-toastr="{{ 'message_close'|trans({}, 'SonataCoreBundle') }}">
         </div>
+        {% endfor %}
     {% elseif messages|length == 1 %}
         <div 
             id="get_own_toaster" 

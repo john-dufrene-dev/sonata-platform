@@ -35,6 +35,14 @@ class ConfigurationFixtures extends Fixture
         $config->setType('boolean');
         $manager->persist($config);
 
+        // Create configuration for SEO global indexation
+        $config = new Configuration;
+        $config->setName($this->start . 'SEO_INDEXATION');
+        $config->setValue(1);
+        $config->setTitle($this->translator->trans('seo.all.indexation', [], 'fixtures'));
+        $config->setType('boolean');
+        $manager->persist($config);
+
         // Create configuration for SEO home title
         $config = new Configuration;
         $config->setName($this->start.'SEO_HOME_TITLE');
@@ -57,9 +65,9 @@ class ConfigurationFixtures extends Fixture
 
         // Create configuration for SEO home indexation
         $config = new Configuration;
-        $config->setName($this->start.'SEO_HOME_INDEXATION');
-        $config->setValue(1);
-        $config->setTitle($this->translator->trans('seo.home.title.indexation', [], 'fixtures'));
+        $config->setName($this->start.'SEO_HOME_NO_INDEXATION');
+        $config->setValue(0);
+        $config->setTitle($this->translator->trans('seo.home.title.no.indexation', [], 'fixtures'));
         $config->setType('boolean');
         $manager->persist($config);
 
@@ -85,9 +93,9 @@ class ConfigurationFixtures extends Fixture
 
         // Create configuration for SEO register indexation
         $config = new Configuration;
-        $config->setName($this->start.'SEO_REGISTER_INDEXATION');
-        $config->setValue(1);
-        $config->setTitle($this->translator->trans('seo.register.title.indexation', [], 'fixtures'));
+        $config->setName($this->start.'SEO_REGISTER_NO_INDEXATION');
+        $config->setValue(0);
+        $config->setTitle($this->translator->trans('seo.register.title.no.indexation', [], 'fixtures'));
         $config->setType('boolean');
         $manager->persist($config);
 

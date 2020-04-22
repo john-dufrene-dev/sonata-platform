@@ -2,9 +2,9 @@
 
 namespace App\EventSubscriber;
 
-use App\Service\ConfigurationBuilder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelEvents;
+use App\Service\Configuration\ConfigurationBuilder;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

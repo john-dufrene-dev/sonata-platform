@@ -4,7 +4,6 @@ namespace App\Service\Admin\Block;
 
 use Twig\Environment;
 use App\Entity\Configuration;
-use App\Service\ConfigurationBuilder;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\Form\Validator\ErrorElement;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,6 +11,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use App\Service\Configuration\ConfigurationBuilder;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;

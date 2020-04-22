@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Configuration;
 
 use App\Entity\Configuration;
 use Doctrine\ORM\EntityManagerInterface;
@@ -125,7 +125,10 @@ class ConfigurationBuilder
      */
     public function getSeoValue($value = '')
     {
-        $robots = $this->get($this->startSeo . $value . '_INDEXATION') == 1 ? 'index,follow' : 'noindex,nofollow';
+        $robots = ( $this->get($this->startSeo . $value . '_NO_INDEXATION') == 0 
+            && $this->get($this->startSeo . 'INDEXATION') == 1)
+            ? 'index,follow' 
+            : 'noindex,nofollow';
 
         return [
             'title' => $this->get($this->startSeo . $value . '_TITLE'),
