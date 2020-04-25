@@ -1,14 +1,14 @@
 fos_user: 
     db_driver:        orm # can be orm or mongodb (support is also available within FOSUser for couchdb, propel but none is given for SonataUserBundle)
     firewall_name:    admin
-    user_class:       App\Entity\UserAdmin\Admin
+    user_class:       App\Entity\Security\AdminUser
 
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
 
     group:
-        group_class:  App\Entity\UserAdmin\AdminGroup
+        group_class:  App\Entity\Security\AdminGroup
         group_manager: sonata.user.orm.group_manager # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
     service:

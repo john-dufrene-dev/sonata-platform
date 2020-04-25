@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace App\Admin\UserAdmin;
+namespace App\Admin\Security;
 
 use Sonata\Form\Type\DatePickerType;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -25,7 +25,7 @@ use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
-final class Admin extends BaseUserAdmin
+final class AdminUserAdmin extends BaseUserAdmin
 {
     public $supportsPreviewMode = true;
 

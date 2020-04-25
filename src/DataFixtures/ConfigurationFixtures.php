@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Configuration;
+use App\Entity\Configuration\Configuration;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Contracts\Translation\TranslatorInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Admin\UserAdmin;
+namespace App\Controller\Admin\Security;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 

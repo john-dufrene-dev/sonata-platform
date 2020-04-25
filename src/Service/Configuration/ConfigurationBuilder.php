@@ -2,7 +2,7 @@
 
 namespace App\Service\Configuration;
 
-use App\Entity\Configuration;
+use App\Entity\Configuration\Configuration;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 

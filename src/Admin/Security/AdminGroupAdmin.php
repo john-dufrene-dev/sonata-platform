@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace App\Admin\UserAdmin;
+namespace App\Admin\Security;
 
 
 use Sonata\AdminBundle\Form\FormMapper;
@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use App\Form\Admin\Type\CustomSecurityRolesType;
 use Sonata\UserBundle\Admin\Model\GroupAdmin as BaseGroupAdmin;
 
-final class AdminGroup extends BaseGroupAdmin
+final class AdminGroupAdmin extends BaseGroupAdmin
 {
     public $supportsPreviewMode = true;
 

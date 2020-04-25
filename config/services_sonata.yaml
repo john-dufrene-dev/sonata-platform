@@ -16,7 +16,7 @@ services:
     # Maintenance Admin
     sonata.maintenance:
         class: App\Admin\Maintenance\MaintenanceAdmin
-        arguments: [~, App\Entity\Configuration, App\Controller\Admin\Maintenance\MaintenanceAdminController]
+        arguments: [~, App\Entity\Configuration\Configuration, App\Controller\Admin\Maintenance\MaintenanceAdminController]
         tags:
             - { name: sonata.admin, manager_type: orm, group: customize, label: Maintenance }
 

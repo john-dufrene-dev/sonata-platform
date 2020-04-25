@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Configuration;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ConfigurationRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\Configuration\ConfigurationRepository")
  */
 class Configuration
 {

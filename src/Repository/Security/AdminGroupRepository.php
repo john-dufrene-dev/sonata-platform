@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\UserAdmin;
+namespace App\Repository\Security;
 
-use App\Entity\UserAdmin\AdminGroup;
+use App\Entity\Security\AdminGroup;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 

@@ -2,6 +2,7 @@ sonata_admin:
     title: 'Sonata Platform'
     title_logo: bundles/sonataadmin/logo_title.png
 
+    search: true
     global_search:
         empty_boxes: fade
     
@@ -10,6 +11,7 @@ sonata_admin:
     options:
         use_bootlint: false
         legacy_twig_text_extension: false # default to false in sonataAdmin 4.0
+        lock_protection: true
 
     dashboard:
         blocks:
@@ -18,11 +20,17 @@ sonata_admin:
                 type: sonata.block.service.text
                 settings:
                     content: >
-                        <h2>Welcome to the Sonata Admin</h2>
-                        <p>This is a <code>sonata.block.service.text</code> from the Block
-                        Bundle, you can create and add new block in these area by configuring
-                        the <code>sonata_admin</code> section.</p> <br/> For instance, here
-                        a RSS feed parser (<code>sonata.block.service.rss</code>):
+                        <div class='panel panel-default'>
+                            <div class='panel-heading'>
+                                <h3 class='panel-title'>Welcome to the Sonata Admin</h3>
+                            </div>
+                            <div class='panel-body'>
+                                <p>This is a <code>sonata.block.service.text</code> from the Block
+                                Bundle, you can create and add new block in these area by configuring
+                                the <code>sonata_admin</code> section.<br/> For instance, here
+                                a RSS feed parser (<code>sonata.block.service.rss</code>):</p> 
+                            </div>
+                        </div>
             -
                 class:    col-lg-3 col-xs-6             # twitter bootstrap responsive code
                 position: top                           # zone in the dashboard

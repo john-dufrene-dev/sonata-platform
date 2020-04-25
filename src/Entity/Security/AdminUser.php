@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Entity\UserAdmin;
+namespace App\Entity\Security;
 
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserAdmin\AdminRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\Security\AdminUserRepository")
  * @ORM\Table(name="admin")
  */
-class Admin extends BaseUser
+class AdminUser extends BaseUser
 {
     /**
      * @ORM\Id

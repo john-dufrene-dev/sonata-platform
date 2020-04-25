@@ -3,7 +3,7 @@
 namespace App\Service\Admin\Block;
 
 use Twig\Environment;
-use App\Entity\Configuration;
+use App\Entity\Configuration\Configuration;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\Form\Validator\ErrorElement;
 use Doctrine\ORM\EntityManagerInterface;
