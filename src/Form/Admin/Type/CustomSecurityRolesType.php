@@ -46,6 +46,7 @@ class CustomSecurityRolesType extends AbstractType
         'ROLE_SONATA_MAINTENANCE_ALL',
         'ROLE_SONATA_MAINTENANCE_DELETE',
         'ROLE_SONATA_MAINTENANCE_VIEW',
+        'ROLE_SONATA_REDIRECT_VIEW',
     ];
 
     /**

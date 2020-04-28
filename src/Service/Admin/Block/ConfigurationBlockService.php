@@ -11,7 +11,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use App\Service\Configuration\ConfigurationBuilder;
+use App\Service\Cache\ConfigurationCacheBuilder;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -142,7 +142,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $this->cache_configs = [];
-        $this->config = new ConfigurationBuilder($this->em, $this->cache);
+        $this->config = new ConfigurationCacheBuilder($this->em, $this->cache);
         $settings = $blockContext->getSettings();
         $this->configs = false;
 

@@ -114,6 +114,7 @@ sonata_admin:
                 label_catalogue: Customize
                 items:
                     - sonata.maintenance
+                    - sonata.redirect
             sonata_user:
                 label: Administration
                 label_catalogue: SonataUserBundle

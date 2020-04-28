@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Service\Configuration;
+namespace App\Service\Cache;
 
 use App\Entity\Configuration\Configuration;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 /**
- * ConfigurationBuilder
+ * ConfigurationCacheBuilder
  */
-class ConfigurationBuilder
+class ConfigurationCacheBuilder
 {
     /**
      * startSeo

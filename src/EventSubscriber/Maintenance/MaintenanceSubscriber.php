@@ -1,10 +1,10 @@
 <?php
 
-namespace App\EventSubscriber;
+namespace App\EventSubscriber\Maintenance;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelEvents;
-use App\Service\Configuration\ConfigurationBuilder;
+use App\Service\Cache\ConfigurationCacheBuilder;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -60,7 +60,7 @@ class MaintenanceSubscriber implements EventSubscriberInterface
      * @param  mixed $container
      * @return void
      */
-    public function __construct(ConfigurationBuilder $config, ContainerInterface $container)
+    public function __construct(ConfigurationCacheBuilder $config, ContainerInterface $container)
     {
         $this->container = $container;
         $this->config = $config;

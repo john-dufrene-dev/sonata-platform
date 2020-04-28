@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\Front\Security\RegistrationFormType;
-use App\Service\Configuration\ConfigurationBuilder;
+use App\Service\Cache\ConfigurationCacheBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
      * @return void
      */
     public function __construct(
-        ConfigurationBuilder $config,
+        ConfigurationCacheBuilder $config,
         SeoPageInterface $seo,
         ParameterBagInterface $params
     ) {

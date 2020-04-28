@@ -5,12 +5,16 @@ parameters:
 
 services:
 
+#############################################
+############### ADMIN ENTITY ################
+#############################################
+
     # User Admin
     sonata.user:
         class: App\Admin\User\UserAdmin
         arguments: [~, App\Entity\User\User, App\Controller\Admin\User\UserAdminController]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: users, label: Utilisateurs }
+            - { name: sonata.admin, manager_type: orm, group: users, label: service.app.adminuser.url }
         public: true
     
     # Maintenance Admin
@@ -18,8 +22,19 @@ services:
         class: App\Admin\Maintenance\MaintenanceAdmin
         arguments: [~, App\Entity\Configuration\Configuration, App\Controller\Admin\Maintenance\MaintenanceAdminController]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: customize, label: Maintenance }
+            - { name: sonata.admin, manager_type: orm, group: customize, label: service.app.maintenance.url }
+    
+    # Redirect Admin
+    sonata.redirect:
+        class: App\Admin\Redirect\RedirectAdmin
+        arguments: [~, App\Entity\Redirect\Redirect, App\Controller\Admin\Redirect\RedirectAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: service.app.redirect.url }
+        public: true
 
+#############################################
+################### BLOCK ###################
+#############################################
     # Blocks for sonata admin
     sonata.block.service.custom.configuration:
         class: App\Service\Admin\Block\ConfigurationBlockService
@@ -34,7 +49,11 @@ services:
             - '@translator.data_collector'
         tags:
             - { name: sonata.block }
-    
+
+#############################################
+################# OVERRIDE ##################
+#############################################
+
     # Inject EditableRoleBuilder in Custom SecurityRolesType
     custom.user.editable_role_builder:
         class: Sonata\UserBundle\Security\EditableRolesBuilder

@@ -4,7 +4,14 @@ admin.submit: 'Mettre à jour'
 admin.configurations.not.availables: 'Aucune configurations disponibles !'
 admin.default.label: 'Pas de titre défini'
 
+# ADMIN
+#####################################################################
+
+# ADMINUSER PAGE
+service.app.adminuser.url: Utilisateurs
+
 # MAINTENANCE PAGE
+service.app.maintenance.url: Maintenance
 List: Liste
 Configuration List: Configuration
 Configuration Mode Maintenance: Mode maintenance
@@ -12,5 +19,25 @@ Mode Maintenance: Mode Maintenance
 admin.maintenance.title: 'Configuration du mode maintenance'
 admin.maintenance.add.ip: 'Ajouter mon adresse IP'
 
+# REDIRECT PAGE
+service.app.redirect.url: Redirection d'URL
+help.redirect.source: Page avant redirection ( Doit être de la forme /mon_url_source )
+help.redirect.destination: Page après redirection ( Doit être de la forme /mon_url_destination )
+redirect.httpCode.permanent: Redirection permanente (301)
+redirect.httpCode.temporal: Redirection temporaire (302)
+label.redirect.source: Source de la redirection
+label.redirect.destination: Destination de la redirection
+label.redirect.httpcode: Code de redirection
+label.redirect.publish: Activer la redirection
+Redirect List: Liste des redirections
+Redirect Create: Redirection d'URL
+header.redirection: Redirection d'URL
+redirection.source.destination: Source / Destination
+redirect.choice.httpcode: Choix du protocole de la réponse HTTP
+redirect.choice.publish: Statut de la redirection
+
 # CUSTOM BLOCK SERVICE
 custom.block.service.flash.success: 'Mise à jour effectuée avec succès !'
+
+# FRONT
+#####################################################################

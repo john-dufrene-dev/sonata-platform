@@ -19,8 +19,10 @@ services:
         class: App\Service\Email\Notifier
         arguments: ['@mailer.mailer', '@parameter_bag', '@doctrine.orm.default_entity_manager']
     
-    # Service for configuration value
-    app.service.configuration_builder:
-        class: App\Service\Configuration\ConfigurationBuilder
-        public: true
-        
+    # Service for configuration cache value
+    app.service.cache.configuration_cache_builder:
+        class: App\Service\Cache\ConfigurationCacheBuilder
+
+    # Service for redirect cache value
+    app.service.cache.redirect_cache_builder:
+        class: App\Service\Cache\RedirectCacheBuilder
