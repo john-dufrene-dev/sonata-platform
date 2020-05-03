@@ -9,6 +9,12 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+###< symfony locks files ###
+composer.lock
+symfony.lock
+package-lock.json
+yarn.lock
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
