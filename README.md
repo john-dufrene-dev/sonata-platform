@@ -98,7 +98,6 @@ __2. Using dev version for__
 ```bash
 
 - sonata-project/admin-bundle
-- sonata-project/google-authenticator
 - sonata-project/media-bundle
 - sonata-project/seo-bundle
 - sonata-project/user-bundle
@@ -113,4 +112,6 @@ __3. Suggested packages__
 ```bash
 
 - simplethings/entity-audit-bundle
+- sonata-project/google-authenticator
+
 

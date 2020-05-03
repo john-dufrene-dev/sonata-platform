@@ -26,7 +26,6 @@
         "sonata-project/block-bundle": "3.x-dev",
         "sonata-project/core-bundle": "3.x-dev",
         "sonata-project/doctrine-orm-admin-bundle": "3.x-dev",
-        "sonata-project/google-authenticator": "3.x-dev",
         "sonata-project/media-bundle": "3.x-dev",
         "sonata-project/seo-bundle": "2.x-dev",
         "sonata-project/user-bundle": "4.x-dev",
@@ -90,6 +89,10 @@
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*"
+    },
+    "suggest": {
+        "sonata-project/google-authenticator": "3.x-dev",
+        "simplethings/entity-audit-bundle": "log system entity"
     },
     "scripts": {
         "auto-scripts": {

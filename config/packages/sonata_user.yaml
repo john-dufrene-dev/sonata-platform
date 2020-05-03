@@ -26,18 +26,18 @@ sonata_user:
             # controller:     Sonata\AdminBundle\Controller\CRUDController
             # translation:    SonataUserBundle
 
-    google_authenticator:
-        enabled: false
+    # google_authenticator:
+    #     enabled: false
         # Uncomment if you want to use Google Authenticator
         # server:  '%env(resolve:SERVER_URL)%'
-        ip_white_list:
-            - 127.0.0.1
-            - ::1
-        forced_for_role:
-            - ROLE_ADMIN
-        
+        # ip_white_list:
+        #     - 127.0.0.1
+        #     - ::1
+        # forced_for_role:
+        #     - ROLE_ADMIN    
 
     profile:
         default_avatar: 'bundles/sonatauser/default_avatar.png' # Default avatar displayed if the user doesn't have one
 
     mailer: sonata.user.mailer.default # Service used to send emails
+    
