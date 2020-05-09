@@ -27,7 +27,7 @@ cp .env.example .env
 composer install && npm install && yarn encore production
 
 # 1.3 Install database
-php bin/console doctrine:migrations:migrate --force
+php bin/console doctrine:migrations:migrate
 
 # 1.4 Insert fixtures
 php bin/console doctrine:fixtures:load
@@ -90,6 +90,7 @@ __1. Troubleshooting__
 - To upload youtube video https is required (Google API)
 - Error return JSON response when upload media in CKEditorType ref: "#1" in 'App\Controller\Admin\Media\CustomUploadCKEditorController'
 - Return just one toaster in template 'bundles\SonataCoreBundle\FlashMessage\render.html.twig' : @todo
+- "doctrine/inflector": "1.3.1" require for the moment because have many depreciations, waiting update packages dependencies
 
 ```
 

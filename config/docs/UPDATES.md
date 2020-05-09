@@ -17,7 +17,7 @@ php bin/console doctrine:database:drop (--force) (Just run it if it is a new pro
 php bin/console doctrine:database:create (Just run it if it is a new project)
 
 # 1.4 Install database
-php bin/console doctrine:migrations:migrate --force
+php bin/console doctrine:migrations:migrate
 
 # 1.5 Insert fixtures
 php bin/console doctrine:fixtures:load (Just run it if it is a new project)
