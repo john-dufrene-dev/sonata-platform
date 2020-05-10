@@ -56,8 +56,31 @@ services:
 
     # Inject EditableRoleBuilder in Custom SecurityRolesType
     custom.user.editable_role_builder:
-        class: Sonata\UserBundle\Security\EditableRolesBuilder
+        class: Nucleos\UserAdminBundle\Security\EditableRolesBuilder
         public: true
         arguments: ['@security.token_storage', '@security.authorization_checker', '@sonata.admin.pool', '%security.role_hierarchy.roles%']
         calls:
             - [setTranslator, ['@translator']]
+
+    # Custom SendMailAction for AdminUser
+    custom.action.sendmail.admin.user:
+        class: App\Controller\Admin\Security\Action\SendEmailAction
+        arguments: 
+            - '@twig'
+            - '@router'
+            - '@sonata.admin.pool'
+            - '@nucleos_user.user_manager'
+            - '@nucleos_user.util.token_generator'
+
+    # Custom SendMailAction for AdminUser
+    custom.action.reset.admin.user:
+        class: App\Controller\Admin\Security\Action\ResetAction
+        arguments: 
+            - '@twig'
+            - '@router'
+            - '@sonata.admin.pool'
+            - '@form.factory'
+            - '@nucleos_user.user_manager'
+            - '@nucleos_user.util.login_manager'
+            - '@translator'
+            - '@session'

@@ -28,7 +28,7 @@ final class AdminUserController extends CRUDController
 
             if (
                 !$this->isGranted('ROLE_SUPER_ADMIN')
-                && !$this->isGranted('ROLE_SONATA_USER_ADMIN_USER_ALL')
+                && !$this->isGranted('ROLE_NUCLEOS_USER_ADMIN_ADMIN_USER_ALL')
             ) {
                 $currentUserEdit = (!$this->getUser() || $id == $this->getUser()->getId()) ? true : false;
 

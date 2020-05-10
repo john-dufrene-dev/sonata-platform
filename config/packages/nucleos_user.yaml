@@ -1,0 +1,29 @@
+nucleos_user:
+    db_driver: orm # other valid values is 'mongodb'
+    firewall_name: admin
+    from_email: "%mailer_user%"
+    user_class: 'App\Entity\Security\AdminUser'
+
+    group:
+        group_class: 'App\Entity\Security\AdminGroup'
+
+    service:
+        mailer: nucleos_user.mailer.default
+
+nucleos_user_admin:
+
+    impersonating:
+        route: sonata_admin_dashboard
+
+    admin:
+        group:
+            class:              'App\Admin\Security\AdminGroupAdmin'
+            controller:         'App\Controller\Admin\Security\AdminGroupController'
+            # translation:        'NucleosUserAdminBundle'
+        user:
+            class:              'App\Admin\Security\AdminUserAdmin'
+            controller:         'App\Controller\Admin\Security\AdminUserController'
+            # translation:        'NucleosUserAdminBundle'
+    avatar:
+        resolver:               'Nucleos\UserAdminBundle\Avatar\StaticAvatarResolver'
+        default_avatar:         'bundles/nucleosuseradmin/default_avatar.png'

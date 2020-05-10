@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity\Security;
 
-use Sonata\UserBundle\Entity\BaseGroup as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;
+use Nucleos\UserBundle\Model\Group as BaseGroup;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Security\AdminGroupRepository")
@@ -17,4 +19,9 @@ class AdminGroup extends BaseGroup
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
 }

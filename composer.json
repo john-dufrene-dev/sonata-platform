@@ -16,11 +16,12 @@
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
         "doctrine/annotations": "^1.9",
+        "doctrine/inflector": "1.3.1",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
-        "friendsofsymfony/user-bundle": "2.x-dev",
         "knplabs/knp-menu-bundle": "^2.0",
         "laminas/laminas-code": "^3.4",
         "lexik/jwt-authentication-bundle": "^2.6",
+        "nucleos/user-admin-bundle": "^1.2",
         "sensio/framework-extra-bundle": "^5.1",
         "sonata-project/admin-bundle": "3.x-dev",
         "sonata-project/block-bundle": "3.x-dev",
@@ -28,7 +29,6 @@
         "sonata-project/doctrine-orm-admin-bundle": "3.x-dev",
         "sonata-project/media-bundle": "3.x-dev",
         "sonata-project/seo-bundle": "2.x-dev",
-        "sonata-project/user-bundle": "4.x-dev",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
@@ -48,7 +48,6 @@
         "symfony/security-bundle": "4.4.*",
         "symfony/security-core": "4.4.*",
         "symfony/serializer-pack": "*",
-        "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "4.4.*",
         "symfony/twig-pack": "*",
         "symfony/validator": "4.4.*",
@@ -57,8 +56,7 @@
         "symfony/yaml": "4.4.*",
         "symfonycasts/reset-password-bundle": "^1.0",
         "tilleuls/ckeditor-sonata-media-bundle": "^1.0",
-        "twig/twig": "^2.0",
-        "doctrine/inflector": "1.3.1"
+        "twig/twig": "^2.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
@@ -98,7 +96,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "cache-app:rebuild": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- PHP >= 7.2
+- PHP >= 7.3
 - Symfony 4.4
 - MariaDB 10.3
 - Node & NPM
@@ -101,10 +101,8 @@ __2. Using dev version for__
 - sonata-project/admin-bundle
 - sonata-project/media-bundle
 - sonata-project/seo-bundle
-- sonata-project/user-bundle
 - sonata-project/doctrine-orm-admin-bundle
 - sonata-project/core-bundle
-- friendsofsymfony/user-bundle
 
 ```
 

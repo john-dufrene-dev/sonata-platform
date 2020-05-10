@@ -67,7 +67,7 @@ sonata_admin:
                 type:     sonata.admin.block.stats      # block id
                 roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_USER_ADMIN_USER_ALL]
                 settings:
-                    code:  sonata.user.admin.user       # admin code - service id
+                    code:  nucleos_user_admin.admin.user # admin code - service id
                     icon:  fa-magic                     # font awesome icon
                     text:  Administrateurs              # static text or translation message
                     color: bg-aqua                      # colors: bg-green, bg-red and bg-aqua
@@ -77,7 +77,7 @@ sonata_admin:
                 type:     sonata.admin.block.stats      # block id
                 roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_USER_ADMIN_GROUP_ALL]
                 settings:
-                    code:  sonata.user.admin.group      # admin code - service id
+                    code:  nucleos_user_admin.admin.group # admin code - service id
                     icon:  fa-magic                     # font awesome icon
                     text:  Groupes                      # static text or translation message
                     color: bg-yellow                    # colors: bg-green, bg-red and bg-aqua
@@ -90,7 +90,7 @@ sonata_admin:
                 position: right
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [sonata_user]
+                    groups: [nucleos_user_admin]
             -
                 position: right
                 type: sonata.admin.block.admin_list
@@ -115,18 +115,21 @@ sonata_admin:
                 items:
                     - sonata.maintenance
                     - sonata.redirect
-            sonata_user:
+            nucleos_user_admin:
                 label: Administration
                 label_catalogue: SonataUserBundle
                 items:
-                    - sonata.user.admin.user
-                    - sonata.user.admin.group
+                    - nucleos_user_admin.admin.user
+                    - nucleos_user_admin.admin.group
 
     security:
         handler: sonata.admin.security.handler.role
 
         role_admin: ROLE_ADMIN
         role_super_admin: ROLE_SUPER_ADMIN
+    
+    templates:
+        user_block: '@NucleosUserAdmin/Admin/Core/user_block.html.twig'
 
 sonata_doctrine_orm_admin:
 

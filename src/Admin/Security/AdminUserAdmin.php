@@ -2,171 +2,201 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace App\Admin\Security;
 
-use Sonata\Form\Type\DatePickerType;
+use DomainException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Nucleos\UserBundle\Model\UserInterface;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use App\Form\Admin\Type\CustomSecurityRolesType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Nucleos\UserBundle\Model\LocaleAwareInterface;
+use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
-use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
+use Nucleos\UserAdminBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
 final class AdminUserAdmin extends BaseUserAdmin
 {
-    public $supportsPreviewMode = true;
+    public function getNewInstance()
+    {
+        $instance = $this->userManager->createUser();
 
-    /**
-     * {@inheritdoc}
-     */
+        // TODO: Find a better way to create editabe form models
+        // BC layer
+        try {
+            $instance->getUsername();
+        } catch (DomainException $exception) {
+            $instance->setUsername('');
+        }
+
+        try {
+            $instance->getEmail();
+        } catch (DomainException $exception) {
+            $instance->setEmail('');
+        }
+
+        return $instance;
+    }
+
+    public function getFormBuilder(): FormBuilderInterface
+    {
+        $this->formOptions['data_class'] = $this->getClass();
+
+        $options                      = $this->formOptions;
+        $options['validation_groups'] = $this->isNewInstance() ? 'Registration' : 'Profile';
+
+        $formBuilder = $this->getFormContractor()->getFormBuilder($this->getUniqid(), $options);
+
+        $this->defineFormBuilder($formBuilder);
+
+        return $formBuilder;
+    }
+
+    public function preUpdate($user): void
+    {
+        if (!$user instanceof UserInterface) {
+            return;
+        }
+
+        $this->userManager->updateCanonicalFields($user);
+        $this->userManager->updatePassword($user);
+    }
+
+    protected function configureListFields(ListMapper $listMapper): void
+    {
+        $listMapper
+            ->addIdentifier('username')
+            ->add('email')
+            ->add('groups')
+            ->add('enabled', null, ['editable' => true])
+        ;
+
+        if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
+            $listMapper
+                ->add('impersonating', 'string', [
+                    'template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig',
+                ])
+            ;
+        }
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $filterMapper): void
+    {
+        $filterMapper
+            ->add('id')
+            ->add('username')
+            ->add('email')
+        ;
+
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            $filterMapper
+                ->add('groups')
+            ;
+        }
+    }
+
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->with('General')
+            ->with('form.tab_general')
                 ->add('username')
                 ->add('email')
             ->end()
-            ->with('Groups')
-                ->add('groups')
-            ->end()
-            ->with('Profile')
-                ->add('dateOfBirth')
-                ->add('firstname')
-                ->add('lastname')
-                ->add('website')
-                ->add('biography')
-                ->add('gender')
-                ->add('locale')
-                ->add('timezone')
-                ->add('phone')
-            ->end()
-            ->with('Social')
-                // ->add('facebookUid')
-                ->add('facebookName')
-                // ->add('twitterUid')
-                ->add('twitterName')
-                // ->add('gplusUid')
-                // ->add('gplusName')
-            ->end()
         ;
+
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $showMapper
-                ->with('Security')
-                    ->add('token')
-                    ->add('twoStepVerificationCode')
+                ->with('form.tab_groups')
+                    ->add('groups')
                 ->end()
             ;
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureFormFields(FormMapper $formMapper): void
     {
-        // define group zoning
         $formMapper
-            ->tab('User')
-                ->with('Profile', ['class' => 'col-md-6'])->end()
-                ->with('General', ['class' => 'col-md-6'])->end()
-                ->with('Social', ['class' => 'col-md-6'])->end()
+            ->tab('form.tab_user')
+                ->with('form.group_general', ['class' => 'col-md-6'])->end()
+                ->ifTrue($this->isLocaleAwareSubject())
+                    ->with('form.group_locale', ['class' => 'col-md-6'])->end()
+                ->ifEnd()
             ->end()
         ;
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $formMapper
-                ->tab('Security')
-                    ->with('Status', ['class' => 'col-md-4'])->end()
-                    ->with('Groups', ['class' => 'col-md-4'])->end()
-                    ->with('Keys', ['class' => 'col-md-4'])->end()
-                    ->with('Roles', ['class' => 'col-md-12'])->end()
+                ->tab('form.tab_security')
+                    ->with('form.group_groups', ['class' => 'col-md-8'])->end()
+                    ->with('form.group_status', ['class' => 'col-md-4'])->end()
+                    ->with('form.group_roles', ['class' => 'col-md-12'])->end()
                 ->end()
             ;
         }
 
-        $now = new \DateTime();
-
-        $genderOptions = [
-            'choices' => \call_user_func([$this->getUserManager()->getClass(), 'getGenderList']),
-            'required' => true,
-            'translation_domain' => $this->getTranslationDomain(),
-        ];
-
         $formMapper
-            ->tab('User')
-                ->with('General')
+            ->tab('form.tab_user')
+                ->with('form.group_general')
                     ->add('username')
                     ->add('email')
                     ->add('plainPassword', TextType::class, [
-                        'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
+                        'required' => $this->isNewInstance(),
                     ])
                 ->end()
-                ->with('Profile')
-                    ->add('dateOfBirth', DatePickerType::class, [
-                        'years' => range(1900, $now->format('Y')),
-                        'dp_min_date' => '1-1-1900',
-                        'dp_max_date' => $now->format('c'),
-                        'required' => false,
-                    ])
-                    ->add('firstname', null, ['required' => false])
-                    ->add('lastname', null, ['required' => false])
-                    ->add('website', UrlType::class, ['required' => false])
-                    ->add('biography', TextType::class, ['required' => false])
-                    ->add('gender', ChoiceType::class, $genderOptions)
-                    ->add('locale', LocaleType::class, ['required' => false])
-                    ->add('timezone', TimezoneType::class, ['required' => false])
-                    ->add('phone', null, ['required' => false])
-                ->end()
-                ->with('Social')
-                    // ->add('facebookUid', null, ['required' => false])
-                    ->add('facebookName', null, ['required' => false])
-                    // ->add('twitterUid', null, ['required' => false])
-                    ->add('twitterName', null, ['required' => false])
-                    // ->add('gplusUid', null, ['required' => false])
-                    // ->add('gplusName', null, ['required' => false])
-                ->end()
+                ->ifTrue($this->isLocaleAwareSubject())
+                    ->with('form.group_locale')
+                        ->add('locale', LocaleType::class, [
+                            'required' => false,
+                        ])
+                        ->add('timezone', TimezoneType::class, [
+                            'required'  => false,
+                        ])
+                    ->end()
+                ->ifEnd()
             ->end()
-            ;
+        ;
+
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $formMapper
-                ->tab('Security')
-                    ->with('Status')
+                ->tab('form.tab_security')
+                    ->with('form.group_status')
                         ->add('enabled', null, ['required' => false])
                     ->end()
-                    ->with('Groups')
+                    ->with('form.group_groups')
                         ->add('groups', ModelType::class, [
                             'required' => false,
                             'expanded' => true,
                             'multiple' => true,
                         ])
                     ->end()
-                    ->with('Roles')
-                        ->add('realRoles', CustomSecurityRolesType::class, [
-                            'label' => 'form.label_roles',
+                    ->with('form.group_roles')
+                        ->add('roles', CustomSecurityRolesType::class, [
+                            'label'    => 'form.label_roles',
                             'expanded' => true,
                             'multiple' => true,
                             'required' => false,
                         ])
                     ->end()
-                    ->with('Keys')
-                        ->add('token', null, ['required' => false])
-                        ->add('twoStepVerificationCode', null, ['required' => false])
-                    ->end()
                 ->end()
             ;
         }
+    }
+
+    private function isNewInstance(): bool
+    {
+        return !$this->hasSubject() || null === $this->getSubject()|| null === $this->id($this->getSubject());
+    }
+
+    private function isLocaleAwareSubject(): bool
+    {
+        return is_subclass_of($this->getClass(), LocaleAwareInterface::class);
     }
 }

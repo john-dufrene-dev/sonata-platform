@@ -1,14 +1,14 @@
 security:
     encoders:
-        FOS\UserBundle\Model\UserInterface: bcrypt
+        Nucleos\UserBundle\Model\UserInterface: bcrypt
         App\Entity\User\User: bcrypt
 
     providers:
 
         in_memory: { memory: null }
 
-        fos_userbundle:
-            id: fos_user.user_provider.username
+        nucleos_userbundle:
+            id: nucleos_user.user_provider.username
             
         app_user_provider:
             entity:
@@ -42,7 +42,7 @@ security:
             pattern:            /admin(.*)
             context:            user
             form_login:
-                provider:       fos_userbundle
+                provider:       nucleos_userbundle
                 login_path:     /admin/login
                 use_forward:    false
                 check_path:     /admin/login_check
@@ -54,7 +54,7 @@ security:
                 target:         /admin/login
             anonymous:          true
             switch_user:
-                provider: fos_userbundle
+                provider: nucleos_userbundle
                 role: ROLE_ALLOWED_TO_SWITCH
 
         main_user:

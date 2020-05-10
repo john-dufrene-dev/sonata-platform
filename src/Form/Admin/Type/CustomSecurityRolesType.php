@@ -23,7 +23,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Sonata\UserBundle\Form\Transformer\RestoreRolesTransformer;
+use Nucleos\UserAdminBundle\Form\Transformer\RestoreRolesTransformer;
 
 class CustomSecurityRolesType extends AbstractType
 {
@@ -185,6 +185,6 @@ class CustomSecurityRolesType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'sonata_security_roles';
+        return 'user_security_roles';
     }
 }

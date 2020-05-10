@@ -14,11 +14,16 @@ services:
             - { name: knp_menu.menu_builder, method: header, alias: header }
             - { name: knp_menu.menu_builder, method: footer, alias: footer }
     
-    # Service email notifications
+    # Service email notifications for User
     app.service.email_notifier:
         class: App\Service\Email\Notifier
         arguments: ['@mailer.mailer', '@parameter_bag', '@doctrine.orm.default_entity_manager']
-    
+
+    # Service email notifications for AdminUser
+    app.service.email_admin_notifier:
+        class: App\Service\Email\Notifier
+        arguments: ['@mailer.mailer', '@parameter_bag', '@doctrine.orm.default_entity_manager', '@translator', '@router']
+
     # Service for configuration cache value
     app.service.cache.configuration_cache_builder:
         class: App\Service\Cache\ConfigurationCacheBuilder
