@@ -25,6 +25,8 @@ use Nucleos\UserAdminBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
 final class AdminUserAdmin extends BaseUserAdmin
 {
+    public $supportsPreviewMode = true;
+    
     public function getNewInstance()
     {
         $instance = $this->userManager->createUser();

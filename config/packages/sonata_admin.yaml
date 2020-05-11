@@ -65,7 +65,7 @@ sonata_admin:
                 class:    col-lg-3 col-xs-6             # twitter bootstrap responsive code
                 position: top                           # zone in the dashboard
                 type:     sonata.admin.block.stats      # block id
-                roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_USER_ADMIN_USER_ALL]
+                roles: [ROLE_SUPER_ADMIN, ROLE_NUCLEOS_USER_ADMIN_ADMIN_USER_ALL]
                 settings:
                     code:  nucleos_user_admin.admin.user # admin code - service id
                     icon:  fa-magic                     # font awesome icon
@@ -75,7 +75,7 @@ sonata_admin:
                 class:    col-lg-3 col-xs-6             # twitter bootstrap responsive code
                 position: top                           # zone in the dashboard
                 type:     sonata.admin.block.stats      # block id
-                roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_USER_ADMIN_GROUP_ALL]
+                roles: [ROLE_SUPER_ADMIN, ROLE_NUCLEOS_USER_ADMIN_ADMIN_GROUP_ALL]
                 settings:
                     code:  nucleos_user_admin.admin.group # admin code - service id
                     icon:  fa-magic                     # font awesome icon

@@ -64,9 +64,10 @@ __1. Todo list__
 - All missing translations (IN PROGRESS)
 - Custom Media and User CSS
 - Finish all api for user (IN PROGRESS)
-- Create Command to install project
+- Create Command to install project (IN PROGRESS)
 - Create Fixtures for user/admin (IN PROGRESS)
 - SEO default pages (IN PROGRESS)
+- remove all service "public: true"
 
 ```
 
@@ -90,7 +91,7 @@ __1. Troubleshooting__
 - To upload youtube video https is required (Google API)
 - Error return JSON response when upload media in CKEditorType ref: "#1" in 'App\Controller\Admin\Media\CustomUploadCKEditorController'
 - Return just one toaster in template 'bundles\SonataCoreBundle\FlashMessage\render.html.twig' : @todo
-- "doctrine/inflector": "1.3.1" require for the moment because have many depreciations, waiting update packages dependencies
+- "doctrine/inflector": "1.3.1" require for the moment because have many depreciations, waiting update packages dependencies (IN PROGRESS)
 
 ```
 
