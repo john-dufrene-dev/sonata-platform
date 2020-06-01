@@ -6,11 +6,11 @@ fos_ck_editor:
     default_config: default
     configs:
         default:
-            skin: 'moono-lisa,/build/ckeditor/skins/moono-lisa/'
+            # skin: 'moono-lisa,/build/ckeditor/skins/moono-lisa/'
             language: '%env(resolve:APP_LOCALE)%'
             autoload: false
             input_sync: true
-            extraPlugins: 'preview'
+            # extraPlugins: 'preview'
             toolbar:
             - [Bold, Italic, Underline, -, Cut, Copy, Paste,
               PasteText, PasteFromWord, -, Undo, Redo, -,
@@ -29,9 +29,9 @@ fos_ck_editor:
             filebrowserImageUploadRoute: admin_app_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
-                context: default # Optional, to upload in a custom context
-    plugins:
-        preview:
-            path:     '/build/ckeditor/plugins/preview/' # with trailing slash
-            filename: 'plugin.js'
+                context: medias # Optional, to upload in a custom context
+    # plugins:
+    #     preview:
+    #         path:     '/build/ckeditor/plugins/preview/' # with trailing slash
+    #         filename: 'plugin.js'
             

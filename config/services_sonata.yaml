@@ -1,7 +1,8 @@
 parameters:
 
     # Custom controller for CKEditor browser/upload images
-    sonata.media.admin.media.controller: App\Controller\Admin\Media\CustomUploadCKEditorController
+    sonata.media.admin.media.controller: App\Controller\Admin\Media\CustomMediaAdminController
+    ckeditor.media.extension.class: App\Admin\Media\MediaAdminExtension
 
 services:
 
@@ -61,6 +62,12 @@ services:
         arguments: ['@security.token_storage', '@security.authorization_checker', '@sonata.admin.pool', '%security.role_hierarchy.roles%']
         calls:
             - [setTranslator, ['@translator']]
+
+    # Route URL for browser/upload CKEditor
+    ckeditor.media.extension:
+        class: '%ckeditor.media.extension.class%'
+        tags:
+            - { name: sonata.admin.extension, target: sonata.media.admin.media }
 
     # Custom SendMailAction for AdminUser
     custom.action.sendmail.admin.user:
