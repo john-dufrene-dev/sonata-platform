@@ -5,14 +5,12 @@ namespace App\Entity\User;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\User\UserRepository")
- * @ApiResource
  * @UniqueEntity(fields={"email"}, message="register.email.unique")
  */
 class User implements UserInterface
@@ -25,7 +23,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * 
+     *
      * @var string Email adress
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message = "register.email.valid")
@@ -37,7 +35,7 @@ class User implements UserInterface
      *         }
      *     }
      * )
-     * 
+     *
      */
     private $email;
 

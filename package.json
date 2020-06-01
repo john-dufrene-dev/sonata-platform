@@ -2,11 +2,13 @@
     "devDependencies": {
         "@popperjs/core": "^2.1.1",
         "@symfony/webpack-encore": "^0.28.2",
+        "autoprefixer": "^9.8.0",
         "bootstrap": "^4.4.1",
         "core-js": "^3.0.0",
         "jquery": "^3.5.0",
         "node-sass": "^4.13.1",
         "popper.js": "^1.16.1",
+        "postcss-loader": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
         "sass-loader": "7.0.1",
         "url-loader": "2.0.1",
@@ -17,6 +19,12 @@
     },
     "license": "UNLICENSED",
     "private": true,
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions",
+        "Firefox ESR",
+        "not dead"
+    ],
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",

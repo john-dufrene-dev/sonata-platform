@@ -84,6 +84,13 @@ Encore
     // requires WebpackEncoreBundle 1.4 or higher
     .enableIntegrityHashes(Encore.isProduction())
 
+    .enablePostCssLoader((options) => {
+        options.config = {
+        // the directory where the postcss.config.js file is stored
+        path: path.resolve(__dirname)
+        };
+    })
+
     // uncomment if you're having problems with a jQuery plugin
     // .autoProvidejQuery()
 
