@@ -24,7 +24,6 @@
         "sensio/framework-extra-bundle": "^5.1",
         "sonata-project/admin-bundle": "3.x-dev",
         "sonata-project/block-bundle": "3.x-dev",
-        "sonata-project/core-bundle": "3.x-dev",
         "sonata-project/doctrine-orm-admin-bundle": "3.x-dev",
         "sonata-project/media-bundle": "3.x-dev",
         "sonata-project/seo-bundle": "2.x-dev",
@@ -94,8 +93,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "cache-app:rebuild": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

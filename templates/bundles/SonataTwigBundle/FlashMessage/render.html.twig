@@ -8,17 +8,17 @@
         {% for message in messages %}
         <div 
             id="get_own_toaster" 
-            data-type-toastr="{{ type|sonata_status_class }}" 
+            data-type-toastr="{{ type }}" 
             data-messages-toastr="{{ message|json_encode() }}"
-            data-close-toastr="{{ 'message_close'|trans({}, 'SonataCoreBundle') }}">
+            data-close-toastr="{{ 'message_close'|trans({}, 'SonataTwigBundle') }}">
         </div>
         {% endfor %}
     {% elseif messages|length == 1 %}
         <div 
             id="get_own_toaster" 
-            data-type-toastr="{{ type|sonata_status_class }}" 
+            data-type-toastr="{{ type }}" 
             data-messages-toastr="{{ messages|json_encode() }}"
-            data-close-toastr="{{ 'message_close'|trans({}, 'SonataCoreBundle') }}">
+            data-close-toastr="{{ 'message_close'|trans({}, 'SonataTwigBundle') }}">
         </div>
     {% endif %}
 {% endfor %}

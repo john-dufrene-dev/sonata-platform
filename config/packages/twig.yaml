@@ -6,5 +6,6 @@ twig:
     # cache: false # just for dev and testing
     form_themes:
         - 'bootstrap_4_layout.html.twig'
-        - '@SonataCore/Form/datepicker.html.twig'
+        - '@SonataForm/Form/datepicker.html.twig'
+        - '@SonataMedia/Form/media_widgets.html.twig'
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
