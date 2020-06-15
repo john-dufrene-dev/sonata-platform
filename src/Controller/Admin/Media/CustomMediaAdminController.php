@@ -15,7 +15,6 @@ namespace App\Controller\Admin\Media;
 
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormRenderer;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -28,8 +27,10 @@ final class CustomMediaAdminController extends CRUDController
     /**
      * {@inheritdoc}
      */
-    public function createAction(?Request $request = null)
+    public function createAction()
     {
+        $request = $this->getRequest();
+        
         $this->admin->checkAccess('create');
 
         if (!$request->get('provider') && $request->isMethod('get')) {
@@ -49,8 +50,10 @@ final class CustomMediaAdminController extends CRUDController
     /**
      * {@inheritdoc}
      */
-    public function listAction(?Request $request = null)
+    public function listAction()
     {
+        $request = $this->getRequest();
+
         $this->admin->checkAccess('list');
 
         if ($listMode = $request->get('_list_mode', 'mosaic')) {
@@ -118,8 +121,10 @@ final class CustomMediaAdminController extends CRUDController
     /**
      * @throws AccessDeniedException
      */
-    public function browserAction(Request $request): Response
+    public function browserAction(): Response
     {
+        $request = $this->getRequest();
+
         $this->checkIfMediaBundleIsLoaded();
 
         $this->admin->checkAccess('list');
@@ -181,8 +186,10 @@ final class CustomMediaAdminController extends CRUDController
      * @throws AccessDeniedException
      * @throws NotFoundHttpException
      */
-    public function uploadAction(Request $request): Response
+    public function uploadAction(): Response
     {
+        $request = $this->getRequest();
+        
         $this->checkIfMediaBundleIsLoaded();
 
         $this->admin->checkAccess('create');

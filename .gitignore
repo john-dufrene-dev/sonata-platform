@@ -7,6 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
+.DS_Store
 ###< symfony/framework-bundle ###
 
 ###< symfony locks files ###

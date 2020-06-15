@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class SendEmailAction

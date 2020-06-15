@@ -28,7 +28,7 @@ Go to admin and modify default admin (login: admin / pass: admin)
 # 1.7 clear cache
 php bin/console cache:clear
 
-# 1.7 rebuild all cache app
+# 1.8 rebuild all cache app
 php bin/console cache-app:rebuild (important after a cache clear if you have configure some configuration cache or redirect)
 
 ```

@@ -32,10 +32,13 @@ php bin/console doctrine:migrations:migrate
 # 1.4 Insert fixtures
 php bin/console doctrine:fixtures:load
 
-# 1.5 Modify user admin
+# 1.5 Build values in cache
+php bin/console cache-app:rebuild
+
+# 1.6 Modify user admin
 Go to admin and modify default admin (login: admin / pass: admin)
 
-# 1.6 generate the SSH keys for api
+# 1.7 generate the SSH keys for api
 mkdir -p config/jwt # if not exist
 openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
@@ -90,7 +93,7 @@ __1. Troubleshooting__
 
 - To upload youtube video https is required (Google API)
 - Error return JSON response when upload media in CKEditorType ref: "#1" in 'App\Controller\Admin\Media\CustomUploadCKEditorController'
-- Return just one toaster in template 'bundles\SonataCoreBundle\FlashMessage\render.html.twig' : @todo
+- Return just one toaster in template 'bundles\SonataTwigBundle\FlashMessage\render.html.twig' : @todo
 - "doctrine/inflector": "1.3.1" require for the moment because have many depreciations, waiting update packages dependencies (IN PROGRESS)
 
 ```
@@ -103,7 +106,6 @@ __2. Using dev version for__
 - sonata-project/media-bundle
 - sonata-project/seo-bundle
 - sonata-project/doctrine-orm-admin-bundle
-- sonata-project/core-bundle
 
 ```
 

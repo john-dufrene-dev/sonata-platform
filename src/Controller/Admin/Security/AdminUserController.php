@@ -15,7 +15,7 @@ final class AdminUserController extends CRUDController
      * @param  mixed $container
      * @return void
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(?ContainerInterface $container = null)
     {
         $this->container = $container;
 
