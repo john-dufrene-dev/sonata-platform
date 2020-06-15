@@ -26,13 +26,13 @@ final class AdminGroupAdmin extends BaseGroupAdmin
             ->add('_action', null, [
                 'actions' => [
                     'show' => [
-                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_show.html.twig',
+                        'template' => 'admin/CRUD/list__action_show.html.twig',
                     ],
                     'edit' => [
-                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_edit.html.twig',
+                        'template' => 'admin/CRUD/list__action_edit.html.twig',
                     ],
                     'delete' => [
-                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_delete.html.twig',
+                        'template' => 'admin/CRUD/list__action_delete.html.twig',
                     ],
                 ]
             ]);

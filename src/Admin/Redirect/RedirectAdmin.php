@@ -76,10 +76,10 @@ final class RedirectAdmin extends AbstractAdmin
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [
-                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_edit.html.twig',
+                        'template' => 'admin/CRUD/list__action_edit.html.twig',
                     ],
                     'delete' => [
-                        'template' => 'admin/SonataAdminBundle/CRUD/list__action_delete.html.twig',
+                        'template' => 'admin/CRUD/list__action_delete.html.twig',
                     ],
                 ]
             ]);
@@ -94,13 +94,13 @@ final class RedirectAdmin extends AbstractAdmin
                 ])
                     ->add('source', null, [
                         'label' => $this->t_source,
-                        'help' => 'help.redirect.source',
                         'row_attr' => ['class' => 'col-md-6'],
+                        'attr' => ['placeholder' => 'help.redirect.source']
                     ])
                     ->add('destination', null, [
                         'label' => $this->t_destination,
-                        'help' => 'help.redirect.destination',
                         'row_attr' => ['class' => 'col-md-6'],
+                        'attr' => ['placeholder' => 'help.redirect.destination']
                     ])
                     
                 ->end()
