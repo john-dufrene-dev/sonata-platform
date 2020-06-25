@@ -31,4 +31,7 @@ php bin/console cache:clear
 # 1.8 rebuild all cache app
 php bin/console cache-app:rebuild (important after a cache clear if you have configure some configuration cache or redirect)
 
+# 1.9 generate route js builder
+php bin/console fos:js-routing:dump --format=json --target=assets/js/helpers/components/router/routes.json
+
 ```

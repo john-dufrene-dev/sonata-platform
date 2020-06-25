@@ -43,6 +43,9 @@ mkdir -p config/jwt # if not exist
 openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
+# 1.8 generate route js builder
+php bin/console fos:js-routing:dump --format=json --target=assets/js/helpers/components/router/routes.json
+
 ```
 
 __2. Use symfony serve__

@@ -17,6 +17,7 @@
         "api-platform/api-pack": "^1.2",
         "doctrine/annotations": "^1.9",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
+        "friendsofsymfony/jsrouting-bundle": "^2.6",
         "knplabs/knp-menu-bundle": "^2.0",
         "laminas/laminas-code": "^3.4",
         "lexik/jwt-authentication-bundle": "^2.6",
