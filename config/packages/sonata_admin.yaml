@@ -10,7 +10,6 @@ sonata_admin:
 
     options:
         use_bootlint: false
-        legacy_twig_text_extension: false # default to false in sonataAdmin 4.0
         lock_protection: true
 
     dashboard:

@@ -1,5 +1,5 @@
-var Encore = require('@symfony/webpack-encore');
-var path = require('path')
+const Encore = require('@symfony/webpack-encore');
+const path = require('path')
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -105,8 +105,12 @@ Encore
     ;
 
 let config = Encore.getWebpackConfig();
+
 config.resolve.alias["@@js"] = path.resolve(__dirname, 'assets/js'); // To access assets/js => @@js
 config.resolve.alias["@@css"] = path.resolve(__dirname, 'assets/css'); // To access assets/css => @@css
+config.resolve.alias["@@public"] = path.resolve(__dirname, 'public'); // To access public => @@public
+config.resolve.alias["@@vendor"] = path.resolve(__dirname, 'vendor'); // To access public => @@vendor
+
 module.exports = config;
 
 // module.exports = Encore.getWebpackConfig();

@@ -2,22 +2,18 @@
 
 declare(strict_types=1);
 
-
 namespace App\Admin\Security;
 
 use DomainException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Nucleos\UserBundle\Model\UserInterface;
-use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use App\Form\Admin\Type\CustomSecurityRolesType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Nucleos\UserBundle\Model\LocaleAwareInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
-use Nucleos\UserAdminBundle\Form\Type\RolesMatrixType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;

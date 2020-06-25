@@ -47,7 +47,7 @@ services:
             - '@cache.app'
             - '@request_stack'
             - '@router.default'
-            - '@translator.data_collector'
+            - '@translator.default'
         tags:
             - { name: sonata.block }
 
