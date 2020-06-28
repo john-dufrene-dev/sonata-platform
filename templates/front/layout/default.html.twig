@@ -10,11 +10,15 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" type="image/png" />
 
+        {% block before_stylesheets %}{% endblock %}
+
         {% block stylesheets %}
 
             {{ encore_entry_link_tags('front/app') }}
 
         {% endblock %}
+
+        {% block after_stylesheets %}{% endblock %}
 
     </head>
     <body class="body">
@@ -29,11 +33,15 @@
 
         {% block after_body %}{% endblock %}
 
+        {% block before_javascripts %}{% endblock %}
+
         {% block javascripts %}
 
             {{ encore_entry_script_tags('front/app') }}
 
         {% endblock %}
+
+        {% block after_javascripts %}{% endblock %}
         
     </body>
 </html>

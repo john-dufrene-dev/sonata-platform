@@ -1,8 +1,7 @@
 {% extends "front/layout/default.html.twig" %}
 
-{% block stylesheets %}
+{% block after_stylesheets %}
 
-    {{ parent() }}
     {{ encore_entry_link_tags('front/pages/account') }}
 
 {% endblock %}
@@ -24,9 +23,8 @@
 
 {% endblock %}
 
-{% block javascripts %}
+{% block before_javascripts %}
 
     {{ encore_entry_script_tags('front/pages/account') }}
-    {{ parent() }}
 
 {% endblock %}
