@@ -61,7 +61,19 @@ class IsAuthenticatedUserSubscriber implements EventSubscriberInterface
         $response = $event->getResponse();
 
         $apiToken = $this->jwt->create($token->getUser());
-        $cookie = new Cookie('X-AUTH-TOKEN', $apiToken, time() + 3600);
+
+        $cookie = new Cookie(
+            'X-AUTH-TOKEN', // Cookie name, should be the same as in config/packages/lexik_jwt_authentication.yaml.
+            $apiToken, // cookie value
+            time() + 3600, // expiration
+            '/', // path
+            null, // domain, null means that Symfony will generate it on its own.
+            // true, // secure
+            // true, // httpOnly
+            // false, // raw
+            // 'lax' // same-site parameter, can be 'lax' or 'strict'.
+        );
+        
         $response->headers->setCookie($cookie);
     }
     
