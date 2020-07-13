@@ -11,10 +11,10 @@
 ###< symfony/framework-bundle ###
 
 ###< symfony locks files ###
-composer.lock
+# composer.lock
 symfony.lock
 package-lock.json
-yarn.lock
+# yarn.lock
 
 ###> symfony/phpunit-bridge ###
 .phpunit
