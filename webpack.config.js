@@ -38,11 +38,11 @@ Encore
     .addEntry('helpers/toaster', './assets/js/helpers/toaster.js')
 
     .copyFiles([
-        {from: './node_modules/ckeditor/', to: 'helpers/ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},
-        {from: './node_modules/ckeditor/adapters', to: 'helpers/ckeditor/adapters/[path][name].[ext]'},
-        {from: './node_modules/ckeditor/lang', to: 'helpers/ckeditor/lang/[path][name].[ext]'},
-        {from: './node_modules/ckeditor/plugins', to: 'helpers/ckeditor/plugins/[path][name].[ext]'},
-        {from: './node_modules/ckeditor/skins', to: 'helpers/ckeditor/skins/[path][name].[ext]'}
+        { from: './node_modules/ckeditor/', to: 'helpers/ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false },
+        { from: './node_modules/ckeditor/adapters', to: 'helpers/ckeditor/adapters/[path][name].[ext]' },
+        { from: './node_modules/ckeditor/lang', to: 'helpers/ckeditor/lang/[path][name].[ext]' },
+        { from: './node_modules/ckeditor/plugins', to: 'helpers/ckeditor/plugins/[path][name].[ext]' },
+        { from: './node_modules/ckeditor/skins', to: 'helpers/ckeditor/skins/[path][name].[ext]' }
     ])
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
@@ -86,8 +86,8 @@ Encore
 
     .enablePostCssLoader((options) => {
         options.config = {
-        // the directory where the postcss.config.js file is stored
-        path: path.resolve(__dirname)
+            // the directory where the postcss.config.js file is stored
+            path: path.resolve(__dirname)
         };
     })
 

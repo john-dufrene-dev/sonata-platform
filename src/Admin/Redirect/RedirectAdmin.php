@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Templating\TemplateRegistry;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class RedirectAdmin extends AbstractAdmin
@@ -63,7 +64,7 @@ final class RedirectAdmin extends AbstractAdmin
                     'target' => '_blank',
                 ],
             ])
-            ->add('httpCode', 'choice', [
+            ->add('httpCode', TemplateRegistry::TYPE_CHOICE, [
                 'label' => $this->t_httpcode,
                 'choices' => array_flip(self::$typeChoices),
                 'editable' => true,

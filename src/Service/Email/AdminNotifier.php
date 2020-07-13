@@ -5,7 +5,6 @@ namespace App\Service\Email;
 use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
 use Nucleos\UserBundle\Model\UserInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Nucleos\UserBundle\Mailer\Mail\ResettingMail;
 use Symfony\Contracts\Translation\TranslatorInterface;

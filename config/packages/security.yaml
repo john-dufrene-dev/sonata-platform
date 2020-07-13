@@ -63,6 +63,7 @@ security:
             guard:
                 authenticators:
                     - App\Security\User\LoginFormAuthenticator
+                entry_point: App\Security\User\LoginFormAuthenticator
             remember_me:
                 secret:   '%kernel.secret%'
                 lifetime: 604800 # 1 week in seconds
@@ -73,7 +74,7 @@ security:
                 check_path:     /account/login_check
             logout:
                 path: app_logout
-                target: /account/login
+                target: security_login
                 delete_cookies: ['X-AUTH-TOKEN']
 
     access_control:

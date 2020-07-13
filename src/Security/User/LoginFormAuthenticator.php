@@ -3,7 +3,6 @@
 namespace App\Security\User;
 
 use App\Entity\User\User;
-use App\Entity\User\UserInfo;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -25,6 +24,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 {
     use TargetPathTrait;
 
+    public const LOGIN_ROUTE = 'security_login';
+
     private $entityManager;
     private $urlGenerator;
     private $csrfTokenManager;
@@ -40,7 +41,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function supports(Request $request)
     {
-        return 'security_login' === $request->attributes->get('_route')
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -102,6 +103,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('security_login');
+        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }
