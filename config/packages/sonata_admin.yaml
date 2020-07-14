@@ -134,4 +134,11 @@ sonata_doctrine_orm_admin:
 
     audit:
         force: false
-        
+
+sonata_exporter:
+    exporter:
+        default_writers:
+            - json
+            - xml
+            - csv
+            - xls
