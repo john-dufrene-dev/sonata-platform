@@ -1,8 +1,17 @@
 {% extends "front/layout/default.html.twig" %}
 
+{% block after_stylesheets %}
+
+    {{ encore_entry_link_tags('front/pages/security/register') }}
+
+{% endblock %}
+
 {% block body %}
 
     <div class="container">
+
+        <h1-title title="Register page"></h1-title>
+        
         <form method="post">
 
             <h1 class="h3 mb-3 font-weight-normal">{% trans from 'security' %}register.new.account{% endtrans %}</h1>
@@ -22,5 +31,11 @@
 
         </form>
     </div>
+
+{% endblock %}
+
+{% block after_javascripts %}
+
+    {{ encore_entry_script_tags('front/pages/security/register') }}
 
 {% endblock %}

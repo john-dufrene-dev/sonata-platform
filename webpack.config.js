@@ -28,7 +28,8 @@ Encore
 
     // You can directly include css in js file
     .addEntry('front/pages/account', './assets/js/front/pages/account.js')
-    //.addEntry('page2', './assets/js/single/page2.js')
+    .addEntry('front/pages/security/login', './assets/js/front/pages/security/login.js')
+    .addEntry('front/pages/security/register', './assets/js/front/pages/security/register.js')
 
     // add entry for admin
     .addEntry('admin/app', './assets/js/admin/admin.js')

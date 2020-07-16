@@ -10,20 +10,20 @@
 
     <div id="account" class="container">
 
+        <h1-title title="Account page"></h1-title>
+        
         {% if app.user %}
             <h1 class="h3 mb-3 font-weight-normal">You are logged in as {{ app.user.username }}, 
             <a href="{{ path('app_logout') }}">Logout</a></h1>
         {% endif %}
 
-        {# global component in app.js #}
-        {# <default></default>  #}
         <account></account>
 
     </div>
 
 {% endblock %}
 
-{% block before_javascripts %}
+{% block after_javascripts %}
 
     {{ encore_entry_script_tags('front/pages/account') }}
 

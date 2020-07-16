@@ -1,8 +1,17 @@
 {% extends "front/layout/default.html.twig" %}
 
+{% block after_stylesheets %}
+
+    {{ encore_entry_link_tags('front/pages/security/login') }}
+
+{% endblock %}
+
 {% block body %}
 
     <div class="container">
+
+        <h1-title title="Login page"></h1-title>
+
         <form method="post">
 
             {% if error %}
@@ -27,4 +36,10 @@
         </form>
     </div>
     
+{% endblock %}
+
+{% block after_javascripts %}
+
+    {{ encore_entry_script_tags('front/pages/security/login') }}
+
 {% endblock %}

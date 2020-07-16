@@ -1,7 +1,6 @@
 <template>
 
     <div class="example-wrapper">
-        <h1>Hello ! </h1>
         <p>Message page account : </p>
         <ul><li>Page mon compte <code>{{ page }}</code></li></ul>     
     </div> 
