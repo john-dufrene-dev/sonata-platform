@@ -11,7 +11,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
@@ -24,7 +24,6 @@
         "nucleos/user-admin-bundle": "^1.2",
         "sensio/framework-extra-bundle": "^5.1",
         "sonata-project/admin-bundle": "3.x-dev",
-        "sonata-project/block-bundle": "3.x-dev",
         "sonata-project/doctrine-orm-admin-bundle": "3.x-dev",
         "sonata-project/media-bundle": "3.x-dev",
         "sonata-project/seo-bundle": "2.x-dev",
