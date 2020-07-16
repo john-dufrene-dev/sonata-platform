@@ -16,7 +16,6 @@ services:
         arguments: [~, App\Entity\User\User, App\Controller\Admin\User\UserAdminController]
         tags:
             - { name: sonata.admin, manager_type: orm, group: users, label: service.app.adminuser.url }
-        public: true
     
     # Maintenance Admin
     sonata.maintenance:
@@ -31,7 +30,6 @@ services:
         arguments: [~, App\Entity\Redirect\Redirect, App\Controller\Admin\Redirect\RedirectAdminController]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: service.app.redirect.url }
-        public: true
 
 #############################################
 ################### BLOCK ###################
