@@ -11,8 +11,11 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class UserAdmin extends AbstractAdmin
 {
@@ -70,74 +73,74 @@ final class UserAdmin extends AbstractAdmin
         // define group zoning
         $formMapper
             ->tab('Informations générales de l\'utilisateur')
-            ->with('Informations générales de l\'utilisateur')->end()
+                ->with('Informations générales de l\'utilisateur')->end()
             ->end()
             ->tab('Profil utilisateur')
-            ->with('Profil utilisateur', ['description' => $description])->end()
+                ->with('Profil utilisateur', ['description' => $description])->end()
             ->end()
             ->tab('Sécurité utilisateur')
-            ->with('Activation / Désactivation de l\'utilisateur')->end()
-            ->with('Api token de l\'utilisateur')->end()
+                ->with('Activation / Désactivation de l\'utilisateur')->end()
+                ->with('Api token de l\'utilisateur')->end()
             ->end();
 
         $formMapper
             ->tab('Informations générales de l\'utilisateur')
-            ->with('Informations générales de l\'utilisateur', [
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-info',
-                'description' => 'Mise à jour des informations générales',
-            ])
-            ->add('email')
-            ->add('plainPassword', PasswordType::class, [
-                'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
-            ])
-            ->end()
+                ->with('Informations générales de l\'utilisateur', [
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-info',
+                    'description' => 'Mise à jour des informations générales',
+                ])
+                    ->add('email', EmailType::class)
+                    ->add('plainPassword', PasswordType::class, [
+                        'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
+                    ])
+                ->end()
             ->end();
 
         if ($this->getSubject() && null !== $this->getSubject()->getId()) {
             $formMapper
                 ->tab('Profil utilisateur')
-                ->with('Profil utilisateur', [
-                    'class'       => 'col-md-12',
-                    'box_class'   => 'box box-solid box-info',
-                    'description' => 'Mise à jour du profil utilisateur',
-                ])
-                ->add('infos.name')
-                ->end()
+                    ->with('Profil utilisateur', [
+                        'class'       => 'col-md-12',
+                        'box_class'   => 'box box-solid box-info',
+                        'description' => 'Mise à jour du profil utilisateur',
+                    ])
+                        ->add('infos.name', TextType::class)
+                    ->end()
                 ->end();
         }
 
         $formMapper
             ->tab('Sécurité utilisateur')
-            ->with('Activation / Désactivation de l\'utilisateur', [
-                'class'       => 'col-md-6',
-                'description' => 'Lorem ipsum',
-            ])
-            ->add('enabled', null, ['required' => false])
-            ->end()
-            ->with('Api token de l\'utilisateur', [
-                'class'       => 'col-md-6',
-                'description' => 'Lorem ipsum',
-            ])
-            ->add('apiToken', null, ['required' => false])
-            ->end()
-            ->with('Rôles attribués à l\'utilisateur', [
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-info',
-                'description' => 'Lorem ipsum',
-            ])
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'API_ALL' => self::API_ALL,
-                    'API_LIST' => self::API_LIST,
-                    'API_CREATE' => self::API_CREATE,
-                    'API_EDIT' => self::API_EDIT,
-                    'API_DELETE' => self::API_DELETE,
-                ],
-                'expanded'  => true,
-                'multiple'  => true,
-            ])
-            ->end()
+                ->with('Activation / Désactivation de l\'utilisateur', [
+                    'class'       => 'col-md-6',
+                    'description' => 'Lorem ipsum',
+                ])
+                    ->add('enabled', CheckboxType::class, ['required' => false])
+                ->end()
+                ->with('Api token de l\'utilisateur', [
+                    'class'       => 'col-md-6',
+                    'description' => 'Lorem ipsum',
+                ])
+                    ->add('apiToken', TextType::class, ['required' => false])
+                ->end()
+                ->with('Rôles attribués à l\'utilisateur', [
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-info',
+                    'description' => 'Lorem ipsum',
+                ])
+                    ->add('roles', ChoiceType::class, [
+                        'choices' => [
+                            'API_ALL' => self::API_ALL,
+                            'API_LIST' => self::API_LIST,
+                            'API_CREATE' => self::API_CREATE,
+                            'API_EDIT' => self::API_EDIT,
+                            'API_DELETE' => self::API_DELETE,
+                        ],
+                        'expanded'  => true,
+                        'multiple'  => true,
+                    ])
+                ->end()
             ->end();
     }
 
@@ -145,38 +148,38 @@ final class UserAdmin extends AbstractAdmin
     {
         $showMapper
             ->tab('General')
-            ->with('General', [
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-info',
-                'description' => 'Lorem ipsum',
-            ])
-            ->add('id')
-            ->add('email')
-            ->add('created_at')
-            ->add('updated_at')
-            ->end()
+                ->with('General', [
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-info',
+                    'description' => 'Lorem ipsum',
+                ])
+                    ->add('id')
+                    ->add('email')
+                    ->add('created_at')
+                    ->add('updated_at')
+                ->end()
             ->end()
 
             ->tab('Profile')
-            ->with('Profile', [
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-info',
-                'description' => 'Lorem ipsum',
-            ])
-            ->add('infos.name')
-            ->end()
+                ->with('Profile', [
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-info',
+                    'description' => 'Lorem ipsum',
+                ])
+                    ->add('infos.name')
+                ->end()
             ->end()
 
             ->tab('Security')
-            ->with('Security', [
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-info',
-                'description' => 'Lorem ipsum',
-            ])
-            ->add('enabled', null, ['editable' => true])
-            ->add('roles')
-            ->add('apiToken')
-            ->end()
+                ->with('Security', [
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-info',
+                    'description' => 'Lorem ipsum',
+                ])
+                    ->add('enabled', null, ['editable' => true])
+                    ->add('roles')
+                    ->add('apiToken')
+                ->end()
             ->end();
     }
 

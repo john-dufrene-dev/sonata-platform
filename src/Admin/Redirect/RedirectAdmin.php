@@ -12,7 +12,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Templating\TemplateRegistry;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 final class RedirectAdmin extends AbstractAdmin
 {
@@ -93,12 +95,12 @@ final class RedirectAdmin extends AbstractAdmin
                 ->with('redirection.source.destination', [
                     'class'       => 'col-md-8',
                 ])
-                    ->add('source', null, [
+                    ->add('source', TextType::class, [
                         'label' => $this->t_source,
                         'row_attr' => ['class' => 'col-md-6'],
                         'attr' => ['placeholder' => 'help.redirect.source']
                     ])
-                    ->add('destination', null, [
+                    ->add('destination', TextType::class, [
                         'label' => $this->t_destination,
                         'row_attr' => ['class' => 'col-md-6'],
                         'attr' => ['placeholder' => 'help.redirect.destination']
@@ -117,7 +119,7 @@ final class RedirectAdmin extends AbstractAdmin
                 ->with('redirect.choice.publish', [
                     'class'       => 'col-md-4',
                 ])
-                    ->add('publish', null, ['label' => $this->t_publish])
+                    ->add('publish', CheckboxType::class, ['label' => $this->t_publish, 'required' => false])
                 ->end()
             ->end();
     }
