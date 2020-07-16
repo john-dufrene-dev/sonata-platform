@@ -21,12 +21,12 @@ security:
             security: false
 
         api_login:
-            pattern:  ^/authentication
+            pattern:  ^/api/authentication
             stateless: true
             anonymous: true
             provider:  app_user_provider
             json_login:
-                check_path: /authentication_token
+                check_path: /api/authentication_token
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
         
@@ -87,7 +87,7 @@ security:
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-        - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: ROLE__USER }
 
         - { path: ^/admin/, role: ROLE_ADMIN }
