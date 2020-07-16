@@ -73,7 +73,8 @@ __1. Todo list__
 - Create Command to install project (IN PROGRESS)
 - Create Fixtures for user/admin (IN PROGRESS)
 - SEO default pages (IN PROGRESS)
-- remove all service "public: true" (IN PROGRESS)
+- Remove all service "public: true" (IN PROGRESS)
+- Create new extensions system enable/disable (IN PROGRESS)
 
 ```
 

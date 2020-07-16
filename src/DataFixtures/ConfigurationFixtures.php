@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Configuration\Configuration;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ConfigurationFixtures extends Fixture
@@ -20,6 +20,12 @@ class ConfigurationFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        /*
+         *
+         * Configuration for Maintenance Mode
+         *
+         */
+
         // Create configuration for list valid IP for maintenance
         $config = new Configuration;
         $config->setName($this->start.'MAINTENANCE_IP_VALID');
@@ -34,6 +40,12 @@ class ConfigurationFixtures extends Fixture
         $config->setTitle($this->translator->trans('configuration.enable.disable.ip', [], 'fixtures'));
         $config->setType('boolean');
         $manager->persist($config);
+
+        /*
+         *
+         * Configuration for SEO
+         *
+         */
 
         // Create configuration for SEO global indexation
         $config = new Configuration;
@@ -96,6 +108,28 @@ class ConfigurationFixtures extends Fixture
         $config->setName($this->start.'SEO_REGISTER_NO_INDEXATION');
         $config->setValue(0);
         $config->setTitle($this->translator->trans('seo.register.title.no.indexation', [], 'fixtures'));
+        $config->setType('boolean');
+        $manager->persist($config);
+
+        /*
+         *
+         * Configuration for Extensions
+         *
+         */
+
+        // Create configuration to verify if Account extension is active
+        $config = new Configuration;
+        $config->setName($this->start.'EXTENSION_ACCOUNT_ACTIVE');
+        $config->setValue(1);
+        $config->setTitle($this->translator->trans('configuration.extension.account.active', [], 'fixtures'));
+        $config->setType('boolean');
+        $manager->persist($config);
+
+        // Create configuration to verify if Account extension is active
+        $config = new Configuration;
+        $config->setName($this->start.'EXTENSION_API_ACTIVE');
+        $config->setValue(1);
+        $config->setTitle($this->translator->trans('configuration.extension.api.active', [], 'fixtures'));
         $config->setType('boolean');
         $manager->persist($config);
 

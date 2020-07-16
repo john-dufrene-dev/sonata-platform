@@ -20,3 +20,8 @@ seo.register.title.description: 'Meta description de la page d''inscription'
 seo.register.title.keywords: 'Meta keywords de la page d''inscription'
 seo.register.title.no.indexation: 'Ne pas indexer la page d''inscription'
 
+#  STATUT EXTENSION (true/false)
+
+configuration.extension.account.active: 'Activer / Désactiver l''extension --Account--'
+configuration.extension.api.active: 'Activer / Désactiver l''extension --API--'
+
