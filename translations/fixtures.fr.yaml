@@ -20,6 +20,13 @@ seo.register.title.description: 'Meta description de la page d''inscription'
 seo.register.title.keywords: 'Meta keywords de la page d''inscription'
 seo.register.title.no.indexation: 'Ne pas indexer la page d''inscription'
 
+seo.account.value.title: 'Page mon compte'
+seo.account.value.description: 'Description page mon compte'
+seo.account.title.title: 'Meta title de la page mon compte'
+seo.account.title.description: 'Meta description de la page mon compte'
+seo.account.title.keywords: 'Meta keywords de la page mon compte'
+seo.account.title.no.indexation: 'Ne pas indexer la page mon compte'
+
 #  STATUT EXTENSION (true/false)
 
 configuration.extension.account.active: 'Activer / Désactiver l''extension --ACCOUNT--'

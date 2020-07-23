@@ -4,15 +4,29 @@ namespace App\Controller\Front\Pages;
 
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\Cache\ConfigurationCacheBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AccountController extends AbstractController
-{
+{    
+    /**
+     * config
+     *
+     * @var mixed
+     */
+    protected $config;
+    
+    /**
+     * seo
+     *
+     * @var mixed
+     */
     protected $seo;
 
-    public function __construct(SeoPageInterface $seo)
+    public function __construct(SeoPageInterface $seo, ConfigurationCacheBuilder $config)
     {
+        $this->config = $config;
         $this->seo = $seo;
     }
 
@@ -23,10 +37,12 @@ class AccountController extends AbstractController
      */
     public function index()
     {
+        $valueSeo = $this->config->getSeoValue('ACCOUNT');
+
         $this->seo
-            ->addTitle('Page mon compte') // you can use setTitle($title)
-            ->addMeta('name', 'robots', 'index, follow')
-            ->addMeta('name', 'description', 'Description mon compte');
+            ->addTitle($valueSeo['title'] ?? '') // you can use setTitle($title)
+            ->addMeta('name', 'robots', $valueSeo['index'] ?? '')
+            ->addMeta('name', 'description', $valueSeo['description'] ?? '');
 
         return $this->render('front/pages/account/index.html.twig', [
             'page_name' => 'Mon compte',
