@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <h1>Default Login page</h1>
+        <p>Page {{ page }} </p>
     </div> 
 
 </template>
@@ -15,8 +15,8 @@
             }
         },
         mounted() {
-            console.log('Mounted Login')
-        }
+            //
+        },
     }
 </script>
 

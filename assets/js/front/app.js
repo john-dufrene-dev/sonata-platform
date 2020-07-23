@@ -8,6 +8,7 @@ import '@@css/front/app.scss';
 import $ from 'jquery';
 
 // import boostrap
-require('bootstrap');
+import 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '@@js/front/config/security';

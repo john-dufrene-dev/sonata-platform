@@ -8,16 +8,16 @@
 
 {% block body %}
 
+    <default-header title="Default Account Page"></default-header>
+
     <div id="account" class="container">
 
-        <h1-title title="Account page"></h1-title>
-        
+        <account></account>
+
         {% if app.user %}
             <h1 class="h3 mb-3 font-weight-normal">You are logged in as {{ app.user.username }}, 
             <a href="{{ path('app_logout') }}">Logout</a></h1>
         {% endif %}
-
-        <account></account>
 
     </div>
 
