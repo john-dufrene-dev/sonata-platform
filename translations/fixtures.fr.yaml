@@ -22,6 +22,6 @@ seo.register.title.no.indexation: 'Ne pas indexer la page d''inscription'
 
 #  STATUT EXTENSION (true/false)
 
-configuration.extension.account.active: 'Activer / Désactiver l''extension --Account--'
+configuration.extension.account.active: 'Activer / Désactiver l''extension --ACCOUNT--'
 configuration.extension.api.active: 'Activer / Désactiver l''extension --API--'
 
