@@ -21,7 +21,7 @@ class RedirectSubscriber implements EventSubscriberInterface
         $this->cacheredirect = $cacheredirect;
     }
 
-    public function beforeKernelResponse(ResponseEvent  $event): void
+    public function beforeKernelResponse($event): void
     {
         if (!$event->isMasterRequest()) {
             return;

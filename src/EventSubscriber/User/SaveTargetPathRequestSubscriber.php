@@ -4,7 +4,6 @@ namespace App\EventSubscriber\User;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
@@ -19,7 +18,7 @@ class SaveTargetPathRequestSubscriber implements EventSubscriberInterface
         $this->session = $session;
     }
 
-    public function onKernelRequest(RequestEvent $event): void
+    public function onKernelRequest($event): void
     {
         $request = $event->getRequest();
         if (

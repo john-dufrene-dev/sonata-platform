@@ -72,7 +72,7 @@ class MaintenanceSubscriber implements EventSubscriberInterface
      * @param  mixed $event
      * @return void
      */
-    public function onKernelRequest(RequestEvent $event): void
+    public function onKernelRequest($event): void
     {
         $maintenance = $this->config->get($this->maintenance) ? $this->config->get($this->maintenance) : false;
         $currentIP = $event->getRequest()->getClientIp();

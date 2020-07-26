@@ -5,7 +5,6 @@ namespace App\EventSubscriber\User;
 use App\Entity\User\User;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -44,7 +43,7 @@ class IsAuthenticatedUserSubscriber implements EventSubscriberInterface
      * @param  mixed $event
      * @return void
      */
-    public function beforeKernelResponse(ResponseEvent  $event): void
+    public function beforeKernelResponse($event): void
     {
         if($event->getRequest()->cookies->has('X-AUTH-TOKEN')) {
             return;

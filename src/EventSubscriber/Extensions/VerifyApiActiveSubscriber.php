@@ -4,7 +4,6 @@ namespace App\EventSubscriber\Extensions;
 
 use Symfony\Component\HttpKernel\KernelEvents;
 use App\Service\Cache\ConfigurationCacheBuilder;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -35,7 +34,7 @@ class VerifyApiActiveSubscriber implements EventSubscriberInterface
         $this->config = $config;
     }
 
-    public function onKernelRequest(RequestEvent $event): void
+    public function onKernelRequest($event): void
     {
         $request = $event->getRequest();
         

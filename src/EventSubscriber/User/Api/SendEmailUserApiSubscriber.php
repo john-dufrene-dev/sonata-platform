@@ -6,7 +6,6 @@ use App\Entity\User\User;
 use App\Service\Email\Notifier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\ViewEvent;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -58,7 +57,7 @@ final class SendEmailUserApiSubscriber implements EventSubscriberInterface
      * @param  mixed $event
      * @return void
      */
-    public function sendMail(ViewEvent $event)
+    public function sendMail($event)
     {
         $user = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
