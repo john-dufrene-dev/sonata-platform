@@ -44,7 +44,7 @@ openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
 # 1.8 generate route js builder
-php bin/console fos:js-routing:dump --format=json --target=assets/js/helpers/components/router/routes.json
+php bin/console fos:js-routing:dump --format=json --target=assets/js/front/config/utils/router/routes.json
 
 ```
 

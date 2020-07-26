@@ -1,6 +1,6 @@
 fos_js_routing:
     router: router
-    request_context_base_url: '%env(resolve:SERVER_URL)%'
+    # request_context_base_url: '%env(resolve:SERVER_URL)%'
     # routes_to_expose:     [route_1, route_2] # name of your routes here
     # cache_control:
     #     # All are optional, defaults shown
