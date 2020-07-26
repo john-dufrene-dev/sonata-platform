@@ -68,9 +68,9 @@ final class AdminUserAdmin extends BaseUserAdmin
         $this->userManager->updatePassword($user);
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('username')
             ->add('email')
             ->add('groups')
@@ -78,7 +78,7 @@ final class AdminUserAdmin extends BaseUserAdmin
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
-            $listMapper
+            $list
                 ->add('impersonating', 'string', [
                     'template' => '@NucleosUserAdmin/Admin/Field/impersonating.html.twig',
                 ])
@@ -86,24 +86,24 @@ final class AdminUserAdmin extends BaseUserAdmin
         }
     }
 
-    protected function configureDatagridFilters(DatagridMapper $filterMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $filterMapper
+        $filter
             ->add('id')
             ->add('username')
             ->add('email')
         ;
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $filterMapper
+            $filter
                 ->add('groups')
             ;
         }
     }
 
-    protected function configureShowFields(ShowMapper $showMapper): void
+    protected function configureShowFields(ShowMapper $show): void
     {
-        $showMapper
+        $show
             ->with('form.tab_general')
                 ->add('username')
                 ->add('email')
@@ -111,7 +111,7 @@ final class AdminUserAdmin extends BaseUserAdmin
         ;
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $showMapper
+            $show
                 ->with('form.tab_groups')
                     ->add('groups')
                 ->end()
@@ -119,9 +119,9 @@ final class AdminUserAdmin extends BaseUserAdmin
         }
     }
 
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
-        $formMapper
+        $form
             ->tab('form.tab_user')
                 ->with('form.group_general', ['class' => 'col-md-6'])->end()
                 ->ifTrue($this->isLocaleAwareSubject())
@@ -131,7 +131,7 @@ final class AdminUserAdmin extends BaseUserAdmin
         ;
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $formMapper
+            $form
                 ->tab('form.tab_security')
                     ->with('form.group_groups', ['class' => 'col-md-8'])->end()
                     ->with('form.group_status', ['class' => 'col-md-4'])->end()
@@ -140,7 +140,7 @@ final class AdminUserAdmin extends BaseUserAdmin
             ;
         }
 
-        $formMapper
+        $form
             ->tab('form.tab_user')
                 ->with('form.group_general')
                     ->add('username')
@@ -163,7 +163,7 @@ final class AdminUserAdmin extends BaseUserAdmin
         ;
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $formMapper
+            $form
                 ->tab('form.tab_security')
                     ->with('form.group_status')
                         ->add('enabled', null, ['required' => false])

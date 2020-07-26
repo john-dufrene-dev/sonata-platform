@@ -38,9 +38,9 @@ final class RedirectAdmin extends AbstractAdmin
         $collection->remove('show');
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $datagridMapper
+        $filter
             ->add('source', null, ['label' => $this->t_source])
             ->add('destination', null, ['label' => $this->t_destination])
             ->add('httpCode', null, ['label' => $this->t_httpcode], ChoiceType::class, [
@@ -49,9 +49,9 @@ final class RedirectAdmin extends AbstractAdmin
             ->add('publish', null, ['label' => $this->t_publish]);
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->add('source', 'url', [
                 'label' => $this->t_source,
                 'hide_protocol' => true,
@@ -88,9 +88,9 @@ final class RedirectAdmin extends AbstractAdmin
             ]);
     }
 
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
-        $formMapper
+        $form
             ->tab('header.redirection')
                 ->with('redirection.source.destination', [
                     'class'       => 'col-md-8',

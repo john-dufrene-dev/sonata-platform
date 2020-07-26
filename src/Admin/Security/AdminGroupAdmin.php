@@ -16,9 +16,9 @@ final class AdminGroupAdmin extends BaseGroupAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('name')
             ->add('roles', null, [
                 'header_class' => 'col-md-6',
@@ -41,9 +41,9 @@ final class AdminGroupAdmin extends BaseGroupAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
-        $formMapper
+        $form
             ->tab('form.tab_group')
                 ->with('form.group_general', ['class' => 'col-md-6'])
                     ->add('name')

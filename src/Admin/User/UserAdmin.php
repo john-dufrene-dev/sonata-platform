@@ -32,9 +32,9 @@ final class UserAdmin extends AbstractAdmin
      */
     protected $userManager;
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $datagridMapper
+        $filter
             ->add('id')
             ->add('email')
             ->add('roles')
@@ -43,9 +43,9 @@ final class UserAdmin extends AbstractAdmin
             ->add('updated_at');
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('id')
             ->add('email')
             ->add('enabled', null, ['editable' => true])
@@ -53,25 +53,20 @@ final class UserAdmin extends AbstractAdmin
             ->add('updated_at')
             ->add('_action', null, [
                 'actions' => [
-                    'show' => [
-                        'template' => 'admin/CRUD/list__action_show.html.twig',
-                    ],
-                    'edit' => [
-                        'template' => 'admin/CRUD/list__action_edit.html.twig',
-                    ],
-                    'delete' => [
-                        'template' => 'admin/CRUD/list__action_delete.html.twig',
-                    ],
+                    'show' => ['template' => 'admin/CRUD/list__action_show.html.twig'],
+                    'edit' => ['template' => 'admin/CRUD/list__action_edit.html.twig'],
+                    'delete' => ['template' => 'admin/CRUD/list__action_delete.html.twig'],
                 ],
             ]);
     }
 
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
+        //@Todo Translations
         $description = 'Attention, vous ne pouvez pas éditer le profil tant que l\'utilisateur n\'existe pas !';
 
         // define group zoning
-        $formMapper
+        $form
             ->tab('Informations générales de l\'utilisateur')
                 ->with('Informations générales de l\'utilisateur')->end()
             ->end()
@@ -83,7 +78,7 @@ final class UserAdmin extends AbstractAdmin
                 ->with('Api token de l\'utilisateur')->end()
             ->end();
 
-        $formMapper
+        $form
             ->tab('Informations générales de l\'utilisateur')
                 ->with('Informations générales de l\'utilisateur', [
                     'class'       => 'col-md-12',
@@ -98,7 +93,7 @@ final class UserAdmin extends AbstractAdmin
             ->end();
 
         if ($this->getSubject() && null !== $this->getSubject()->getId()) {
-            $formMapper
+            $form
                 ->tab('Profil utilisateur')
                     ->with('Profil utilisateur', [
                         'class'       => 'col-md-12',
@@ -110,7 +105,7 @@ final class UserAdmin extends AbstractAdmin
                 ->end();
         }
 
-        $formMapper
+        $form
             ->tab('Sécurité utilisateur')
                 ->with('Activation / Désactivation de l\'utilisateur', [
                     'class'       => 'col-md-6',
@@ -144,9 +139,9 @@ final class UserAdmin extends AbstractAdmin
             ->end();
     }
 
-    protected function configureShowFields(ShowMapper $showMapper): void
+    protected function configureShowFields(ShowMapper $show): void
     {
-        $showMapper
+        $show
             ->tab('General')
                 ->with('General', [
                     'class'       => 'col-md-12',
