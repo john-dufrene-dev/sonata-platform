@@ -89,13 +89,13 @@
                                                 {% set sort_by              = current ? admin.datagrid.values._sort_order : field_description.options._sort_order %}
                                             {% endif %}
 
-                                            {% spaceless %}
+                                            {% apply spaceless %}
                                                 <th class="sonata-ba-list-field-header-{{ field_description.type}} {% if sortable %} sonata-ba-list-field-header-order-{{ sort_by|lower }} {{ sort_active_class }}{% endif %}">
                                                     {% if sortable %}<a href="{{ path('admin_app_media_media_browser', sort_parameters) }}">{% endif %}
                                                         {{ admin.trans(field_description.label) }}
                                                         {% if sortable %}</a>{% endif %}
                                                 </th>
-                                            {% endspaceless %}
+                                            {% endapply %}
                                         {% endif %}
                                     {% endfor %}
                                 </tr>

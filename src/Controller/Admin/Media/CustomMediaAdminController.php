@@ -2,19 +2,11 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Controller\Admin\Media;
 
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormRenderer;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,10 +19,8 @@ final class CustomMediaAdminController extends CRUDController
     /**
      * {@inheritdoc}
      */
-    public function createAction()
+    public function createAction(?Request $request = null)
     {
-        $request = $this->getRequest();
-        
         $this->admin->checkAccess('create');
 
         if (!$request->get('provider') && $request->isMethod('get')) {
@@ -121,10 +111,8 @@ final class CustomMediaAdminController extends CRUDController
     /**
      * @throws AccessDeniedException
      */
-    public function browserAction(): Response
+    public function browserAction(Request $request): Response
     {
-        $request = $this->getRequest();
-
         $this->checkIfMediaBundleIsLoaded();
 
         $this->admin->checkAccess('list');
@@ -186,10 +174,8 @@ final class CustomMediaAdminController extends CRUDController
      * @throws AccessDeniedException
      * @throws NotFoundHttpException
      */
-    public function uploadAction(): Response
+    public function uploadAction(Request $request): Response
     {
-        $request = $this->getRequest();
-        
         $this->checkIfMediaBundleIsLoaded();
 
         $this->admin->checkAccess('create');
