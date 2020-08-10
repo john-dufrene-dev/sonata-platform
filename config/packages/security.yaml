@@ -39,19 +39,19 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
         
         admin:
-            pattern:            /admin(.*)
+            pattern:            /%admin_url%(.*)
             context:            user
             form_login:
                 provider:       nucleos_userbundle
-                login_path:     /admin/login
+                login_path:     /%admin_url%/login
                 use_forward:    false
-                check_path:     /admin/login_check
+                check_path:     /%admin_url%/login_check
                 failure_path:   null
                 # Uncomment if you want to use Google Authenticator
                 # success_handler: sonata.user.google.authenticator.success_handler
             logout:
-                path:           /admin/logout
-                target:         /admin/login
+                path:           /%admin_url%/logout
+                target:         /%admin_url%/login
             anonymous:          true
             switch_user:
                 provider: nucleos_userbundle
@@ -82,15 +82,15 @@ security:
         - { path: ^/account/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/account/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%admin_url%/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%admin_url%/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%admin_url%/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%admin_url%/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         - { path: ^/api/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: ROLE__USER }
 
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/%admin_url%/, role: ROLE_ADMIN }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
     role_hierarchy:

@@ -3,25 +3,25 @@
 
 nucleos_user_admin_admin_security:
     resource: "@NucleosUserAdminBundle/Resources/config/routing/admin_security.xml"
-    prefix: /admin
+    prefix: /%admin_url%
 
 # nucleos_user_admin_admin_resetting:
 #     resource: "@NucleosUserAdminBundle/Resources/config/routing/admin_resetting.xml"
-#     prefix: /admin/resetting
+#     prefix: /%admin_url%/resetting
 
 # Custom reset URL
 nucleos_user_admin_resetting_request:
     controller: Nucleos\UserAdminBundle\Action\RequestAction
-    path: /admin/resetting/request
+    path: /%admin_url%/resetting/request
 
 nucleos_user_admin_resetting_send_email:
     controller: App\Controller\Admin\Security\Action\SendEmailAction
-    path: /admin/resetting/send-email
+    path: /%admin_url%/resetting/send-email
 
 nucleos_user_admin_resetting_check_email:
     controller: Nucleos\UserAdminBundle\Action\CheckEmailAction
-    path: /admin/resetting/check-email
+    path: /%admin_url%/resetting/check-email
 
 nucleos_user_admin_resetting_reset:
     controller: App\Controller\Admin\Security\Action\ResetAction
-    path: /admin/resetting/reset/{token}
+    path: /%admin_url%/resetting/reset/{token}

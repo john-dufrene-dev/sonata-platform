@@ -5,8 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
-    locale: '%env(resolve:APP_LOCALE)%'
-    mailer_user: '%env(resolve:MAILER_USER)%'
+    locale: '%env(resolve:APP_LOCALE)%' # Default LOCALE LANGUAGE value
+    mailer_user: '%env(resolve:MAILER_USER)%' # Default MAIL value
+    admin_url: '%env(resolve:ADMIN_URL)%' # Default ADMIN URL value
     
 services:
     # default configuration for services in *this* file
