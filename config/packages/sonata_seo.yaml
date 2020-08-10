@@ -34,12 +34,5 @@ sonata_seo:
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
                 # 'og:site_name':       Sonata Project Sandbox
                 # 'og:description':     A demo of the some rich bundles for your Symfony2 projects
-
-# Seo pages configuration
-parameters:
-
-    # Page d'incription
-    seo.pages.security_register.title: 'Page d''inscription'
-    seo.pages.security_register.robots: 'index, follow'
-    seo.pages.security_register.description: 'Description page d''inscription'
+                
 

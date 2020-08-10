@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin\Maintenance;
 
+use Symfony\Component\HttpFoundation\Request;
 use Sonata\AdminBundle\Controller\CRUDController;
 
 class MaintenanceAdminController extends CRUDController
@@ -10,7 +11,7 @@ class MaintenanceAdminController extends CRUDController
 
     protected $options = ['CONF_MAINTENANCE_STATUS', 'CONF_MAINTENANCE_IP_VALID'];
 
-    public function listAction()
+    public function listAction(?Request $request = null)
     {
         $this->admin->checkAccess('list');
         

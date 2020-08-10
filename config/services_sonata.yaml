@@ -39,7 +39,6 @@ services:
         class: App\Service\Admin\Block\ConfigurationBlockService
         arguments:
             - '@twig'
-            - ~
             - '@parameter_bag'
             - '@doctrine.orm.default_entity_manager'
             - '@cache.app'
@@ -77,7 +76,7 @@ services:
             - '@nucleos_user.user_manager'
             - '@nucleos_user.util.token_generator'
 
-    # Custom SendMailAction for AdminUser
+    # Custom SendResetAction for AdminUser
     custom.action.reset.admin.user:
         class: App\Controller\Admin\Security\Action\ResetAction
         arguments: 

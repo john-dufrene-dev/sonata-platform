@@ -20,7 +20,7 @@ use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBag;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class ConfigurationBlockService  extends AbstractBlockService
+final class ConfigurationBlockService extends AbstractBlockService
 {
     /**
      * params
@@ -86,8 +86,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
     protected $configs;
 
     public function __construct(
-        Environment $twig, 
-        $templating = null,
+        Environment $twig,
         ContainerBag $params,
         EntityManagerInterface $em,
         AdapterInterface $cache,
@@ -95,7 +94,7 @@ final class ConfigurationBlockService  extends AbstractBlockService
         RouterInterface $router,
         TranslatorInterface $translator
     ) {
-        parent::__construct($twig, $templating);
+        parent::__construct($twig);
         $this->params = $params;
         $this->em = $em;
         $this->cache = $cache;
@@ -146,18 +145,17 @@ final class ConfigurationBlockService  extends AbstractBlockService
         $settings = $blockContext->getSettings();
         $this->configs = false;
 
-        if($settings['configs'] && count($settings['configs'])) {
-            foreach($settings['configs'] as $value) {
-
+        if ($settings['configs'] && count($settings['configs'])) {
+            foreach ($settings['configs'] as $value) {
                 $entity = $this->em->getRepository(Configuration::class);
                 $result = $entity->findOneBy([
                     'name' => $value,
                     'enabled' => true,
                 ]);
 
-                if($result) {
+                if ($result) {
                     $this->configs = $value;
-                    if(null != $this->config->get($this->configs)) {
+                    if (null != $this->config->get($this->configs)) {
                         $options = [];
                         $options['name']        = $result->getName();
                         $options['value']       = $result->getValue();
@@ -170,8 +168,8 @@ final class ConfigurationBlockService  extends AbstractBlockService
             }
         }
 
-        if($this->request->getCurrentRequest()->isMethod('POST')) {
-            foreach($this->request->getCurrentRequest()->request->all() as $key => $value) {
+        if ($this->request->getCurrentRequest()->isMethod('POST')) {
+            foreach ($this->request->getCurrentRequest()->request->all() as $key => $value) {
                 $this->config->update($key, $value);
             }
 

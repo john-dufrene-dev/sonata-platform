@@ -8,17 +8,14 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sonata\MediaBundle\Provider\MediaProviderInterface;
+use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-final class CustomMediaAdminController extends CRUDController
+final class CustomMediaAdminController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createAction(?Request $request = null)
     {
         $this->admin->checkAccess('create');
@@ -37,13 +34,8 @@ final class CustomMediaAdminController extends CRUDController
         return parent::createAction();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function listAction()
+    public function listAction(?Request $request = null)
     {
-        $request = $this->getRequest();
-
         $this->admin->checkAccess('list');
 
         if ($listMode = $request->get('_list_mode', 'mosaic')) {
@@ -97,9 +89,6 @@ final class CustomMediaAdminController extends CRUDController
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render($view, array $parameters = [], ?Response $response = null)
     {
         $parameters['media_pool'] = $this->get('sonata.media.pool');
@@ -251,8 +240,10 @@ final class CustomMediaAdminController extends CRUDController
     /**
      * Sets the admin form theme to form view. Used for compatibility between Symfony versions.
      */
-    private function setFormTheme(FormView $formView, array $theme): void
+    private function setFormTheme(FormView $formView, array $theme)
     {
-        $this->get('twig')->getRuntime(FormRenderer::class)->setTheme($formView, $theme);
+        $twig = $this->get('twig');
+
+        $twig->getRuntime(FormRenderer::class)->setTheme($formView, $theme);
     }
 }
